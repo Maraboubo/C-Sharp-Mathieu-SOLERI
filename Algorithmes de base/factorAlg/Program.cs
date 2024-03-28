@@ -40,9 +40,7 @@ namespace factorAlg
                 Console.WriteLine(start);
                 n = 0;
             }
-
             //FIN
-
         }
     }
 }

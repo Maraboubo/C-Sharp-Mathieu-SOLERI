@@ -11,11 +11,11 @@ namespace testFonctions
             string toto=Console.ReadLine();
 
             SP_affiche(cafe);
-
-            static void SP_affiche(string variable)
-            {
-                Console.WriteLine(variable);
-            }
+        }
+        //FONCTIONS
+        static void SP_affiche(string variable)
+        {
+            Console.WriteLine(variable);
         }
     }
 }
