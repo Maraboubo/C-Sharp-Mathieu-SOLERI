@@ -6,6 +6,7 @@ namespace penduFonctions
     {
         static void Main(string[] args)
         {
+            
             //VARIABLES
             string mDevine;
             char[] mDevineAsChars;
@@ -13,81 +14,129 @@ namespace penduFonctions
             int essais = 0;
             string mCache;
             char[] mCacheAsChars;
-            int i = 0;
+            int i;
             int bLettres = 0;
             int checkLettre = 0;
+            
+            bool relance = true;
 
             //DEBUT
-
-            afficherTexte("++Jeu du pendu++");
-            afficherTexte("Entrez un mot");
-            mDevine=saisie();
-            mDevineAsChars = tableau(mDevine);
-            mCache = new string('*', mDevine.Length);
-            mCacheAsChars = tableau(mCache);
-            afficherTexte("Vous avez droit à 10 essais");
-            afficherTexte("Mot découvert" + mCache);
-            while ((bLettres < mDevine.Length) & (essais <= 10))
+         
+            while (relance == true)
             {
-                afficherTexte("Entrez une lettre :");
-                string lettre=saisie();
-                lettreAsChars = tableau(lettre);
-                essais++;
-                for (i = 0; i < mDevine.Length; i++)
+                Console.WriteLine(essais);
+                essais = 0;
+                Console.WriteLine(essais);
+                Console.WriteLine(bLettres);
+                bLettres= 0;
+                Console.WriteLine(bLettres);
+                Console.WriteLine(checkLettre);
+                checkLettre = 0;
+                Console.WriteLine(checkLettre);
+                AfficherTexte("++Jeu du pendu++");
+                AfficherTexte("Entrez un mot");
+                mDevine = Saisie();
+                mDevineAsChars = Tableau(mDevine);
+                mCache = new string('*', mDevine.Length);
+                mCacheAsChars = Tableau(mCache);
+                AfficherTexte("Vous avez droit à 10 essais");
+                AfficherTexte("Mot découvert" + mCache);
+
+                while ((bLettres < Longueur(mDevine)) & (essais <= 10))
                 {
-                    if (mDevineAsChars[i] == lettreAsChars[0])
+                    AfficherTexte("Entrez une lettre :");
+                    string lettre = Saisie();
+                    lettreAsChars = Tableau(lettre);
+                    essais++;
+                    for (i = 0; i < Longueur(mDevine); i++)
                     {
-                        mCacheAsChars[i] = mDevineAsChars[i];
-                        bLettres++;
+                        if (mDevineAsChars[i] == lettreAsChars[0])
+                        {
+                            mCacheAsChars[i] = mDevineAsChars[i];
+                            bLettres++;
+                        }
+                    }
+                    if (checkLettre == bLettres)
+                    {
+                        AfficherTexte("Dommage....continuez quand même!!!");
+                    }
+                    else
+                    {
+                        AfficherTexte("Super continuez !!!!");
+                    }
+                    string mCacheAComparer = new string(mCacheAsChars);
+
+                    AfficherTexte("Vous en êtes à ");
+
+                    checkLettre = bLettres;
+
+                    AfficheMotTrouve(mCacheAsChars);
+
+                    if (mCacheAComparer.Equals(mDevine))
+                    {
+                        AfficherTexte("Bravo !!! vous avez gagné en " + essais + " éssais");
                     }
                 }
-                if (checkLettre == bLettres)
+                if (essais >= 10)
                 {
-                    afficherTexte("Dommage....continuez quand même!!!");
-                }
-                else
-                {
-                    afficherTexte("Super continuez !!!!");
+                    AfficherTexte("Dommage, le mot était :" + mDevine);
 
+                    AfficherTexte("Vous avez trouvé " + bLettres + " bonnes lettres, vous ferez mieux la prochaine fois...");
                 }
-                string mCacheAComparer = new string(mCacheAsChars);
-
-                afficherTexte("Vous en êtes à ");
-
-                checkLettre = bLettres;
-                foreach (char caractere in mCacheAsChars)
-                {
-                    Console.Write(caractere);
-                }
-                if (mCacheAComparer.Equals(mDevine))
-                {
-                    afficherTexte("Bravo !!! vous avez gagné en " + essais + " éssais");
-                }
+                relance=Relancer();
             }
-            if (essais >= 10)
-            {
-                afficherTexte("Dommage, le mot était :" + mDevine);
-
-                afficherTexte("Vous avez trouvé " + bLettres + " bonnes lettres, vous ferez mieux la prochaine fois...");
-            }
+            
         }
         //FONCTIONS
-        static void afficherTexte(string texte)
+        static void AfficherTexte(string texte)
         {
             Console.WriteLine(texte);
         }
 
-        static string saisie ()
+        static string Saisie ()
         {
            string variable=Console.ReadLine();
            return variable;
         }
 
-        static char[] tableau(string variable)
+        static char[] Tableau(string variable)
         {
             char[] table=variable.ToCharArray();
             return table;
         }
+
+        static int Longueur (string variable)
+        {
+            int taille=variable.Length;
+            return taille;
+        }
+
+        static void AfficheMotTrouve(char[] variable)
+        {
+            Console.WriteLine("Appuyez sur 'espace' pour afficher le mot trouvé, autre touche pour passer");
+
+            ConsoleKeyInfo keyInfo = Console.ReadKey();
+            if (keyInfo.Key == ConsoleKey.Spacebar)
+            {
+                Console.WriteLine("Mot trouvé:" + new string(variable));
+            }
+        }
+        static bool Relancer()
+        {
+
+            Console.WriteLine("Appuyez sur 'Entrée' pour relancer le jeu");
+            ConsoleKeyInfo keyInfo = Console.ReadKey();
+
+            if (keyInfo.Key == ConsoleKey.Enter)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
     }
 }
 

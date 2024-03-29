@@ -1,21 +1,32 @@
-﻿uusing System;
+﻿using System;
 using System.Data;
 
 class Program
 {
     static void Main()
     {
-        Console.WriteLine("Entrez votre expression mathématique :");
-        string expression = Console.ReadLine();
+        //VARIABLES
+        string calcul=" ";
+        char[] stockCalcul;
 
-        try
+        //DEBUT
+        Console.WriteLine("Entrez votre expression mathématique :");
+        calcul = Console.ReadLine();
+        stockCalcul = calcul.ToCharArray();
+        
+            imprime(stockCalcul);
+
+        calcul = Console.ReadLine();
+
+
+    }
+
+    static void imprime(char[] tableauChar, int i)
+    {
+        for (int i = 0; i < stockCalcul.Length; i++)
         {
-            object result = new DataTable().Compute(expression, null);
-            Console.WriteLine("Résultat : " + result);
+            Console.WriteLine(tableauChar[i]);
         }
-        catch (Exception ex)
-        {
-            Console.WriteLine("Une erreur s'est produite : " + ex.Message);
-        }
+            
     }
 }
