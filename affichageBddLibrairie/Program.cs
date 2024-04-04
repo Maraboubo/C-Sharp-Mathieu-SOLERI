@@ -17,22 +17,17 @@ namespace affichageBddLibrairie
 
             
             //on instancie la classe SqlConnection sous le nom 'connexion' qui prend pour argument la ligne de connection  ->  ouverture de la connection.
-            SqlConnection connexion = new SqlConnection(@"*****");
+            SqlConnection connexion = new SqlConnection(@"****");
             connexion.Open();
             
 
             //on crée une variable 'RequestGetFromDB'de type SqlCommand de valeur connexion.CreateCommand()  ->  création de commande.
             SqlCommand RequestGetFromDB = connexion.CreateCommand();
-            RequestGetFromDB.CommandText = "Select * from Auteur where IdAuteur=5";
+            RequestGetFromDB.CommandText = "Select * from Auteur";
 
             //on crée une variable 'resultat' RequestGetFromDB de type SqlDataReader de valeur RequestGetFromDB.ExecuteReader()  ->  lecture du résultat.
             SqlDataReader resultat = RequestGetFromDB.ExecuteReader();
 
-
-
-            //cette fonction permet de consulter un auteur par son id entré par l'utilisateur. 
-            rechercherAuteur();
-             
 
             //Cette fonction affiche le résultat de la requête sql commandText
             /*
@@ -52,11 +47,21 @@ namespace affichageBddLibrairie
             */
 
 
+            //cette fonction permet de consulter un auteur par son id entré par l'utilisateur.
+            /*
+            rechercherAuteur();
+            */
+
+
             //cette fonction insere un nouvel auteur à la base de données depuis une nouvelle instance de la classe 'Auteur' définie en début de fonction.
             /*
             InsererAuteur();
             */
 
+            //cette fonction évalue si un auteur est déja entregistré sous les nom et prénom entrés par l'utilisateur.
+            /*
+            comparerEntreeUtilisateur(resultat);
+            */
 
             demandeResultat();
             

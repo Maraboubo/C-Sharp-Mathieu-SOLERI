@@ -125,7 +125,7 @@ namespace affichageBddLibrairie.Fonctions
             Console.WriteLine("++Bonjour. Veuillez entrer l'identifiant de l'auteur recherché++");
             identifiant = Convert.ToInt32(Console.ReadLine());
 
-            string connectionString = @"*****";
+            string connectionString = @"******";
             string query = "select * from Auteur where IdAuteur= @Id ";
             
             SqlConnection connection = new SqlConnection(connectionString);
@@ -145,7 +145,42 @@ namespace affichageBddLibrairie.Fonctions
                 Console.WriteLine(produit[1] + " " + produit[2]);
             }
 
-            connection.Close();
+            //connection.Close();
+        }
+
+        public static void comparerEntreeUtilisateur(SqlDataReader produit)
+        {
+            //compare les nom et prénom de nouvelAuteur avec ceux des Auteurs de la base de données.
+
+            int idAuteur=9999;
+            string nomAuteur;
+            string prenomAuteur;
+            bool boucle = true;
+
+            Console.WriteLine("Veuillez entrer le nom d'un auteur");
+            nomAuteur = Console.ReadLine();
+
+            Console.WriteLine("Veuillez entrer le prénom d'un auteur");
+            prenomAuteur = Console.ReadLine();
+
+            Auteur unAutreAuteur = new Auteur(idAuteur, nomAuteur, prenomAuteur);
+
+
+            while (produit.Read() && boucle==true)
+            {
+                
+
+                //verifier les doublons
+                if (produit[1].ToString() == unAutreAuteur.NomAuteur && produit[2].ToString() == unAutreAuteur.PrenomAuteur)
+                {
+                    Console.WriteLine("Désolé, le nom entré existe déjà");
+                    boucle = false;
+                }
+            }
+            if (boucle == true)
+            {
+                Console.WriteLine("Ok ça va ! cet Auteur n'est pas enregistré.");
+            }
         }
 
     }
