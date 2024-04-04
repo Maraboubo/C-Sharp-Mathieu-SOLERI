@@ -8,6 +8,13 @@ namespace affichageBddLibrairie.Models
 {
     internal class Document
     {
+        /// <summary>
+        /// IDENTIFIANT DE DOCUMENT
+        /// DENOMINATION DU DOCUMENT
+        /// DESCRIPTION DU DOCUMENT
+        /// TITRE DU DOCUMENT
+        /// URL DU DOCUMENT
+        /// </summary>
         public int Id { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }

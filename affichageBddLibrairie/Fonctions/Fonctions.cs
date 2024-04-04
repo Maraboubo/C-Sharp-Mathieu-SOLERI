@@ -36,8 +36,6 @@ namespace affichageBddLibrairie.Fonctions
 
             Auteur nouvelAuteur = new Auteur(identifiant, nomFamille, prenomNouveau);
 
-            //definirAuteur();
-
             string connectionString = @"***";
             string query = "INSERT INTO Auteur (NomAuteur, PrenomAuteur) VALUES (@Nom, @Prenom)";
 
@@ -116,5 +114,39 @@ namespace affichageBddLibrairie.Fonctions
                 }
             }
         }
+
+        public static void rechercherAuteur()
+        {
+            //consulter un auteur par son id
+
+
+            int identifiant;
+
+            Console.WriteLine("++Bonjour. Veuillez entrer l'identifiant de l'auteur recherché++");
+            identifiant = Convert.ToInt32(Console.ReadLine());
+
+            string connectionString = @"*****";
+            string query = "select * from Auteur where IdAuteur= @Id ";
+            
+            SqlConnection connection = new SqlConnection(connectionString);
+            //-> la connexion est ouverte
+            //connection.Open();
+            
+
+            SqlCommand command = new SqlCommand(query, connection);
+            command.Parameters.AddWithValue("@Id", identifiant);
+
+            connection.Open();
+
+            SqlDataReader produit = command.ExecuteReader();
+
+            while (produit.Read())
+            {
+                Console.WriteLine(produit[1] + " " + produit[2]);
+            }
+
+            connection.Close();
+        }
+
     }
 }

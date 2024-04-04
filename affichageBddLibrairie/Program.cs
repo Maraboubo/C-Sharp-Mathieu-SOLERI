@@ -15,10 +15,11 @@ namespace affichageBddLibrairie
             //      CREATION DE REQUETE SQL                     //
             //      LECTURE DE RESULTAT DE LA REQUETE SQL       //
 
-
+            
             //on instancie la classe SqlConnection sous le nom 'connexion' qui prend pour argument la ligne de connection  ->  ouverture de la connection.
-            SqlConnection connexion = new SqlConnection(@"***");
+            SqlConnection connexion = new SqlConnection(@"*****");
             connexion.Open();
+            
 
             //on crée une variable 'RequestGetFromDB'de type SqlCommand de valeur connexion.CreateCommand()  ->  création de commande.
             SqlCommand RequestGetFromDB = connexion.CreateCommand();
@@ -29,6 +30,9 @@ namespace affichageBddLibrairie
 
 
 
+            //cette fonction permet de consulter un auteur par son id entré par l'utilisateur. 
+            rechercherAuteur();
+             
 
             //Cette fonction affiche le résultat de la requête sql commandText
             /*
@@ -47,11 +51,11 @@ namespace affichageBddLibrairie
             comparer(resultat);
             */
 
-          
+
             //cette fonction insere un nouvel auteur à la base de données depuis une nouvelle instance de la classe 'Auteur' définie en début de fonction.
-            
+            /*
             InsererAuteur();
-            
+            */
 
 
             demandeResultat();

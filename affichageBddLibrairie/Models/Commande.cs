@@ -8,6 +8,13 @@ namespace affichageBddLibrairie.Models
 {
     internal class Commande
     {
+        /// <summary>
+        /// NUMERO DE COMMANDE
+        /// NUMERO DE CLIENT
+        /// DATE DE COMMANDE
+        /// DATE DE LIVRAISON SOUHAITEE
+        /// DATE D ARRIVEE
+        /// </summary>
         public int NumCo { get; set; }
         public string CliNum { get; set; }
         public DateOnly DateCo { get; set; }

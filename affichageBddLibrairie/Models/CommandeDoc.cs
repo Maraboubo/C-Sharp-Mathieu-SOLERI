@@ -8,6 +8,10 @@ namespace affichageBddLibrairie.Models
 {
     internal class CommandeDoc
     {
+        /// <summary>
+        /// NUMERO DE COMMANDE
+        /// REFERENCE DE DOCUMENT
+        /// </summary>
         public int NumCo { get; set; }
         public int DocRef { get; set; }
 

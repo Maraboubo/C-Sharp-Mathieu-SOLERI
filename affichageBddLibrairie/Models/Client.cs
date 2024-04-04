@@ -8,6 +8,13 @@ namespace affichageBddLibrairie.Models
 {
     internal class Client
     {
+        /// <summary>
+        /// NUMERO CLIENT
+        /// IDENTIFIANT DE RAISON SOCIALE DU CLIENT
+        /// PRENOM DU CLIENT
+        /// ADRESSE LIGNE 1 DU CLIENT
+        /// ADRESSE LIGNE 2 DU CLIENT
+        /// </summary>
         public int NumCli { get; set; }
         public int so_id { get; set; }
         public string NomCli { get; set; }

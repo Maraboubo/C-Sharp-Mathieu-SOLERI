@@ -8,6 +8,10 @@ namespace affichageBddLibrairie.Models
 {
     internal class RaisonSociale
     {
+        /// <summary>
+        /// IDENTIFIANT DE LA RAISON SOCIALE
+        /// LIBELLE DE LA RAISON SOCIALE
+        /// </summary>
         public int IdSo { get; set; }
         public string RaisonSolib { get; set; }
 

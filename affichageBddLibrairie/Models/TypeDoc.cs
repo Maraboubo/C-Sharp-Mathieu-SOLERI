@@ -8,9 +8,18 @@ namespace affichageBddLibrairie.Models
 {
     internal class TypeDoc
     {
+        /// <summary>
+        /// IDENTIFIANT DU LIBELLE DE DOCUMENT
+        /// LIBELLE DU DOCUMENT
+        /// </summary>
         public int CodeType { get; set; }
         public string LibelleType { get; set; }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="unCodeType"></param>
+        /// <param name="unLibelleType"></param>
         public TypeDoc( int unCodeType, string unLibelleType )
         {
             CodeType = unCodeType;

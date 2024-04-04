@@ -9,7 +9,11 @@ namespace affichageBddLibrairie.Models
 {
     public class Auteur
     {
-        //ACCESSEURS
+        /// <summary>
+        /// IDENTIFIANT AUTEUR
+        /// NOM DE L AUTEUR
+        /// PRENOM DE L AUTEUR
+        /// </summary>
         public int IdAuteur { get; set; }
         public string NomAuteur { get; set; }
         public string PrenomAuteur { get; set; }
