@@ -361,3 +361,5 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+affichageBddLeBox/Environment/Environment.cs
+application_Musicale/Environment/Environment.cs

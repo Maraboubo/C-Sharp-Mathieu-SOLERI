@@ -22,6 +22,7 @@ namespace affichageBddLibrairie.Models
         public string Adress1 { get; set; }
         public string Adress2 { get; set;}
 
+
         public Client(int unNumeroCli, int unIdCli, string unNomCli, string unPrenomCli, string uneAdresseUnCli, string uneAdresseDeuxCli) 
         {
             NumCli=unNumeroCli;
