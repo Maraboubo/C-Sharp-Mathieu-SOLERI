@@ -18,12 +18,12 @@ namespace application_Musicale.Models
         /// </summary>
         public int id_morceau { get; set; }
         public int id_album { get; set; }
-        public int id_utilisateur { get; set; }
-        public int id_groupe { get; set; }
+        public int? id_utilisateur { get; set; }
+        public int? id_groupe { get; set; }
         public string mNom { get; set; }
         public byte[]? mImg { get; set; }
 
-        public MORCEAU (int unIdMorceau, int unIdAlbum, int unIdUtilisateur, int unIdGroupe, string unMNom, byte[]? unMImg)
+        public MORCEAU (int unIdMorceau, int unIdAlbum, int? unIdUtilisateur, int? unIdGroupe, string unMNom, byte[]? unMImg)
         {
             id_morceau = unIdMorceau;
             id_album = unIdAlbum;

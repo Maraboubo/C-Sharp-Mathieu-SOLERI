@@ -4,6 +4,7 @@ using System.Runtime.CompilerServices;
 using System.Security.Cryptography.X509Certificates;
 using static application_Musicale.Fonctions.Connection;
 using static application_Musicale.Repository.DbGROUPE;
+using static application_Musicale.Repository.DbALBUM;
 
 
 namespace application_Musicale
@@ -14,31 +15,23 @@ namespace application_Musicale
         {
             int choix;
             string start="o";
-            Console.WriteLine( "bonjour. Veuillez entrer votre choix" );
+            Console.WriteLine("Bonjour. Bienvenue dans l'éditeur de la base de données de l'application musicale.");
             while (start == "o")
             {
-                Console.WriteLine("Appuyez sur 1 pour consulter les groupes ");
-                Console.WriteLine("Appuyez sur 2 pour créer un nouveau groupe");
-                Console.WriteLine("Appuyez sur 3 pour modifier un groupe");
-                Console.WriteLine("Appuyez sur 4 pour supprimer un groupe");
+                Console.WriteLine("Appuyez sur 1 pour acceder à la table 'GROUPE' ");
+                Console.WriteLine("Appuyez sur 2 pour acceder à la table 'ALBUM' ");
+                Console.WriteLine("Veuillez entrer votre choix et appuyez sur la touche 'Entrée' pour valider");
+
                 choix = int.Parse(Console.ReadLine());
                 if (choix == 1)
                 {
-                    GetAllGroupe();
+                    CrudGroupe();
                 }
                 if (choix == 2)
                 {
-                    CreateNewGroupe();
+                    CrudAlbum();
                 }
-                if(choix == 3)
-                {
-                    UpdateGroupe();
-                }
-                if(choix == 4)
-                {
-                    DeleteGroupe();
-                }
-                Console.WriteLine( "Voulez vous revenir au menu principal ?" );
+                Console.WriteLine("Voulez vous revenir au menu principal de l'éditeur de la base de données de l'application musicale.?");
                 Console.WriteLine( "'OUI': Appuyez sur 'o' et validez avec 'Entrée'" );
                 Console.WriteLine( "'NON': Appuyez sur n'importe quelle touche et validez avec 'Entrée'" );
                 start=Console.ReadLine();
