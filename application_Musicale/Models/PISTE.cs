@@ -8,6 +8,12 @@ namespace application_Musicale.Models
 {
     internal class PISTE
     {
+        /// <summary>
+        /// IDENTIFIANT POUR LA PISTE
+        /// IDENTIFIANT POUR LE MORCEAU
+        /// NOM DE LA PISTE
+        /// IMAGE/ILLUSTRATION POUR LA PISTE
+        /// </summary>
         public int id_piste { get; set; }
         public int id_morceau { get; set; }
         public string pNom { get; set; }
