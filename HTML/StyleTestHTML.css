@@ -1,0 +1,64 @@
+﻿body
+{
+    
+}
+/*
+    Disposition
+*/
+
+.conteneurTotal {
+    margin: auto;
+    height: 1110px;
+    width: 1430px;
+    background-color: darkviolet;
+}
+.conteneurGeneralHaut {
+    display:block;
+    height: 1000px;
+    width: 1430px;
+    background-color: fuchsia;
+}
+.conteneurLateral {
+    display: inline-block;
+    float: left;
+    height: 903px;
+    width: 370px;
+    background-color: black;
+}
+.lateralHaut {
+    display: block;
+    height: 249px;
+    width: 370px;
+    background-color: green;
+}
+.lateralBas {
+    display: block;
+    height: 654px;
+    width: 370px;
+    background-color: cornflowerblue;
+}
+.conteneurCentral {
+    display: inline-block;
+    float:left;
+    height: 900px;
+    width: 1050px;
+    background-color: blueviolet;
+}
+.barreHorizontaleHaute {
+    display: block;
+    height: 92px;
+    width: 1046px;
+    background-color: orange;
+}
+.zoneDeTravail {
+    display: block;
+    height: 814px;
+    width: 1046px;
+    background-color: lightpink;
+}
+.barreHorizontaleBas {
+    display: block;
+    height: 110px;
+    width: 1430px;
+    background-color: brown;
+}

@@ -2,95 +2,125 @@
 
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    <meta charset="utf-8" />
+    <meta charset="utf-8" >
     <title>Accueil Application Musicale</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
+    <link rel="stylesheet" href="StyleApplicationMusique.css" >
 </head>
 <body>
-    <section>
-        <header><!--Menu de sélection fixe. Accueil, recherche, enregisrement-->
-            <img />
-            <img />
-            <a><!--Accueil--></a>
-            <img />
-            <a><!--Rechercher--></a>
-            <img />
-            <a><!--Enregistrer--></a>
+    <aside id="conteneurLateral" class="conteneurLateral">
+        <header id="conteneurSectionsPrincipales" class="conteneurSectionsPrincipales">
+            <!--Menu de sélection fixe. Accueil, recherche, enregisrement-->
+            <img id="logoHarmonium" src="images/logo.png" alt="logoHarmonium" class="margin20">
+            <a id="lienAccueil" class="floatLeft"><img id="pictogrammeAccueil" src="images/accueil2.png" alt="pictogrammeAccueil"> Accueil</a>
+            
+            <a id="lienRechercher" class="floatLeft"><img id="pictogrammeRechercher" src="images/rechercher2.png" alt="pictogrammeRechercher"> Rechercher</a>
+            
+            <a id="lienEnregistrer" class="floatLeft"><img id="pictogrammeEnregistrer" src="images/enregistrer2.png" alt="pictogrammeEnregistrer"> Enregistrer</a>
         </header>
-        <nav><!--Barre de navigation secondaire-->
+        <nav id="conteneurSectionsSecondaires" class="conteneurSectionsSecondaires">
+            <!--Barre de navigation secondaire-->
 
         </nav>
-    </section>
-    <nav><!--Outils d'inscription et de connection'-->
-        <a><!--S'inscrire--></a>
-        <a><!--Se connecter--></a>
-    </nav>
-    <main>
-        <h2></h2>
-        <div>
-            <img />
-            <h3></h3>
-            <h4></h4>
-        </div>
-        <div>
-            <img />
-            <h3></h3>
-            <h4></h4>
-        </div>
-        <div>
-            <img />
-            <h3></h3>
-            <h4></h4>
-        </div>
-        <div>
-            <img />
-            <h3></h3>
-            <h4></h4>
-        </div>
-        <h2></h2>
-        <div>
-            <img />
-            <h3></h3>
-            <h4></h4>
-        </div>
-        <div>
-            <img />
-            <h3></h3>
-            <h4></h4>
-        </div>
-        <div>
-            <img />
-            <h3></h3>
-            <h4></h4>
-        </div>
-        <div>
-            <img />
-            <h3></h3>
-            <h4></h4>
-        </div>
-    </main>
-    <footer>
-        <div><!--Image, titre et artiste de la piste en écoute-->
-            <img />
-            <h4></h4>
-            <h5></h5>
-        </div>
-        <div><!--Conteneur du player-->
-            <div><!--Boutons du player-->
-                <button><!--Shuffle--></button>
-                <button><!--BackTrack--></button>
-                <button><!--Play--></button>
-                <button><!--ForwardTrack--></button>
-                <button><!--Repeat--></button>
+    </aside>
+    <row id="conteneurPrincipal" class="conteneurPrincipal">
+        <nav id="conteneurConnection" class="conteneurConnection">
+            <!--Outils d'inscription et de connection'-->
+            <a id="lienS_inscrire" class="floatRight">S'inscrire</a>
+            <a id="lienSeConnecter" class="floatRight">Se connecter</a>
+        </nav>
+        <main id="conteneurZoneTravail" class="conteneurZoneTravail">
+            <h2 id="titreArtiste">Artistes</h2>
+            <div id="conteneurArtisteUn" class="artistesMorceaux">
+                <img id="avatarArtisteUn" src="images/artisteUn.png" alt="avatarArtisteUn">
+                <h3 id="nomArtisteUn">Tyler the Creator</h3>
+                <h4 id="fonctionArtisteUn">Artiste</h4>
             </div>
-            <div><!--Barre du player-->
-                <time><!--Position temporelle--></time>
-                <img />
-                <time><!--Durée totale--></time>
+            <div id="conteneurArtisteDeux" class="artistesMorceaux">
+                <img id="avatarArtisteDeux" src="images/artisteDeux.png" alt="avatarArtisteDeux">
+                <h3 id="nomArtisteDeux">Eza</h3>
+                <h4 id="fonctionArtisteDeux">Artiste</h4>
+            </div>
+            <div id="conteneurArtisteTrois" class="artistesMorceaux">
+                <img id="avatarArtisteTrois" src="images/artisteTrois.png" alt="avatarArtisteTrois">
+                <h3 id="nomArtisteTrois">Felly</h3>
+                <h4 id="fonctionArtisteTrois">Artiste</h4>
+            </div>
+            <div id="conteneurArtisteQuatre" class="artistesMorceaux">
+                <img id="avatarArtisteQuatre" src="images/artisteQuatre.png" alt="avatarArtisteQuatre">
+                <h3 id="nomArtisteQuatre">Ty Dollar Sign</h3>
+                <h4 id="fonctionArtisteQuatre">Artiste</h4>
+            </div>
+            <h2 id="titreMorceaux">Morceaux</h2>
+            <div id="conteneurMorceauUn" class="artistesMorceaux">
+                <img id="avatarMorceauUn" src="images/morceauUn.png" alt="avatarMorceauUn">
+                <h3 id="titreMorceauUn">I Ain't Worried'</h3>
+                <h4 id="nomArtisteMorceauUn">Ty Dollar Sign</h4>
+            </div>
+            <div id="conteneurMorceauDeux" class="artistesMorceaux">
+                <img id="avatarMorceauDeux" src="images/morceauDeux.png" alt="avatarMorceauDeux">
+                <h3 id="titreMorceauDeux">IDM</h3>
+                <h4 id="nomArtisteMorceauDeux">TOBi</h4>
+            </div>
+            <div id="conteneurMorceauTrois" class="artistesMorceaux">
+                <img id="avatarMorceauTrois" src="images/morceauTrois.png" alt="avatarMorceauTrois">
+                <h3 id="titreMorceauTrois">She Loves U</h3>
+                <h4 id="nomArtisteMorceauTrois">Eza</h4>
+            </div>
+            <div id="conteneurMorceauQuatre" class="artistesMorceaux">
+                <img id="avatarMorceauQuatre" src="images/morceauQuatre.png" alt="avatarMorceauQuatre">
+                <h3 id="titreMorceauQuatre">I Like You</h3>
+                <h4 id="nomArtisteMorceauQuatre">Ducko Mcfie</h4>
+            </div>
+            <div id="conteneurMorceauUn" class="artistesMorceaux">
+                <img id="avatarMorceauUn" src="images/morceauUn.png" alt="avatarMorceauUn">
+                <h3 id="titreMorceauUn">I Ain't Worried'</h3>
+                <h4 id="nomArtisteMorceauUn">Ty Dollar Sign</h4>
+            </div>
+            <div id="conteneurMorceauDeux" class="artistesMorceaux">
+                <img id="avatarMorceauDeux" src="images/morceauDeux.png" alt="avatarMorceauDeux">
+                <h3 id="titreMorceauDeux">IDM</h3>
+                <h4 id="nomArtisteMorceauDeux">TOBi</h4>
+            </div>
+            <div id="conteneurMorceauTrois" class="artistesMorceaux">
+                <img id="avatarMorceauTrois" src="images/morceauTrois.png" alt="avatarMorceauTrois">
+                <h3 id="titreMorceauTrois">She Loves U</h3>
+                <h4 id="nomArtisteMorceauTrois">Eza</h4>
+            </div>
+            <div id="conteneurMorceauQuatre" class="artistesMorceaux">
+                <img id="avatarMorceauQuatre" src="images/morceauQuatre.png" alt="avatarMorceauQuatre">
+                <h3 id="titreMorceauQuatre">I Like You</h3>
+                <h4 id="nomArtisteMorceauQuatre">Ducko Mcfie</h4>
+            </div>
+        </main>
+    </row>
+    <footer id="conteneurPlayer" class="conteneurPlayer">
+        <div id="conteneurMorceauEnEcoute" class="inlineBlock"><!--Image, titre et artiste de la piste en écoute-->
+            <img id="avatarMorceauEnEcoute" src="images/morceauEnEcoute.png" alt="avatarmorceauEnEcoute">
+            <h4 id="titreMorceauEnEcoute">I Like You</h4>
+            <h5 id="artisteMorceauEnEcoute">Ducko Mcfie</h5>
+        </div>
+        <div id="conteneurCommandesPlayer" class="inlineBlock">
+            <!--Conteneur du player-->
+            <div id="conteneurBoutonsPlayer" class="block">
+                <!--Boutons du player-->
+                <img id="boutonShuffle" src="images/shuffle.png" alt="boutonShuffle"><!--Shuffle-->
+                <img id="boutonBackTrack" src="images/back.png" alt="boutonBack"><!--BackTrack-->
+                <img id="boutonPlay" src="images/play.png" alt="boutonPlay"><!--Play-->
+                <img id="boutonForwardTrack" src="images/forward.png" alt="boutonForward"><!--ForwardTrack-->
+                <img id="boutonRepeat" src="images/repeat.png" alt="boutonRepeat"><!--Repeat-->
+            </div>
+            <div id="conteneurProgressionPlayer" class="inlineBlock">
+                <!--Barre du player-->
+                <h6 id="positionTemporelle">1:32<!--Position temporelle--></h6>
+                <img id="timelineLecture" src="images/timeline.png" alt="imageTimeline">
+                <h6 id="dureeTotaleMorceau">3:25<!--Durée totale--></h6>
             </div>
         </div>
-        <div><!--Conteneur Volume-->
-            <button><!--VolumeCut--></button>
-            <img />
+        <div id="conteneurVolume" class="inlineBlock">
+            <!--Conteneur Volume-->
+            <img id="boutonVolumeCut" src="images/volume.png" alt="boutonVolume"><!--VolumeCut-->
+            <img id="sliderVolume" src="images/barreVolume.png" alt="imageBarreVolume">
         </div>
     </footer>
 
