@@ -1,0 +1,90 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>testDispositionMiniatureFooter</title>
+    <style>
+*{
+    margin:0;
+}
+#conteneurMiniature{
+    height: 10vh;
+    width: 100%;
+    background-color:black;
+}
+#conteneurGauche {
+    height: 100%;
+    width: 20%;
+    background-color: pink;
+}
+#conteneurImage {
+    float:left;
+    height: 100%;
+    width: 50%;
+    background-color: green;
+}
+#conteneurTitres {
+    display:inline-block;
+    height: 100%;
+    width: 50%;
+    background-color: peru;
+}
+#conteneurDroit {
+    float:right;
+    height: 100%;
+    width: 20%;
+    background-color: orangered;
+}
+#conteneurPicto {
+    float: right;
+    height: 100%;
+    width: 50%;
+    background-color: violet;
+}
+#conteneurBarreVolume {
+    display: inline-block;
+    height: 100%;
+    width: 50%;
+    background-color: grey;
+}
+#conteneurCentral {
+    height: 100%;
+    width: 60%;
+    background-color: yellow;
+    float:right;
+}
+    </style>
+</head>
+<body>
+    <div id="conteneurMiniature">
+
+        <!--conteneur droit-->
+        <div id="conteneurDroit">
+            <div id="conteneurPicto">
+                <h1>Picto volume</h1>
+            </div>
+            <div id="conteneurBarreVolume">
+                <h1 id="BarreVolume">Volume</h1>
+            </div>
+        </div>
+
+        <!--conteneur central-->
+        <div id="conteneurCentral">
+
+        </div>
+
+        <!--conteneur gauche-->
+        <div id="conteneurGauche">
+            <div id="conteneurImage">
+                <h1>Image</h1>
+            </div>
+            <div id="conteneurTitres">
+                <h1 id="titre">Titre</h1>
+                <h1 id="Artiste">artiste</h1>
+            </div>
+        </div>
+
+    </div>
+</body>
+</html>

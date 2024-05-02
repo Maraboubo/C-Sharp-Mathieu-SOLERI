@@ -1,0 +1,13 @@
+﻿body
+{
+
+}
+.titres{
+    display:block;
+}
+.rubriques{
+    display:inline-block;
+    height:100px;
+    width:100px;
+    background-color:greenyellow;
+}

@@ -1,0 +1,342 @@
+﻿*{
+    margin:0;
+}
+body{
+    background-color:black;
+}
+h1 {
+    font-family: "Roboto", bold;
+    color: white;
+    font-size:36pt;
+    font-weight:bolder;
+}
+
+h2 {
+    font-family: "Roboto";
+    font-size: 32px;
+    font-weight: bolder;
+    color: white;
+    margin: 20px;
+}
+
+h3 {
+    font-family: "Roboto";
+    font-size: 20px;
+    font-weight: bold;
+    color: white;
+}
+
+h4 {
+    font-family: "Roboto", bold;
+    font-size: 16px;
+    font-weight: normal;
+    color: #a7a7a7;
+}
+h5 {
+    font-family: "Roboto";
+    font-weight: bold;
+}
+h6 {
+    font-family: "Roboto";
+    font-weight:bold;
+    
+}
+
+a {
+    font-family: "Roboto";
+    font-size: 20px;
+    font-weight: bolder;
+    color: white;
+}
+li{
+    margin-top:3%;
+}
+#conteneur{
+    height:100vh;
+    width:100%;
+    background-color:pink;
+}
+
+#aside {
+    position: fixed;
+    display: block;
+    height: 90%;
+    width: 15%;
+    margin-right: 85%;
+    margin-bottom: 10%;
+    background-color: black;
+}
+#main {
+    position:fixed;
+    display: inline-block ;
+    height: 90%;
+    width: 85%;
+    margin-left:15%;
+    margin-bottom:10%;
+    background-color: black;
+}
+#footer {
+    bottom:0;
+    position:fixed;
+    display: block;
+    height: 10%;
+    width: 100%;
+    margin-top: 90%;
+    background-color: pink;
+}
+#header {
+    top: 0;
+    display: block;
+    height: 10%;
+    width: 100%;
+    background-color: #121212;
+    border-top-left-radius:20px;
+    border-top-right-radius:20px;
+}
+#zoneTravail {
+    display: block;
+    overflow-y:scroll;
+    height: 90%;
+    width: 100%;
+    background-color: #121212;
+}
+#menuPrincipal {
+    border-radius: 20px;
+    background-color: #121212;
+    width: 98%;
+    height: 28%;
+    margin: 1% 1% 1% 1%;
+}
+#menusecondaire {
+    border-radius: 20px;
+    background-color: #121212;
+    width: 98%;
+    height: 70%;
+    margin: 2% 1% 1% 1%;
+}
+.menusLateraux {
+    border-radius: 20px;
+    background-color: #121212;
+}
+.artistesMorceaux{
+    display:inline-block;
+    margin:20px;
+}
+.titresZoneTravail{
+    display: block;
+}
+.floatRight{
+    float: right;
+    margin-top:10px;
+    margin-right:20px;
+}
+#lienSeConnecter {
+    background-color: #a7a7a7;
+    border-radius: 5px;
+    padding-right:5px;
+    padding-left:5px;
+}
+/*
+    travail animation titres
+*/
+.liensMenuPrincipal {
+    display: block;
+    margin: 20px 0px 0px 20px;
+    color: #A7A7A7;
+    font-size: 17pt;
+    transition: font-size 0.5s, color 0.5s;
+}
+.liensMenuPrincipal:hover {
+    font-size: 18pt;
+    color: antiquewhite;
+}
+.pictogrammes{
+    color:aquamarine;
+    height:15pt;
+}
+#logoHarmonium {
+    margin: 5px 0px 0px 10px;
+}
+/*
+    Footer
+*/
+#imageMorceau{
+    float:left;
+    height:100%;
+    width:5%;
+    background-color:black;
+}
+#containerTitreArtiste {
+    float: left;
+    height: 100%;
+    width: 25%;
+    background-color: black;
+}
+#containerCentral {
+    float: left;
+    height: 100%;
+    width: 40%;
+    background-color: black;
+}
+
+#barreVolume {
+    float: left;
+    height: 100%;
+    width: 30%;
+    background-color: black;
+}
+.centreDiv{
+    margin-left:10%;
+    margin-top:1%;
+}
+/*
+    Player
+*/
+#hautPlayer{
+    height:50%;
+    width:40%;
+    background-color:black;
+    margin-right:auto;
+    margin-left:auto;
+}
+#basPlayer {
+    height: 50%;
+    width: 85%;
+    background-color: black;
+    margin-right: auto;
+    margin-left: auto;
+}
+.boutons {
+    margin: auto 17px 2.5% 10px;
+}
+.boutonPlay {
+    margin: 1% 20px 1% 20px;
+}
+.elementsBasPlayer {
+    float: left;
+    margin: 2% 10px auto 10px;
+    color:antiquewhite;
+}
+.barrePlayer {
+    float: left;
+    margin: 2.4% 10px auto 10px;
+}
+.barreVolume {
+    float: right;
+    margin: 8% 20% auto 20px;
+}
+.pictoVolume {
+    float: right;
+    margin: 6% 20px auto 20px;
+}
+/*
+    STYLE INSCRIPTION
+*/
+#conteneurInscription{
+    height:100vh;
+    width:100%;
+    background-color:pink;
+}
+#headerInscription{
+    display:block;
+    position:fixed;
+    height:10%;
+    width:100%;
+    background-color:aquamarine;
+    background-color:#121212;
+    border-top-left-radius:20px;
+    border-top-right-radius:20px;
+}
+/**/
+.mainInscription {
+    display:block;
+    overflow-y:scroll;
+    bottom: 0;
+    height: 100%;
+    width: 100%;
+    background-color: #121212;
+}
+#logo{
+    margin:2% 0 auto 2%;
+}
+/**/
+.conteneurCentral {
+    width: 30%;
+    background-color: #121212;
+    margin:5% auto auto auto;
+}
+.couleurVerte {
+    color: #1ED760;
+}
+.textePlus{
+    font-size:1.3em;
+}
+.niveauH4 {
+    border: none;
+    font-weight: bolder;
+    margin: 20px auto 20px 0px;
+    border-radius: 5px;
+}
+.niveauH2 {
+    margin:0;
+}
+/*
+#champMail {
+    width:90%;
+}*/
+.champTexte {
+    width: 90%;
+}
+.boutonSuivant {
+    padding:5px;
+    border:none;
+    background-color: #1ED760;
+    width: 92%;
+    border-radius: 20px;
+    margin: 5% auto auto auto;
+    font-weight:bolder;
+}
+.fieldset {
+    color:#a7a7a7;
+    margin: 20px auto 20px 0px;
+    border-bottom: none;
+    border-left: none;
+    border-right: none;
+    width: 85%;
+}
+.legend{
+    color:#a7a7a7;
+    font-family:roboto;
+    font-size:10pt;
+    font-weight:bolder;
+    text-align:center;
+    width:25%;
+}
+.paragraphe {
+    color: #a7a7a7;
+    font-family: roboto;
+    font-size: 10pt;
+    font-weight: bolder;
+    text-align: center;
+}
+.paragrapheWhite {
+    color: white;
+    font-family: roboto;
+    font-size: 10pt;
+    font-weight: bolder;
+    text-align: center;
+}
+.retour{
+    margin-top:10%;
+    color:#1ED760;
+    float:right;
+}
+.point{
+    font-size:100pt;
+}
+.elementsListe {
+    margin: 10px auto 10px 0px;
+    color: #a7a7a7;
+    font-family: roboto;
+    font-weight: bolder;
+}

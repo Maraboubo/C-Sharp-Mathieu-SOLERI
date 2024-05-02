@@ -1,0 +1,76 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>Inscription 1/3</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
+    <link rel="stylesheet" href="styleHarmonium.css" />
+</head>
+<body>
+    <div id="conteneurInscription">
+        <header id="headerInscription">
+            <img id="logo" src="images/LOGO.svg" />
+        </header>
+        <main id="mainInscription" class="mainInscription">
+            <form name="enquête" method="get" action="https://www.afpa.fr/">
+                <!--Inscription Page1-->
+                <div id="conteneurInscription1" class="conteneurCentral">
+                    <h1>Ici<br />commencent<br />Vos<br />créations<span class="couleurVerte">.</span></h1>
+                    <h4 id="adresseMail" class="niveauH4">Adresse mail</h4>
+                    <input id="champMail" type="email" name="eMail" value="nom@domaine.com" class="champTexte" />
+                    <input id="boutonSuivantP1" type="button" onclick="" value="suivant" class="boutonSuivant" />
+                    <fieldset class="fieldset">
+                        <legend class="legend">Ou alors !</legend>
+                        <p class="paragraphe">Vous avez déja un compte?</p>
+                        <p class="paragrapheWhite">connectez vous.</p>
+                    </fieldset>
+                </div>
+                <!--Inscription Page2-->
+                <div id="conteneurInscription2" class="conteneurCentral">
+                    <h2 class="niveauH2"><span id="flecheRetour1" class="couleurVerte textePlus">< </span>Etapes 1 / 3</h2>
+                    <h4 class="niveauH4">Creez votre mot de passe</h4>
+                    <input id="champMotDePasse" type="text" name="motDePasse" class="champTexte" />
+                    <h4 class="niveauH4">Votre mot de passe doit <br />au moins:</h4>
+                    <ul>
+                        <li class="elementsListe">Une lettre</li>
+                        <li class="elementsListe">Un chiffre</li>
+                        <li class="elementsListe">10 caractères</li>
+                    </ul>
+                    <input id="boutonSuivantP2" type="button" value="suivant" class="boutonSuivant" />
+                </div>
+                <!--Inscription Page3-->
+                <div id="conteneurInscription3" class="conteneurCentral">
+                    <h2 class="niveauH2"><span id="flecheRetour2" class="couleurVerte textePlus">< </span>Etapes 2 / 3</h2>
+                    <h4 class="niveauH4">Entrez votre nom</h4>
+                    <input id="champNom" type="text" name="Nom" />
+                    <h4 class="niveauH4">Entrez votre prénom</h4>
+                    <input id="champPrenom" type="text" name="Prenom" />
+                    <h4 class="niveauH4">Adresse ligne 1</h4>
+                    <input id="champAdresse1" type="text" name="Adresse1" class="champTexte" />
+                    <h4 class="niveauH4">Adresse ligne 2</h4>
+                    <input id="champAdresse2" type="text" name="Adresse1" class="champTexte" />
+                    <h4 class="niveauH4">Entrez votre code postal</h4>
+                    <input id="champCodePostal" type="number" name="CodePostal" />
+                    <h4 class="niveauH4">Ville</h4>
+                    <input id="champVille" type="text" name="Ville" />
+                    <input id="boutonSuivantP3" type="button" onclick="" value="suivant" class="boutonSuivant" />
+                </div>
+                <!--Inscription Page4-->
+                <div id="conteneurInscription4" class="conteneurCentral">
+                    <h2 class="niveauH2"><span id="flecheRetour3" class="couleurVerte textePlus">< </span>Etapes 3 / 3</h2>
+                    <h4 class="niveauH4">Quel est votre instrument de musique principal ?</h4>
+                    <input id="champNom" type="text" name="Nom" class="champTexte" />
+                    <fieldset class="fieldset">
+                        <legend class="legend">Conditions d'utilisation !</legend>
+                        <p class="paragraphe">-</p>
+                        <p class="paragrapheWhite">Ici ajouter les conditions d'utilisation de l'application.</p>
+                    </fieldset>
+                    <input id="boutonSubmit" type="submit" onclick="" value="Envoyer" class="boutonSuivant" />
+                </div>
+            </form>
+        </main>
+    </div>
+    <script src="script/inscription.js"></script>
+</body>
+</html>
