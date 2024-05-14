@@ -13,17 +13,17 @@
             <img id="logo" src="images/LOGO.svg" />
         </header>
         <main id="mainInscription" class="mainInscription">
-            <form name="enquête" method="get" action="https://www.afpa.fr/">
+            <form id="inscription" method="post" action="receptionInscription.html">
                 <!--Inscription Page1-->
                 <div id="conteneurInscription1" class="conteneurCentral">
                     <h1>Ici<br />commencent<br />Vos<br />créations<span class="couleurVerte">.</span></h1>
                     <h4 id="adresseMail" class="niveauH4">Adresse mail</h4>
                     <input id="champMail" type="email" name="eMail" value="nom@domaine.com" class="champTexte" maxlength="50" />
                     <input id="boutonSuivantP1" type="button" onclick="" value="suivant" class="boutonSuivant" />
-                    <fieldset class="fieldsetInscription">
+                    <fieldset class="fieldset">
                         <legend class="legend">Ou alors !</legend>
                         <p class="paragraphe">Vous avez déja un compte?</p>
-                        <a class="paragrapheWhite" href="harmoniumConnexion.html">connectez vous.</a>
+                        <p class="paragrapheWhite">connectez vous.</p>
                     </fieldset>
                 </div>
                 <!--Inscription Page2-->
@@ -49,7 +49,7 @@
                     <h4 class="niveauH4">Adresse ligne 1</h4>
                     <input id="champAdresse1" type="text" name="Adresse1" class="champTexte" maxlength="50"/>
                     <h4 class="niveauH4">Adresse ligne 2</h4>
-                    <input id="champAdresse2" type="text" name="Adresse1" class="champTexte" maxlength="50"/>
+                    <input id="champAdresse2" type="text" name="Adresse2" class="champTexte" maxlength="50"/>
                     <h4 class="niveauH4">Entrez votre code postal</h4>
                     <input id="champCodePostal" type="number" name="CodePostal" />
                     <h4 class="niveauH4">Ville</h4>
@@ -60,7 +60,7 @@
                 <div id="conteneurInscription4" class="conteneurCentral">
                     <h2 class="niveauH2"><span id="flecheRetour3" class="couleurVerte textePlus" >< </span>Etapes 3 / 3</h2>
                     <h4 class="niveauH4">Quel est votre instrument de musique principal ?</h4>
-                    <input id="champNom" type="text" name="Nom" class="champTexte" maxlength="50"/>
+                    <input id="champInstrument" type="text" name="NomInstrument" class="champTexte" maxlength="50"/>
                     <fieldset class="fieldset">
                         <legend class="legend">Conditions d'utilisation !</legend>
                         <p class="paragraphe">-</p>

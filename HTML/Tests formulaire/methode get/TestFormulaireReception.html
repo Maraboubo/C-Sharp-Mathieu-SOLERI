@@ -1,0 +1,27 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>Formulaire Réception</title>
+</head>
+<body>
+    <h1>Ceci est ma seconde page (réception)</h1>
+    <h2 id="leNom"></h2>
+    <h2 id="lEmail"></h2>
+
+    <script>
+        var baliseNom = document.getElementById("leNom");
+        var baliseMail = document.getElementById("lEmail");
+        var params = new URLSearchParams(window.location.search);
+        var nom = params.get("nom");
+        var email = params.get("email");
+
+        console.log(nom);
+        console.log(email);
+
+        baliseNom.innerHTML = "Le nom entré est : "+nom;
+        baliseMail.innerHTML = "l'email entré est : "+email;
+    </script>
+</body>
+</html>

@@ -1,0 +1,42 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>Page de réception</title>
+</head>
+<body>
+    <div id="resultat"></div>
+
+    <script>
+            
+            const jsonData = sessionStorage.getItem('donnees'); // Récupère les données depuis le stockage local
+            const data = JSON.parse(jsonData); // Convertit la chaîne JSON en objet JavaScript
+            //console.log(jsonData);
+            //console.log(data);
+
+            // Utilisez les données comme vous le souhaitez
+            document.getElementById('resultat').innerHTML = "Nom: " + data.nom + "<br>Email: " + data.email + "<br>commentaires: " + data.commentaire;
+
+
+
+
+        //CODE DE BASE
+        /*
+        document.addEventListener('DOMContentLoaded', function () {
+
+            const jsonData = localStorage.getItem('donnees'); // Récupère les données depuis le stockage local
+            const data = JSON.parse(jsonData); // Convertit la chaîne JSON en objet JavaScript
+            console.log(jsonData);
+
+            // Utilisez les données comme vous le souhaitez
+            document.getElementById('resultat').innerHTML = "Nom: " + data.nom + "<br>Email: " + data.email + "<br>commentaires: " + data.commentaire;
+        });*/
+
+    </script>
+
+
+
+
+</body>
+</html>

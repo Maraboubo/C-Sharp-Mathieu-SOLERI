@@ -1,0 +1,46 @@
+﻿@harmoniumApi_HostAddress = https://localhost:44372
+
+
+POST {{harmoniumApi_HostAddress}}/Utilisateursitems
+Content-Type: application/json
+
+    {
+        "Email" : "mathieusoleri@hotmail.com",
+        "motDePasse" : "azertyui123",
+        "Nom" : "SOLERI",
+        "Prenom" : "Mathieu",
+        "Adresse1" : "19 Place de la fontaine ronde",
+        "Adresse2" : "Une addresse2",
+        "CodePostal" : "04300",
+        "Ville" : "Limans",
+        "NomInstrument" : "Guitare electrique"
+    }
+###
+
+GET {{harmoniumApi_HostAddress}}/Utilisateursitems/1
+
+###
+
+GET {{harmoniumApi_HostAddress}}/Utilisateursitems
+
+###
+
+PUT {{harmoniumApi_HostAddress}}/Utilisateursitems/2
+Content-Type: application/json
+
+    {
+        "Email" : "uneadresse@hotmail.com",
+        "motDePasse" : "unnouveaucode123",
+        "Nom" : "IRELOS",
+        "Prenom" : "ueihtaM",
+        "Adresse1" : "Une adresse1",
+        "Adresse2" : "Une addresse2",
+        "CodePostal" : "3323",
+        "Ville" : "UneVile",
+        "NomInstrument" : "UKULELE"
+    }
+###
+
+DELETE {{harmoniumApi_HostAddress}}/Utilisateursitems/2
+
+###

@@ -1,0 +1,104 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>Page d'envoi</title>
+</head>
+<body>
+    <form id="monFormulaire" action="traitement.html" method="post">
+        <label for="nom">Nom :</label>
+        <input type="text" id="nom" name="nom">
+        <label for="email">Email :</label>
+        <input type="email" id="email" name="email">
+        <label for="commentaire">Commentaire :</label>
+        <input type="text" id="commentaire" name="commentaire">
+        <input type="submit" value="Envoyer">
+    </form>
+
+    <script>
+
+        var form = document.getElementById('monFormulaire');
+
+        form.addEventListener('submit', transformer);
+
+        function transformer() {
+
+            var donneesFormulaire = new FormData(form); // Récupère les données du formulaire
+        
+            // Convertit les données en objet JSON
+            var donneesJson = {};
+            donneesFormulaire.forEach((value, key) => {
+                donneesJson[key] = value;
+            });
+
+            // Convertit l'objet JSON en chaîne JSON
+            var chaineJson = JSON.stringify(donneesJson);
+
+            // Stocke les données dans un fichier temporaire (par exemple en utilisant le stockage local)
+            sessionStorage.setItem('donnees', chaineJson);
+
+            // Redirige vers une autre page ou effectue d'autres actions si nécessaire
+            //window.location.href = 'traitement.html';
+        }
+        
+        
+    
+
+/*
+VERSION DU CODE EPUREE
+*/
+/*
+var form = document.getElementById('monFormulaire');
+
+form.addEventListener('submit', function (event) {
+
+    const formData = new FormData(form); // Récupère les données du formulaire
+
+    // Convertit les données en objet JSON
+    const jsonData = {};
+    formData.forEach((value, key) => {
+        jsonData[key] = value;
+    });
+
+    // Convertit l'objet JSON en chaîne JSON
+    const jsonString = JSON.stringify(jsonData);
+
+    // Stocke les données dans un fichier temporaire (par exemple en utilisant le stockage local)
+    localStorage.setItem('donnees', jsonString);
+
+    // Redirige vers une autre page ou effectue d'autres actions si nécessaire
+    window.location.href = 'traitement.html';
+});*/
+
+/*
+VERSION DU CODE DE BASE
+/*
+    document.addEventListener('DOMContentLoaded', function() {
+    const form = document.getElementById('monFormulaire');
+
+    form.addEventListener('submit', function(event) {
+        event.preventDefault(); // Empêche le formulaire de se soumettre normalement
+
+        const formData = new FormData(form); // Récupère les données du formulaire
+
+        // Convertit les données en objet JSON
+        const jsonData = {};
+        formData.forEach((value, key) => {
+            jsonData[key] = value;
+        });
+
+        // Convertit l'objet JSON en chaîne JSON
+        const jsonString = JSON.stringify(jsonData);
+
+        // Stocke les données dans un fichier temporaire (par exemple en utilisant le stockage local)
+        localStorage.setItem('donnees', jsonString);
+
+        // Redirige vers une autre page ou effectue d'autres actions si nécessaire
+        window.location.href = 'traitement.html';
+    });
+    });*/
+    </script>
+
+</body>
+</html>

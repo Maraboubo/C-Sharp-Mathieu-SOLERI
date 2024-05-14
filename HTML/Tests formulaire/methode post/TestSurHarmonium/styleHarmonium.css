@@ -235,7 +235,7 @@ li{
 #conteneurInscription{
     height:100vh;
     width:100%;
-    background-color:black;
+    background-color:pink;
 }
 #headerInscription{
     display:block;
@@ -249,21 +249,12 @@ li{
 }
 /**/
 .mainInscription {
-    /*display:block;*/
+    display:block;
     overflow-y:scroll;
-    position:absolute;
     bottom: 0;
-    height: 90%;
+    height: 100%;
     width: 100%;
     background-color: #121212;
-}
-.mainConnexion {
-    overflow-y: scroll;
-    position: absolute;
-    bottom: 0;
-    height: 90%;
-    width: 100%;
-    background: linear-gradient(#808080, #121212);
 }
 #logo{
     margin:2% 0 auto 2%;
@@ -273,12 +264,6 @@ li{
     width: 30%;
     background-color: #121212;
     margin:5% auto auto auto;
-}
-.conteneurCentralConnexion {
-    width: 30%;
-    background: linear-gradient(#121212, #808080);
-    border-radius: 20px;
-    margin: 5% auto auto auto;
 }
 .couleurVerte {
     color: #1ED760;
@@ -306,12 +291,6 @@ li{
 .champTexte {
     width: 90%;
 }
-.champTexteConnection {
-    display: block;
-    width: 70%;
-    margin-left: auto;
-    margin-right: auto;
-}
 .boutonSuivant {
     padding: 5px;
     border: none;
@@ -328,36 +307,9 @@ li{
         font-size: 12pt;
         padding: 6px;
     }
-
-.boutonSuivantConnection {
-    display:block;
-    padding: 5px;
-    border: none;
-    background-color: #1ED760;
-    width: 92%;
-    border-radius: 20px;
-    margin: 7% auto auto auto;
-    font-size: 10pt;
-    font-weight: bolder;
-    cursor: pointer;
-    transition: font-size 0.2s, padding 0.2s;
-}
-
-    .boutonSuivantConnection:hover {
-        font-size: 12pt;
-        padding: 6px;
-    }
 .fieldset {
     color: #a7a7a7;
-    margin: 30px auto 20px auto;
-    border-bottom: none;
-    border-left: none;
-    border-right: none;
-    width: 85%;
-}
-.fieldsetInscription {
-    color: #a7a7a7;
-    margin: 30px auto 2px 5px ;
+    margin: 20px auto 20px 0px;
     border-bottom: none;
     border-left: none;
     border-right: none;
@@ -379,8 +331,6 @@ li{
     text-align: center;
 }
 .paragrapheWhite {
-    text-decoration-line: none;
-    display:block;
     color: white;
     font-family: roboto;
     font-size: 10pt;
@@ -403,10 +353,4 @@ li{
 }
 .cliquable{
     cursor:pointer;
-}
-.centreTexte{
-    text-align:center;
-}
-.paddingTop {
-    padding-top: 30px;
 }

@@ -24,6 +24,8 @@ adresse1 = document.getElementById("champAdresse1");
 adresse2 = document.getElementById("champAdresse2");
 codePostal = document.getElementById("champCodePostal");
 ville = document.getElementById("champVille");
+//variables pour le submit du formulaire
+var formulaire = document.getElementById('inscription');
 
 
 
@@ -49,6 +51,8 @@ retourPageDeux.addEventListener("click", affichagePageDeux);
 //boutonPageTrois.addEventListener("click", affichagePageQuatre);
 boutonPageTrois.addEventListener("click", checkFormulaire);
 retourPageTrois.addEventListener("click", affichagePageTrois);
+
+formulaire.addEventListener('submit', exportFormulaire );
 
 
 function affichagePageUn() {
@@ -171,5 +175,16 @@ function checkFormulaire() {
     else {
         affichagePageQuatre();
     }
+}
+function exportFormulaire() {
+    var donneesFormulaire = new FormData(formulaire);
+    var donneesJson = {};
 
+    donneesFormulaire.forEach((value, key) => {
+        donneesJson[key] = value;
+    });
+
+    var chaineJson = JSON.stringify(donneesJson);
+    localStorage.setItem('donnees', chaineJson);
+    //ajouter la page de destination si necesaire.
 }

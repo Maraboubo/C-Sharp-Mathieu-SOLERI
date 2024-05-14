@@ -1,0 +1,48 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>receptionInscription</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
+    <style>
+        body{
+            font-family: Roboto;
+        }
+        h1{
+            text-align:center;
+        }
+        h4{
+            text-align: center;
+        }
+        #conteneur{
+            width:50%;
+            height:100vh;
+            margin-left:auto;
+            margin-right:auto;
+        }
+    </style>
+</head>
+<body>
+    <div id="conteneur">
+        <h1>Page de Réception</h1>
+
+        <h4 id="resultat"></h4>
+    </div>
+
+    <script>
+        var affichage = document.getElementById("resultat");
+        var jsonData = localStorage.getItem('donnees');
+        var data = JSON.parse(jsonData);
+
+        console.log(jsonData);
+        console.log(data);
+
+        affichage.innerHTML = "Email : " + data.eMail + "</br>" + "Mot de passe : " + data.motDePasse + "</br>" +
+            "Nom : " + data.Nom + "</br>" + "Prénom : " + data.Prenom + "</br>" + "Adresse Ligne1 : " + data.Adresse1 + "</br>" +
+            "Adresse Ligne2 : " + data.Adresse2 + "</br>" + "Code postal : " + data.CodePostal + "</br>" + "Ville : " + data.Ville + "</br>" +
+            "Instrument de musique : " + data.NomInstrument + "</br>";
+    </script>
+
+</body>
+</html>
