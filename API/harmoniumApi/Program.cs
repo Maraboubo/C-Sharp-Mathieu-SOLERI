@@ -13,6 +13,8 @@ namespace harmoniumApi
             builder.Services.AddDbContext<AlbumDb>(opt => opt.UseInMemoryDatabase("Harmonium"));
             builder.Services.AddDbContext<MorceauDb>(opt => opt.UseInMemoryDatabase("Harmonium"));
             builder.Services.AddDbContext<JamDb>(opt => opt.UseInMemoryDatabase("Harmonium"));
+            builder.Services.AddDbContext<PisteDb>(opt => opt.UseInMemoryDatabase("Harmonium"));
+            builder.Services.AddDbContext<ComposantDb>(opt => opt.UseInMemoryDatabase("Harmonium"));
             builder.Services.AddDatabaseDeveloperPageExceptionFilter();
             var app = builder.Build();
 
@@ -23,6 +25,8 @@ namespace harmoniumApi
             var albumitems = app.MapGroup("/Albumitems");
             var morceauitems = app.MapGroup("/Morceauitems");
             var jamitems = app.MapGroup("/Jamitems");
+            var pisteitems = app.MapGroup("/Pisteitems");
+            var composantitems = app.MapGroup("/Composantitems");
 
             //ROUTES POUR LES METHODES CONCERNANT LES UTILISATEURS
             utilisateursitems.MapGet("/", GetAllUtilisateurs);
@@ -54,9 +58,134 @@ namespace harmoniumApi
             jamitems.MapPost("/", CreateJam);
             jamitems.MapPut("/{id}", UpdateJam);
             jamitems.MapDelete("/{id}", DeleteJam);
+            //ROUTES POUR LES METHODES CONCERNANT LES PISTES
+            pisteitems.MapGet("/", GetAllPistes);
+            pisteitems.MapGet("/{id}", GetPisteById);
+            pisteitems.MapPost("/", CreatePiste);
+            pisteitems.MapPut("/{id}", UpdatePiste);
+            pisteitems.MapDelete("/{id}", DeletePiste);
+            //ROUTES POUR LES METHODES CONCERNANT LES COMPOSANTS
+            composantitems.MapGet("/", GetAllComposants);
+            composantitems.MapGet("/{id}", GetComposantById);
+            composantitems.MapPost("/", CreateComposant);
+            composantitems.MapPut("/{id}", UpdateComposant);
+            composantitems.MapDelete("/{id}", DeleteComposant);
 
 
             app.Run();
+
+            //AFFICHAGE DE TOUTS LES COMPOSANTS
+            static async Task<IResult> GetAllComposants(ComposantDb db)
+            {
+                return TypedResults.Ok(await db.ComposantSet.ToArrayAsync());
+            }
+
+            //RECHERCHER COMPOSANT PAR ID
+            static async Task<IResult> GetComposantById(int id, ComposantDb db)
+            {
+                return await db.ComposantSet.FindAsync(id)
+                    is Composant nouveauComposant
+                        ? Results.Ok(nouveauComposant)
+                        : Results.NotFound();
+            }
+
+            //AJOUT D'UN NOUVEAU COMOPOSANT
+            static async Task<IResult> CreateComposant(Composant nouveauComposant, ComposantDb database)
+            {
+                database.ComposantSet.Add(nouveauComposant);
+                await database.SaveChangesAsync();
+
+                //GENERATION D'ID POUR UN NOUVEAU COMPOSANT
+                return Results.Created($"/Composantitems/{nouveauComposant.id_composant}", nouveauComposant);
+            };
+
+            //MODIFICATION D'UN COMPOSANT
+            static async Task<IResult> UpdateComposant(int id, Composant inputComposant, ComposantDb db)
+            {
+                var composantAModifier = await db.ComposantSet.FindAsync(id);
+
+                if (composantAModifier is null) return Results.NotFound();
+
+                composantAModifier.cNom = inputComposant.cNom;
+                composantAModifier.cDateCrea = inputComposant.cDateCrea;
+                composantAModifier.cDateModif = inputComposant.cDateModif;
+                composantAModifier.cImg = inputComposant.cImg;
+                composantAModifier.cFich = inputComposant.cFich;
+
+
+                await db.SaveChangesAsync();
+
+                return Results.NoContent();
+            };
+
+            //SUPPRESSION D'UN COMPOSANT
+            static async Task<IResult> DeleteComposant(int id, ComposantDb db)
+            {
+                if (await db.ComposantSet.FindAsync(id) is Composant ComposantASupprimer)
+                {
+                    db.ComposantSet.Remove(ComposantASupprimer);
+                    await db.SaveChangesAsync();
+                    return Results.NoContent();
+                }
+
+                return Results.NotFound();
+            };
+
+
+            //AFFICHAGE DE TOUTES LES PISTES
+            static async Task<IResult> GetAllPistes(PisteDb db)
+            {
+                return TypedResults.Ok(await db.PisteSet.ToArrayAsync());
+            }
+
+            //RECHERCHER PISTE PAR ID
+            static async Task<IResult> GetPisteById(int id, PisteDb db)
+            {
+                return await db.PisteSet.FindAsync(id)
+                    is Piste nouvellePiste
+                        ? Results.Ok(nouvellePiste)
+                        : Results.NotFound();
+            }
+
+            //AJOUT D'UN NOUVELLE PISTE
+            static async Task<IResult> CreatePiste(Piste nouvellePiste, PisteDb database)
+            {
+                database.PisteSet.Add(nouvellePiste);
+                await database.SaveChangesAsync();
+
+                //GENERATION D'ID POUR UN NOUVEAU GROUPE
+                return Results.Created($"/Pisteitems/{nouvellePiste.id_Piste}", nouvellePiste);
+            };
+
+            //MODIFICATION D'UNE PISTE
+            static async Task<IResult> UpdatePiste(int id, Piste inputPiste, PisteDb db)
+            {
+                var pisteAModifier = await db.PisteSet.FindAsync(id);
+
+                if (pisteAModifier is null) return Results.NotFound();
+
+                pisteAModifier.id_morceau = inputPiste.id_morceau;
+                pisteAModifier.pNom = inputPiste.pNom;
+                pisteAModifier.pImg = inputPiste.pImg;
+
+                await db.SaveChangesAsync();
+
+                return Results.NoContent();
+            };
+
+            //SUPPRESSION D'UNE PISTE
+            static async Task<IResult> DeletePiste(int id, PisteDb db)
+            {
+                if (await db.PisteSet.FindAsync(id) is Piste PisteASupprimer)
+                {
+                    db.PisteSet.Remove(PisteASupprimer);
+                    await db.SaveChangesAsync();
+                    return Results.NoContent();
+                }
+
+                return Results.NotFound();
+            };
+
 
             //AFFICHAGE DE TOUTES LES JAM
             static async Task<IResult> GetAllJam(JamDb db)

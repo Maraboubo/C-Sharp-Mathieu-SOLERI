@@ -163,3 +163,63 @@ GET {{harmoniumApi_HostAddress}}/Jamitems/2
 DELETE {{harmoniumApi_HostAddress}}/Jamitems/2
 
 ###
+
+POST {{harmoniumApi_HostAddress}}/Pisteitems/
+Content-Type: application/json
+
+    {
+        "id_morceau" : "29",
+        "pNom" : "Premiere piste"
+    }
+###
+
+PUT {{harmoniumApi_HostAddress}}/Pisteitems/2
+Content-Type: application/json
+
+    {
+        "id_morceau" : "37",
+        "pNom" : "Piste aux etoiles"
+    }
+###
+
+GET {{harmoniumApi_HostAddress}}/Pisteitems/
+
+###
+
+GET {{harmoniumApi_HostAddress}}/Pisteitems/1
+
+###
+
+DELETE {{harmoniumApi_HostAddress}}/Pisteitems/2
+
+###
+
+POST {{harmoniumApi_HostAddress}}/Composantitems/
+Content-Type: application/json
+
+    {
+        "cNom" : "Premier composant",
+        "cDateCrea" : "2024-05-15T12:30:00.000Z"
+    }
+###
+
+GET {{harmoniumApi_HostAddress}}/Composantitems/
+
+###
+
+GET {{harmoniumApi_HostAddress}}/Composantitems/2
+
+###
+
+PUT {{harmoniumApi_HostAddress}}/Composantitems/2
+Content-Type: application/json
+
+    {
+        "cNom" : "Deuxieme composant",
+        "cDateCrea" : "2023-04-15T12:40:00.000Z"
+    }
+###
+
+DELETE {{harmoniumApi_HostAddress}}/Composantitems/1
+
+###
