@@ -1,7 +1,6 @@
 ﻿@harmoniumApi_HostAddress = https://localhost:44372
 
-
-POST {{harmoniumApi_HostAddress}}/Utilisateursitems
+POST {{harmoniumApi_HostAddress}}/Utilisateursitems/
 Content-Type: application/json
 
     {
@@ -17,11 +16,11 @@ Content-Type: application/json
     }
 ###
 
-GET {{harmoniumApi_HostAddress}}/Utilisateursitems/1
+GET {{harmoniumApi_HostAddress}}/Utilisateursitems/
 
 ###
 
-GET {{harmoniumApi_HostAddress}}/Utilisateursitems
+GET {{harmoniumApi_HostAddress}}/Utilisateursitems/2
 
 ###
 
@@ -42,5 +41,19 @@ Content-Type: application/json
 ###
 
 DELETE {{harmoniumApi_HostAddress}}/Utilisateursitems/2
+
+###
+
+
+POST {{harmoniumApi_HostAddress}}/Groupeitems/
+Content-Type: application/json
+
+    {
+        "gNom" : "mathieusole",
+        "gDate" : "azertyui"
+    }
+###
+
+GET {{harmoniumApi_HostAddress}}/Groupeitems/
 
 ###

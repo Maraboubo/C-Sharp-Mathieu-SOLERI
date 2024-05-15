@@ -6,6 +6,6 @@ namespace harmoniumApi
     {
         public UtilisateursDb(DbContextOptions<UtilisateursDb> options) : base(options) { }
 
-        public DbSet<Utilisateurs> UtilisateursSet=> Set<Utilisateurs>();
+        public DbSet<Utilisateurs> UtilisateursSet => Set<Utilisateurs>();
     }
 }
