@@ -50,10 +50,116 @@ Content-Type: application/json
 
     {
         "gNom" : "mathieusole",
-        "gDate" : "azertyui"
+        "gDate" : "2024-05-15T12:30:00.000Z"
     }
 ###
 
 GET {{harmoniumApi_HostAddress}}/Groupeitems/
+
+###
+
+PUT {{harmoniumApi_HostAddress}}/Groupeitems/2
+Content-Type: application/json
+
+    {
+        "gNom" : "myNameIsMat",
+        "gDate" : "unedateEstUneDate"
+    }
+###
+
+GET {{harmoniumApi_HostAddress}}/Groupeitems/2
+
+###
+
+DELETE {{harmoniumApi_HostAddress}}/Groupeitems/1
+
+###
+
+POST {{harmoniumApi_HostAddress}}/Albumitems/
+Content-Type: application/json
+
+    {
+        "aNom" : "myNameIsMat"
+    }
+###
+
+GET {{harmoniumApi_HostAddress}}/Albumitems/
+
+###
+
+GET {{harmoniumApi_HostAddress}}/Albumitems/2
+
+###
+
+PUT {{harmoniumApi_HostAddress}}/Albumitems/2
+Content-Type: application/json
+
+    {
+        "aNom" : "UnNomDalbum"
+    }
+###
+
+DELETE {{harmoniumApi_HostAddress}}/Albumitems/1
+
+###
+
+POST {{harmoniumApi_HostAddress}}/Morceauitems/
+Content-Type: application/json
+
+    {
+        "id_utilisateur" : "36",
+        "mNom" : "myNameIsMat"
+    }
+###
+
+GET {{harmoniumApi_HostAddress}}/Morceauitems/
+
+###
+
+GET {{harmoniumApi_HostAddress}}/Morceauitems/2
+
+###
+
+PUT {{harmoniumApi_HostAddress}}/Morceauitems/2
+Content-Type: application/json
+
+    {
+        "id_utilisateur" : "29",
+        "mNom" : "MORCEAU MAUDIT"
+    }
+###
+
+DELETE {{harmoniumApi_HostAddress}}/Morceauitems/2
+
+###
+
+POST {{harmoniumApi_HostAddress}}/Jamitems/
+Content-Type: application/json
+
+    {
+        "jNom" : "FirstJam",
+        "jDateCrea" : "2024-05-15T12:30:00.000Z"
+    }
+
+###
+
+PUT {{harmoniumApi_HostAddress}}/Jamitems/2
+Content-Type: application/json
+
+    {
+        "jNom" : "SecondJam",
+        "jDateCrea" : "2024-05-15T12:30:00.000Z"
+    }
+###
+
+GET {{harmoniumApi_HostAddress}}/Jamitems/
+
+###
+
+GET {{harmoniumApi_HostAddress}}/Jamitems/2
+
+###
+
+DELETE {{harmoniumApi_HostAddress}}/Jamitems/2
 
 ###

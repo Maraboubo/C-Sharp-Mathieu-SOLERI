@@ -1,7 +1,10 @@
-﻿namespace harmoniumApi
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace harmoniumApi
 {
     public class Utilisateurs
     {
+        [Key]
         public int Id {  get; set; }
         public string Email { get; set; }
         public string motDePasse { get; set; }

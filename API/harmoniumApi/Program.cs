@@ -9,7 +9,10 @@ namespace harmoniumApi
             
             var builder = WebApplication.CreateBuilder(args);
             builder.Services.AddDbContext<UtilisateursDb>(opt => opt.UseInMemoryDatabase("Harmonium"));
-            builder.Services.AddDbContext<GroupeDb>(opt => opt.UseInMemoryDatabase("Harmonium2"));
+            builder.Services.AddDbContext<GroupeDb>(opt => opt.UseInMemoryDatabase("Harmonium"));
+            builder.Services.AddDbContext<AlbumDb>(opt => opt.UseInMemoryDatabase("Harmonium"));
+            builder.Services.AddDbContext<MorceauDb>(opt => opt.UseInMemoryDatabase("Harmonium"));
+            builder.Services.AddDbContext<JamDb>(opt => opt.UseInMemoryDatabase("Harmonium"));
             builder.Services.AddDatabaseDeveloperPageExceptionFilter();
             var app = builder.Build();
 
@@ -17,6 +20,9 @@ namespace harmoniumApi
             //QUE L'ON VA UTILISER SUR CHAQUE REQUETE.
             var utilisateursitems = app.MapGroup("/Utilisateursitems");
             var groupeitems = app.MapGroup("/Groupeitems");
+            var albumitems = app.MapGroup("/Albumitems");
+            var morceauitems = app.MapGroup("/Morceauitems");
+            var jamitems = app.MapGroup("/Jamitems");
 
             //ROUTES POUR LES METHODES CONCERNANT LES UTILISATEURS
             utilisateursitems.MapGet("/", GetAllUtilisateurs);
@@ -30,10 +36,196 @@ namespace harmoniumApi
             groupeitems.MapPost("/", CreateGroupe);
             groupeitems.MapPut("/{id}", UpdateGroupe);
             groupeitems.MapDelete("/{id}", DeleteGroupe);
+            //ROUTES POUR LES METHODES CONCERNANT LES ALBUMS
+            albumitems.MapGet("/", GetAllAlbums);
+            albumitems.MapGet("/{id}", GetAlbumById);
+            albumitems.MapPost("/", CreateAlbum);
+            albumitems.MapPut("/{id}", UpdateAlbum);
+            albumitems.MapDelete("/{id}", DeleteAlbum);
+            //ROUTES POUR LES METHODES CONCERNANT LES MORCEAUX
+            morceauitems.MapGet("/", GetAllMorceaux);
+            morceauitems.MapGet("/{id}", GetMorceauById);
+            morceauitems.MapPost("/", CreateMorceau);
+            morceauitems.MapPut("/{id}", UpdateMorceau);
+            morceauitems.MapDelete("/{id}", DeleteMorceau);
+            //ROUTES POUR LES METHODES CONCERNANT LES JAM
+            jamitems.MapGet("/", GetAllJam);
+            jamitems.MapGet("/{id}", GetJamById);
+            jamitems.MapPost("/", CreateJam);
+            jamitems.MapPut("/{id}", UpdateJam);
+            jamitems.MapDelete("/{id}", DeleteJam);
 
 
             app.Run();
 
+            //AFFICHAGE DE TOUTES LES JAM
+            static async Task<IResult> GetAllJam(JamDb db)
+            {
+                return TypedResults.Ok(await db.JamSet.ToArrayAsync());
+            }
+
+            //RECHERCHER JAM PAR ID
+            static async Task<IResult> GetJamById(int id, JamDb db)
+            {
+                return await db.JamSet.FindAsync(id)
+                    is Jam nouvelleJam
+                        ? Results.Ok(nouvelleJam)
+                        : Results.NotFound();
+            }
+
+            //AJOUT D'UN NOUVELLE JAM
+            static async Task<IResult> CreateJam(Jam nouvelleJam, JamDb database)
+            {
+                database.JamSet.Add(nouvelleJam);
+                await database.SaveChangesAsync();
+
+                //GENERATION D'ID POUR UN NOUVEAU GROUPE
+                return Results.Created($"/Morceauitems/{nouvelleJam.id_jam}", nouvelleJam);
+            };
+
+            //MODIFICATION D'UNE JAM
+            static async Task<IResult> UpdateJam(int id, Jam inputJam, JamDb db)
+            {
+                var jamAModifier = await db.JamSet.FindAsync(id);
+
+                if (jamAModifier is null) return Results.NotFound();
+
+                jamAModifier.jNom = inputJam.jNom;
+                jamAModifier.jDateCrea = inputJam.jDateCrea;
+                jamAModifier.jDateDif = inputJam.jDateDif;
+                jamAModifier.jDur = inputJam.jDur;
+                jamAModifier.jLink = inputJam.jLink;
+
+                await db.SaveChangesAsync();
+
+                return Results.NoContent();
+            };
+
+            //SUPPRESSION D'UNE JAM
+            static async Task<IResult> DeleteJam(int id, JamDb db)
+            {
+                if (await db.JamSet.FindAsync(id) is Jam JamASupprimer)
+                {
+                    db.JamSet.Remove(JamASupprimer);
+                    await db.SaveChangesAsync();
+                    return Results.NoContent();
+                }
+
+                return Results.NotFound();
+            };
+
+
+            //AFFICHAGE DE TOUS LES MORCEAUX
+            static async Task<IResult> GetAllMorceaux(MorceauDb db)
+            {
+                return TypedResults.Ok(await db.MorceauSet.ToArrayAsync());
+            }
+
+            //RECHERCHER UN MORCEAU PAR ID
+            static async Task<IResult> GetMorceauById(int id, MorceauDb db)
+            {
+                return await db.MorceauSet.FindAsync(id)
+                    is Morceau nouveauMorceau
+                        ? Results.Ok(nouveauMorceau)
+                        : Results.NotFound();
+            }
+
+            //AJOUT D'UN NOUVEAU MORCEAU
+            static async Task<IResult> CreateMorceau(Morceau nouveauMorceau, MorceauDb database)
+            {
+                database.MorceauSet.Add(nouveauMorceau);
+                await database.SaveChangesAsync();
+
+                //GENERATION D'ID POUR UN NOUVEAU GROUPE
+                return Results.Created($"/Morceauitems/{nouveauMorceau.id_morceau}", nouveauMorceau);
+            };
+
+            //MODIFICATION D'UN MORCEAU
+            static async Task<IResult> UpdateMorceau(int id, Morceau inputMorceau, MorceauDb db)
+            {
+                var morceauAModifier = await db.MorceauSet.FindAsync(id);
+
+                if (morceauAModifier is null) return Results.NotFound();
+
+                morceauAModifier.id_album = inputMorceau.id_album;
+                morceauAModifier.id_utilisateur = inputMorceau.id_utilisateur;
+                morceauAModifier.id_groupe = inputMorceau.id_groupe;
+                morceauAModifier.mNom = inputMorceau.mNom;
+                morceauAModifier.mImg = inputMorceau.mImg;
+
+                await db.SaveChangesAsync();
+
+                return Results.NoContent();
+            };
+
+            //SUPPRESSION D'UN MORCEAU
+            static async Task<IResult> DeleteMorceau(int id, MorceauDb db)
+            {
+                if (await db.MorceauSet.FindAsync(id) is Morceau MorceauASupprimer)
+                {
+                    db.MorceauSet.Remove(MorceauASupprimer);
+                    await db.SaveChangesAsync();
+                    return Results.NoContent();
+                }
+
+                return Results.NotFound();
+            };
+
+
+            //AFFICHAGE DE TOUS LES ALBUMS
+            static async Task<IResult> GetAllAlbums(AlbumDb db)
+            {
+                return TypedResults.Ok(await db.AlbumSet.ToArrayAsync());
+            }
+
+            //RECHERCHER UN ALBUM PAR ID
+            static async Task<IResult> GetAlbumById(int id, AlbumDb db)
+            {
+                return await db.AlbumSet.FindAsync(id)
+                    is Album nouvelAlbum
+                        ? Results.Ok(nouvelAlbum)
+                        : Results.NotFound();
+            }
+
+            //AJOUT D'UN NOUVEL ALBUM
+            static async Task<IResult> CreateAlbum(Album nouvelAlbum, AlbumDb database)
+            {
+                database.AlbumSet.Add(nouvelAlbum);
+                await database.SaveChangesAsync();
+
+                //GENERATION D'ID POUR UN NOUVEAU GROUPE
+                return Results.Created($"/Albumitems/{nouvelAlbum.id_album}", nouvelAlbum);
+            };
+
+            //MODIFICATION D'UN ALBUM
+            static async Task<IResult> UpdateAlbum(int id, Album inputAlbum, AlbumDb db)
+            {
+                var albumAModifier = await db.AlbumSet.FindAsync(id);
+
+                if (albumAModifier is null) return Results.NotFound();
+
+                albumAModifier.aNom = inputAlbum.aNom;
+                albumAModifier.aImg = inputAlbum.aImg;
+
+                await db.SaveChangesAsync();
+
+                return Results.NoContent();
+            };
+
+            //SUPPRESSION D'UN ALBUM
+            static async Task<IResult> DeleteAlbum(int id, AlbumDb db)
+            {
+                if (await db.AlbumSet.FindAsync(id) is Album albumASupprimer)
+                {
+                    db.AlbumSet.Remove(albumASupprimer);
+                    await db.SaveChangesAsync();
+                    return Results.NoContent();
+                }
+
+                return Results.NotFound();
+            };
+
+            
             //AFFICHAGE DE TOUS LES GROUPES
             static async Task<IResult> GetAllGroupes(GroupeDb db)
             {
@@ -48,6 +240,7 @@ namespace harmoniumApi
                         ? Results.Ok(nouveauGroupe)
                         : Results.NotFound();
             }
+
             //AJOUT D'UN NOUVEAU GROUPE
             static async Task<IResult> CreateGroupe(Groupe nouveauGroupe, GroupeDb database)
             {
@@ -57,6 +250,7 @@ namespace harmoniumApi
                 //GENERATION D'ID POUR UN NOUVEAU GROUPE
                 return Results.Created($"/Groupeitems/{nouveauGroupe.Id_Groupe}", nouveauGroupe);
             };
+
             //MODIFICATION D'UN GROUPE
             static async Task<IResult> UpdateGroupe(int id, Groupe inputGroupe, GroupeDb db)
             {
@@ -71,6 +265,7 @@ namespace harmoniumApi
 
                 return Results.NoContent();
             };
+
             //SUPPRESSION D'UN GROUPE
             static async Task<IResult> DeleteGroupe(int id, GroupeDb db)
             {
@@ -84,6 +279,7 @@ namespace harmoniumApi
                 return Results.NotFound();
             };
 
+           
             //AFFICHAGE DE TOUS LES UTILISATEURS
             static async Task<IResult> GetAllUtilisateurs(UtilisateursDb db)
             {
