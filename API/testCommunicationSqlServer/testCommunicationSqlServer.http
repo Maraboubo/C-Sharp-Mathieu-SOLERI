@@ -1,0 +1,23 @@
+﻿@testCommunicationSqlServer_HostAddress = https://localhost:44396
+
+
+
+
+
+POST {{testCommunicationSqlServer_HostAddress}}/utilisateur
+Content-Type: application/json
+
+    {
+        "id" : "2",
+        "nom" : "SOLERI",
+        "prenom" : "Mathieu"
+    }
+###
+
+DELETE {{testCommunicationSqlServer_HostAddress}}/Utilisateur/1
+
+###
+
+GET {{testCommunicationSqlServer_HostAddress}}/utilisateur
+
+###

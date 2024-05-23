@@ -1,0 +1,284 @@
+﻿@harmoniumApi_HostAddress = https://localhost:44372
+
+POST {{harmoniumApi_HostAddress}}/Utilisateursitems/
+Content-Type: application/json
+
+    {
+        "Email" : "mathieusoleri@hotmail.com",
+        "motDePasse" : "azertyui123",
+        "Nom" : "SOLERI",
+        "Prenom" : "Mathieu",
+        "Adresse1" : "19 Place de la fontaine ronde",
+        "Adresse2" : "Une addresse2",
+        "CodePostal" : "04300",
+        "Ville" : "Limans",
+        "NomInstrument" : "Guitare electrique"
+    }
+###
+
+GET {{harmoniumApi_HostAddress}}/Utilisateursitems/
+
+###
+
+GET {{harmoniumApi_HostAddress}}/Utilisateursitems/2
+
+###
+
+PUT {{harmoniumApi_HostAddress}}/Utilisateursitems/2
+Content-Type: application/json
+
+    {
+        "Email" : "uneadresse@hotmail.com",
+        "motDePasse" : "unnouveaucode123",
+        "Nom" : "IRELOS",
+        "Prenom" : "ueihtaM",
+        "Adresse1" : "Une adresse1",
+        "Adresse2" : "Une addresse2",
+        "CodePostal" : "3323",
+        "Ville" : "UneVile",
+        "NomInstrument" : "UKULELE"
+    }
+###
+
+DELETE {{harmoniumApi_HostAddress}}/Utilisateursitems/2
+
+###
+
+
+POST {{harmoniumApi_HostAddress}}/Groupeitems/
+Content-Type: application/json
+
+    {
+        "gNom" : "mathieusole",
+        "gDate" : "2024-05-15T12:30:00.000Z"
+    }
+###
+
+GET {{harmoniumApi_HostAddress}}/Groupeitems/
+
+###
+
+PUT {{harmoniumApi_HostAddress}}/Groupeitems/2
+Content-Type: application/json
+
+    {
+        "gNom" : "myNameIsMat",
+        "gDate" : "2024-05-15T12:30:00.000Z"
+    }
+###
+
+GET {{harmoniumApi_HostAddress}}/Groupeitems/2
+
+###
+
+DELETE {{harmoniumApi_HostAddress}}/Groupeitems/1
+
+###
+
+POST {{harmoniumApi_HostAddress}}/Albumitems/
+Content-Type: application/json
+
+    {
+        "aNom" : "myNameIsMat"
+    }
+###
+
+GET {{harmoniumApi_HostAddress}}/Albumitems/
+
+###
+
+GET {{harmoniumApi_HostAddress}}/Albumitems/2
+
+###
+
+PUT {{harmoniumApi_HostAddress}}/Albumitems/2
+Content-Type: application/json
+
+    {
+        "aNom" : "UnNomDalbum"
+    }
+###
+
+DELETE {{harmoniumApi_HostAddress}}/Albumitems/1
+
+###
+
+POST {{harmoniumApi_HostAddress}}/Morceauitems/
+Content-Type: application/json
+
+    {
+        "id_utilisateur" : "36",
+        "mNom" : "myNameIsMat"
+    }
+###
+
+GET {{harmoniumApi_HostAddress}}/Morceauitems/
+
+###
+
+GET {{harmoniumApi_HostAddress}}/Morceauitems/2
+
+###
+
+PUT {{harmoniumApi_HostAddress}}/Morceauitems/2
+Content-Type: application/json
+
+    {
+        "id_utilisateur" : "29",
+        "mNom" : "MORCEAU MAUDIT"
+    }
+###
+
+DELETE {{harmoniumApi_HostAddress}}/Morceauitems/2
+
+###
+
+POST {{harmoniumApi_HostAddress}}/Jamitems/
+Content-Type: application/json
+
+    {
+        "jNom" : "FirstJam",
+        "jDateCrea" : "2024-05-15T12:30:00.000Z"
+    }
+
+###
+
+PUT {{harmoniumApi_HostAddress}}/Jamitems/2
+Content-Type: application/json
+
+    {
+        "jNom" : "SecondJam",
+        "jDateCrea" : "2024-05-15T12:30:00.000Z"
+    }
+###
+
+GET {{harmoniumApi_HostAddress}}/Jamitems/
+
+###
+
+GET {{harmoniumApi_HostAddress}}/Jamitems/2
+
+###
+
+DELETE {{harmoniumApi_HostAddress}}/Jamitems/1
+
+###
+
+POST {{harmoniumApi_HostAddress}}/Pisteitems/
+Content-Type: application/json
+
+    {
+        "id_morceau" : "29",
+        "pNom" : "Premiere piste"
+    }
+###
+
+PUT {{harmoniumApi_HostAddress}}/Pisteitems/2
+Content-Type: application/json
+
+    {
+        "id_morceau" : "37",
+        "pNom" : "Piste aux etoiles"
+    }
+###
+
+GET {{harmoniumApi_HostAddress}}/Pisteitems/
+
+###
+
+GET {{harmoniumApi_HostAddress}}/Pisteitems/1
+
+###
+
+DELETE {{harmoniumApi_HostAddress}}/Pisteitems/2
+
+###
+
+POST {{harmoniumApi_HostAddress}}/Composantitems/
+Content-Type: application/json
+
+    {
+        "cNom" : "Premier composant",
+        "cDateCrea" : "2024-05-15T12:30:00.000Z"
+    }
+###
+
+GET {{harmoniumApi_HostAddress}}/Composantitems/
+
+###
+
+GET {{harmoniumApi_HostAddress}}/Composantitems/2
+
+###
+
+PUT {{harmoniumApi_HostAddress}}/Composantitems/2
+Content-Type: application/json
+
+    {
+        "cNom" : "Deuxieme composant",
+        "cDateCrea" : "2023-04-15T12:40:00.000Z"
+    }
+###
+
+DELETE {{harmoniumApi_HostAddress}}/Composantitems/1
+
+###
+
+POST {{harmoniumApi_HostAddress}}/Morceauitems/
+Content-Type: application/json
+
+    {
+        "id_utilisateur" : "36",
+        "mNom" : "myNameIsMat"
+    }
+###
+
+GET {{harmoniumApi_HostAddress}}/Morceauitems/
+
+###
+
+DELETE {{harmoniumApi_HostAddress}}/Morceauitems/1
+
+###
+
+GET {{harmoniumApi_HostAddress}}/Morceauitems/6
+
+###
+
+PUT {{harmoniumApi_HostAddress}}/Morceauitems/5
+Content-Type: application/json
+
+    {
+        "id_utilisateur" : "1",
+        "mNom" : "HEHE C MODIFIE"
+    }
+###
+
+POST {{harmoniumApi_HostAddress}}/Utilisateursitems/
+Content-Type: application/json
+
+{
+  "Id": 26, 
+  "email": "john.doe@example.com",
+  "motDePasse": "password123",
+  "nom": "Doe",
+  "prenom": "John",
+  "adresse1": "123 Rue de l'Exemple",
+  "adresse2": "Appartement 4B",
+  "codePostal": 5001,
+  "ville": "Paris",
+  "instrumentIds": [1, 2, 3]
+}
+###
+
+POST {{harmoniumApi_HostAddress}}/Instrumentsitems/
+Content-Type: application/json
+
+    {
+        "Nom" : "mathieusole"
+    }
+###
+
+GET {{harmoniumApi_HostAddress}}/InstrumentUtilisateursitems/
+
+###
