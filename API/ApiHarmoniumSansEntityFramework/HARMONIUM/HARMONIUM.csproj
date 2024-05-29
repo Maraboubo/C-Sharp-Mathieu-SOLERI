@@ -10,6 +10,7 @@
     <Compile Remove="Controllers\WeatherForecastController.cs" />
     <Compile Remove="Repository\Connection.cs" />
     <Compile Remove="Repository\Utilisateur.cs" />
+    <Compile Remove="WeatherForecast.cs" />
   </ItemGroup>
 
   <ItemGroup>
