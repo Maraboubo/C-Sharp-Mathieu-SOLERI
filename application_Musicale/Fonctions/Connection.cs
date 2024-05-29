@@ -16,6 +16,11 @@ namespace application_Musicale.Fonctions
             connexion.Open();
             return connexion;
         }
+        //public static SqlConnection Connexion()
+        //{
+        //    return new SqlConnection(CleConnection());
+        //    //connexion.Open();
+        //}
 
         public static SqlCommand Commande(SqlConnection connectionOuverte, string commande)
         {

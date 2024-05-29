@@ -4,7 +4,7 @@ namespace harmoniumApi.models
 {
     public class Utilisateurs
     {
-        //[Key]
+        [Key]
         public int Id { get; set; }
         public string Email { get; set; }
         public string motDePasse { get; set; }

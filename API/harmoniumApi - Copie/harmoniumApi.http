@@ -27,17 +27,16 @@ GET {{harmoniumApi_HostAddress}}/Utilisateursitems/2
 PUT {{harmoniumApi_HostAddress}}/Utilisateursitems/2
 Content-Type: application/json
 
-    {
-        "Email" : "uneadresse@hotmail.com",
-        "motDePasse" : "unnouveaucode123",
-        "Nom" : "IRELOS",
-        "Prenom" : "ueihtaM",
-        "Adresse1" : "Une adresse1",
-        "Adresse2" : "Une addresse2",
-        "CodePostal" : "3323",
-        "Ville" : "UneVile",
-        "NomInstrument" : "UKULELE"
-    }
+{ 
+  "email": "john.doe@example.com",
+  "motDePasse": "password321",
+  "nom": "D",
+  "prenom": "J",
+  "adresse1": "123 Rue de ",
+  "adresse2": "Appartement 4B",
+  "codePostal": 5001,
+  "ville": "Paris"
+}
 ###
 
 DELETE {{harmoniumApi_HostAddress}}/Utilisateursitems/2
@@ -258,7 +257,7 @@ POST {{harmoniumApi_HostAddress}}/Utilisateursitems/
 Content-Type: application/json
 
 {
-  "Id": 26, 
+ 
   "email": "john.doe@example.com",
   "motDePasse": "password123",
   "nom": "Doe",
@@ -280,5 +279,9 @@ Content-Type: application/json
 ###
 
 GET {{harmoniumApi_HostAddress}}/InstrumentUtilisateursitems/
+
+###
+
+GET {{harmoniumApi_HostAddress}}/InstrumentUtilisateursitems/2
 
 ###

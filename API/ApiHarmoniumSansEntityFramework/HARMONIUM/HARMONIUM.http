@@ -1,0 +1,61 @@
+@HARMONIUM_HostAddress = https://localhost:44373
+
+GET {{HARMONIUM_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
+
+PUT {{HARMONIUM_HostAddress}}/0
+Content-Type: application/json
+
+{
+  "idStatut": 0,
+  "id_vCode": 0,
+  "uNom": "string",
+  "uPrenom": "string",
+  "email": "string",
+  "uIdentifiant": "string",
+  "uMotDePasse": "string",
+  "adresse1": "string",
+}
+
+###
+
+POST {{HARMONIUM_HostAddress}}/api/[Controller]
+Content-Type: application/json
+
+{
+  "idStatut": 0,
+  "id_vCode": 0,
+  "uNom": "string",
+  "uPrenom": "string",
+  "email": "string",
+  "uIdentifiant": "string",
+  "uMotDePasse": "string",
+  "adresse1": "string"
+}
+
+###
+
+POST {{HARMONIUM_HostAddress}}/api/[Controller]
+Content-Type: application/json
+
+{
+  "id_vCode": 0,
+  "uNom": "string",
+  "uPrenom": "string",
+  "email": "string",
+  "uIdentifiant": "string",
+  "uMotDePasse": "string",
+  "adresse1": "string"
+}
+
+###
+
+GET {{HARMONIUM_HostAddress}}/api/[Controller]/0
+
+###
+
+GET {{HARMONIUM_HostAddress}}/api/[Controller]
+
+###

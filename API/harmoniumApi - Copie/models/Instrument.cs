@@ -5,7 +5,7 @@ namespace harmoniumApi.models
 {
     public class Instrument
     {
-        //[Key]
+        [Key]
         public int Id { get; set; }
         public string Nom { get; set; }
         public ICollection<InstrumentUtilisateur> InstrumentUtilisateurs { get; set; }

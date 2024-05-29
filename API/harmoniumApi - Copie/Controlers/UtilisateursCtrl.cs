@@ -17,9 +17,9 @@ namespace harmoniumApi.Controlers
             utilisateursitems.MapDelete("/{id}", DeleteUtilisateur);
         }
         //AFFICHAGE DE TOUS LES UTILISATEURS
-        public static async Task<IResult> GetAllUtilisateurs(UtilisateursDb db)
+        public static async Task<IResult> GetAllUtilisateurs(UtilisateursDb db, InstrumentUtilisateurDb Db)
         {
-            return TypedResults.Ok(await db.UtilisateursSet.ToArrayAsync());
+            return TypedResults.Ok(await db.UtilisateursSet.ToArrayAsync());            
         }
 
         //RECHERCHE D'UTILISATEUR PAR ID
@@ -34,9 +34,8 @@ namespace harmoniumApi.Controlers
 
         //AJOUT D'UN UTILISATEUR MULTI TABLES
 
-        public static async Task<IResult> CreateUtilisateur(UtilisateurCreationDto utilisateurDto, /*UtilisateurDbContext context*/UtilisateursDb utilisateursDb, InstrumentUtilisateurDb instrumentUtilisateurDb )
+        public static async Task<IResult> CreateUtilisateur(UtilisateurCreationDto utilisateurDto, UtilisateursDb utilisateursDb, InstrumentUtilisateurDb instrumentUtilisateurDb )
         {
-       
             var nouvelUtilisateur = new Utilisateurs
             {
                 Email = utilisateurDto.Email,
@@ -67,77 +66,6 @@ namespace harmoniumApi.Controlers
 
             return Results.Created($"/Utilisateursitems/{nouvelUtilisateur.Id}", nouvelUtilisateur);
         }
-
-
-
-
-        ////AJOUT D'UN UTILISATEUR MULTI TABLES
-
-        //public static async Task<IResult> CreateUtilisateur(UtilisateurCreationDto utilisateurDto, UtilisateurDbContext context)
-        //{
-        //    if (utilisateurDto == null || utilisateurDto.InstrumentIds == null || utilisateurDto.InstrumentIds.Count == 0)
-        //    {
-        //        return Results.BadRequest("Données de requête non valides.");
-        //    }
-
-        //    using (var transaction = await context.Database.BeginTransactionAsync())
-        //    {
-        //        try
-        //        {
-        //            var nouvelUtilisateur = new Utilisateurs
-        //            {
-        //                Email = utilisateurDto.Email,
-        //                motDePasse = utilisateurDto.motDePasse,
-        //                Nom = utilisateurDto.Nom,
-        //                Prenom = utilisateurDto.Prenom,
-        //                Adresse1 = utilisateurDto.Adresse1,
-        //                Adresse2 = utilisateurDto.Adresse2,
-        //                CodePostal = utilisateurDto.CodePostal,
-        //                Ville = utilisateurDto.Ville
-        //            };
-
-        //            context.UtilisateurSet.Add(nouvelUtilisateur);
-        //            await context.SaveChangesAsync();
-
-        //            foreach (var instrumentId in utilisateurDto.InstrumentIds)
-        //            {
-        //                var instrumentUtilisateur = new InstrumentUtilisateur
-        //                {
-        //                    UtilisateurId = nouvelUtilisateur.Id,
-        //                    InstrumentId = instrumentId
-        //                };
-
-        //                context.InstrumentsUtilisateursSet.Add(instrumentUtilisateur);
-        //            }
-
-        //            await context.SaveChangesAsync();
-        //            await transaction.CommitAsync();
-
-        //            return Results.Created($"/Utilisateursitems/{nouvelUtilisateur.Id}", nouvelUtilisateur);
-        //        }
-        //        catch (Exception)
-        //        {
-        //            await transaction.RollbackAsync();
-        //            return Results.StatusCode(500);
-        //        }
-        //    }
-        //}
-
-
-
-
-
-
-
-        ////AJOUT D'UN NOUVEL UTILISATEUR
-        //public static async Task<IResult> CreateUtilisateur(Utilisateurs nouvelUtilisateur, UtilisateursDb db)
-        //{
-        //    db.UtilisateursSet.Add(nouvelUtilisateur);
-        //    await db.SaveChangesAsync();
-
-        //    //GENERATION D'ID POUR UN NOUVEL UTILISATEUR
-        //    return Results.Created($"/Utilisateursitems/{nouvelUtilisateur.Id}", nouvelUtilisateur);
-        //}
 
         //MODIFICATION D'UN UTILISATEUR
         public static async Task<IResult> UpdateUtilisateurs(int id, Utilisateurs inputUtilisateur, UtilisateursDb db)

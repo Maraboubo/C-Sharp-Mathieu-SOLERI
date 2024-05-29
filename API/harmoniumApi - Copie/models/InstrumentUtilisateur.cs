@@ -5,12 +5,12 @@ using System.Diagnostics.Metrics;
 
 namespace harmoniumApi.models
 {
+    [PrimaryKey(nameof(UtilisateurId), nameof(InstrumentId))]
     public class InstrumentUtilisateur
     {
-        [Key]
         public int UtilisateurId { get; set; }
-        public Utilisateurs Utilisateur { get; set; }
+        //public Utilisateurs Utilisateur { get; set; }
         public int InstrumentId { get; set; }
-        public Instrument Instrument { get; set; }
+        //public Instrument Instrument { get; set; }
     }
 }

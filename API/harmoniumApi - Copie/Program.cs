@@ -24,11 +24,10 @@ namespace harmoniumApi
             builder.Services.AddDbContext<JamDb>(opt => opt.UseInMemoryDatabase("Harmonium"));
             builder.Services.AddDbContext<PisteDb>(opt => opt.UseInMemoryDatabase("Harmonium"));
             builder.Services.AddDbContext<ComposantDb>(opt => opt.UseInMemoryDatabase("Harmonium"));
-            //builder.Services.AddDbContext<UtilisateurDbContext>(opt => opt.UseInMemoryDatabase("Harmonium"));
             builder.Services.AddDbContext<InstrumentDb>(opt => opt.UseInMemoryDatabase("Harmonium"));
             builder.Services.AddDbContext<InstrumentUtilisateurDb>(opt => opt.UseInMemoryDatabase("Harmonium"));
             builder.Services.AddDatabaseDeveloperPageExceptionFilter();
-            builder.Services.Configure<Microsoft.AspNetCore.Http.Json.JsonOptions>(options => options.SerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles);
+            //builder.Services.Configure<Microsoft.AspNetCore.Http.Json.JsonOptions>(options => options.SerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles);
 
             var app = builder.Build();
 
