@@ -1,8 +1,8 @@
-﻿using HARMONIUM.Models;
+﻿using Harmonium.Models;
 
-namespace HARMONIUM.Services
-{   
-    public interface IUtilisateurService
+namespace Harmonium.Services
+{
+    public interface InterfaceUtilisateurService
     {
         IEnumerable<Utilisateur> GetAllUtilisateurs();
         Utilisateur GetUtilisateurById(int id);

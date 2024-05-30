@@ -1,33 +1,29 @@
-﻿using HARMONIUM.Models;
-using HARMONIUM.Services;
-
+﻿using Harmonium.Models;
+using Harmonium.Repository;
+using Harmonium.Services;
 using Microsoft.AspNetCore.Mvc;
 
-
-namespace HARMONIUM.Controllers
+namespace Harmonium.Controllers
 {
-    [Route("api/Utilisateur")]
+    [Route("api/[controller]")]
     [ApiController]
     public class UtilisateurController : ControllerBase
     {
-        private readonly IUtilisateurService _utilisateurService;
-
-        public UtilisateurController(IUtilisateurService utilisateurService)
+        private readonly InterfaceUtilisateurService _interfaceUtilisateurService;
+        public UtilisateurController(InterfaceUtilisateurService interfaceUtilisateurService)
         {
-            _utilisateurService = utilisateurService;
+            _interfaceUtilisateurService = interfaceUtilisateurService;
         }
-
         [HttpGet]
         public ActionResult<IEnumerable<Utilisateur>> Get()
         {
-            var utilisateurs = _utilisateurService.GetAllUtilisateurs();
+            var utilisateurs = _interfaceUtilisateurService.GetAllUtilisateurs();
             return Ok(utilisateurs);
         }
-
         [HttpGet("{id}")]
         public ActionResult<Utilisateur> Get(int id)
         {
-            var utilisateur = _utilisateurService.GetUtilisateurById(id);
+            var utilisateur = _interfaceUtilisateurService.GetUtilisateurById(id);
             if (utilisateur == null)
             {
                 return NotFound();
@@ -38,7 +34,7 @@ namespace HARMONIUM.Controllers
         [HttpPost]
         public ActionResult Post([FromBody] Utilisateur utilisateur)
         {
-            _utilisateurService.CreateUtilisateur(utilisateur);
+            _interfaceUtilisateurService.CreateUtilisateur(utilisateur);
             return CreatedAtAction(nameof(Get), new { id = utilisateur.id_Utilisateur }, utilisateur);
         }
 
@@ -49,14 +45,14 @@ namespace HARMONIUM.Controllers
             {
                 return BadRequest();
             }
-            _utilisateurService.UpdateUtilisateur(utilisateur);
+            _interfaceUtilisateurService.UpdateUtilisateur(utilisateur);
             return NoContent();
         }
 
         [HttpDelete("{id}")]
         public ActionResult Delete(int id)
         {
-            _utilisateurService.DeleteUtilisateur(id);
+            _interfaceUtilisateurService.DeleteUtilisateur(id);
             return NoContent();
         }
     }

@@ -1,0 +1,52 @@
+﻿@Harmonium_HostAddress = https://localhost:44372
+
+GET {{Harmonium_HostAddress}}/api/utilisateur
+
+###
+
+POST {{Harmonium_HostAddress}}/api/utilisateur
+Content-Type: application/json
+
+{
+  "id_vCode": 0,
+  "uNom": "string",
+  "uPrenom": "string",
+  "email": "string",
+  "uIdentifiant": "string",
+  "uMotDePasse": "string",
+  "adresse1": "string"
+}
+###
+
+GET {{Harmonium_HostAddress}}/api/utilisateur/6
+
+###
+
+DELETE {{Harmonium_HostAddress}}/api/utilisateur/7
+
+###
+
+PUT {{Harmonium_HostAddress}}/api/utilisateur/6
+Content-Type: application/json
+
+{
+  "id_Utilisateur": 6,
+  "id_vCode": 2,
+  "uNom": "SOLERI",
+  "uPrenom": "Mathieu",
+  "email": "lEmailDeMathieu",
+  "uIdentifiant": "UnIdentifiant",
+  "uMotDePasse": "UnMotDePasse",
+  "adresse1": "UneAdresse"
+}
+
+###
+
+POST {{Harmonium_HostAddress}}/api/utilisateur
+Content-Type: application/json
+
+{
+  //Utilisateur
+}
+
+###
