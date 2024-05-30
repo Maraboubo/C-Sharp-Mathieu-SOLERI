@@ -11,7 +11,7 @@ Content-Type: application/json
   "id_vCode": 0,
   "uNom": "string",
   "uPrenom": "string",
-  "email": "string",
+  "email": "sathieumoleri@hotmail.com",
   "uIdentifiant": "string",
   "uMotDePasse": "string",
   "adresse1": "string"
@@ -32,11 +32,11 @@ Content-Type: application/json
 {
   "id_Utilisateur": 6,
   "id_vCode": 2,
-  "uNom": "SOLERI",
+  "uNom": "",
   "uPrenom": "Mathieu",
-  "email": "lEmailDeMathieu",
-  "uIdentifiant": "UnIdentifiant",
-  "uMotDePasse": "UnMotDePasse",
+  "email": "sathieumoleri@hotmail.com",
+  "uIdentifiant": "UnautreIdentifiant",
+  "uMotDePasse": "UnautreMotDePasse",
   "adresse1": "UneAdresse"
 }
 
@@ -48,5 +48,9 @@ Content-Type: application/json
 {
   //Utilisateur
 }
+
+###
+
+GET {{Harmonium_HostAddress}}/api/utilisateur
 
 ###
