@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Harmonium.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/utilisateur")]
     [ApiController]
     public class UtilisateurController : ControllerBase
     {

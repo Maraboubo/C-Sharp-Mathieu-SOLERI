@@ -11,14 +11,14 @@ Content-Type: application/json
   "id_vCode": 0,
   "uNom": "string",
   "uPrenom": "string",
-  "email": "sathieumoleri@hotmail.com",
+  "email": "sathieughfghkfgh@hotmail.com",
   "uIdentifiant": "string",
   "uMotDePasse": "string",
   "adresse1": "string"
 }
 ###
 
-GET {{Harmonium_HostAddress}}/api/utilisateur/6
+GET {{Harmonium_HostAddress}}/api/utilisateur/10
 
 ###
 

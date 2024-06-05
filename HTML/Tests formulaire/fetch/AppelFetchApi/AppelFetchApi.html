@@ -1,0 +1,33 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta charset="utf-8" />
+        <title>AppelFetchApi</title>
+    </head>
+    <body>
+        <input type="button" value="Cliquez moi pour un get" id="boutonTestGet">
+
+
+        <form id="monFormulaire" action="traitement.html" method="post">
+            <label for="id_vCode">Code Ville :</label>
+            <input type="number" id="id_vCode" name="id_vCode">
+            <label for="uNom">Nom :</label>
+            <input type="text" id="uNom" name="uNom">
+            <label for="uPrenom">Prénom :</label>
+            <input type="text" id="uPrenom" name="uPrenom">
+            <label for="email">Email :</label>
+            <input type="email" id="email" name="email">
+            <label for="uIdentifiant">Identifiant :</label>
+            <input type="text" id="uIdentifiant" name="uIdentifiant">
+            <label for="uMotDePasse">Mot de passe :</label>
+            <input type="text" id="uMotDePasse" name="uMotDePasse">
+            <label for="adresse1">Adresse :</label>
+            <input type="text" id="adresse1" name="adresse1">
+            <!--<input type="submit" value="Envoyer">-->
+        </form>
+
+        <input type="button" value="Cliquez moi pour un post" id="boutonTestPost">
+        <script src="testFetch.js"></script>
+    </body>
+</html>
