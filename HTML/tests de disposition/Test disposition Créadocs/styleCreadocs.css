@@ -1,0 +1,165 @@
+﻿body
+{
+    margin:0;
+    background-color:black;
+}
+
+h3 {
+    font-family: Roboto;
+    font-weight: bold;
+    font-size: 17pt;
+    margin:0 0 0 0;
+}
+
+.conteneurGlobal {
+    width: 96%;
+    height: 100vh;
+    background-color: #ffffff;
+    margin-left: 2%;
+    margin-right: 2%;
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
+}
+
+header {
+    height: 40%;
+    width: 100%;
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
+    background-color: #E10018;
+}
+
+.headerTitres {
+    height: 75%;
+    width: 100%;
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
+/*    background-color: aquamarine;*/
+}
+
+
+.logo {
+    height: 36%;
+    width: 39%;
+   /* background-color: gray;*/
+    float: left;
+    position: relative;
+    top: 42%;
+    left: 7%;
+}
+
+.logoTitre {
+    height: 100%;
+    width: 100%;
+}
+
+.titre {
+    height: 31%;
+    width: 29%;
+    /*background-color: rosybrown;*/
+    position: relative;
+    top: 47%;
+    right: 19%;
+    float: right;
+}
+
+.boutonConnexion {
+    position: relative;
+    height: 50%;
+    width: 14%;
+    float: left;
+    background-color: white;
+    top: 50%;
+    left: 7%;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+/*    font-family: Roboto;
+    font-weight: bold;
+    text-align: center;
+    font-size: 200%;
+    padding-top:6pt;*/
+}
+
+.boutonInscription {
+    position: relative;
+    height: 50%;
+    width: 14%;
+    float: right;
+    background-color: grey;
+    top: 50%;
+    right: 64.6%;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.texteOngletMenu {
+    position:relative;
+    height:100%;
+    /*font-family: Roboto;
+    font-weight:bold;*/
+    text-align: center;
+    /*font-size: 15pt;*/
+    display:block;
+    color:grey;
+    padding-top:4%;
+}
+
+#texteOngletInscription{
+    color:white;
+}
+
+.conteneurMenu {
+    height: 25%;
+    width: 100%;
+    background-color: #E30018;
+}
+
+.zoneDeTravail {
+    height: 60%;
+    width: 100%;
+    background-color: white;
+}
+
+.bandeauInterfaces {
+    position:relative;
+    height:50%;
+    width:100%;
+    background-color:sandybrown;
+    top:25%;    
+}
+
+#interfaces {
+    position: relative;
+    height: 302px;
+    width: 253px;
+    background-color: sandybrown;
+    margin: 0% 0% 0% 7%;
+    display: inline-block;
+    top: 25%;
+    float: left;
+    border: 2px solid;
+    border-color: black;
+    border-radius: 10px;
+    filter: drop-shadow(0px 2px 4px grey);
+}
+
+.BandeauInterface {
+    height: 82px;
+    width: 253px;
+    background-color: grey;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.ImageInterface {
+    width: 253px;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+.titreInterface {
+    color: white;
+    margin-left: 5%;
+    margin-top: 5%;
+    position: absolute;
+}

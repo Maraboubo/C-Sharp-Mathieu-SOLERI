@@ -1,0 +1,28 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta charset="utf-8" />
+        <title>AppelFetchGeoNames</title>
+    </head>
+    <body>
+        <input type="button" value="Obtenir la liste des pays" id="boutonGetPays">
+
+        <input type="button" value="Obtenir la liste des villes" id="boutonGetVilles">
+
+        <label for="city">Choisissez votre pays:</label>
+        <select id="country" name="country">
+            <option value="">Sélectionnez un pays</option>
+            <!-- Les options seront ajoutées dynamiquement ici -->
+        </select>
+
+        <label for="city">Choisissez votre ville:</label>
+        <select id="city" name="city">
+            <option value="">Sélectionnez une ville</option>
+            <!-- Les options seront ajoutées dynamiquement ici -->
+        </select>
+
+        <!--<input type="button" value="Cliquez moi pour un post" id="boutonTestPost">-->
+        <script src="testFetchGeoNames.js"></script>
+    </body>
+</html>

@@ -18,7 +18,7 @@ Content-Type: application/json
 }
 ###
 
-GET {{Harmonium_HostAddress}}/api/utilisateur/10
+GET {{Harmonium_HostAddress}}/api/utilisateur/1
 
 ###
 
