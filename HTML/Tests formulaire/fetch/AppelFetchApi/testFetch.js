@@ -4,7 +4,7 @@
 
 const leBoutonGet = document.getElementById('boutonTestGet'); // Sélectionne le bouton dans le DOM
 const leBoutonPost = document.getElementById('boutonTestPost'); // Sélectionne le bouton dans le DOM
-const url = 'https://localhost:44372/api/utilisateur'; // URL de l'API
+const url = 'https://localhost:44338/api/interlocuteur'; // URL de l'API
 
 console.log("Le Js marche !!! ;-))")
 console.log("Chargement en cours"); // Message initial de chargement
@@ -20,7 +20,7 @@ leBoutonGet.addEventListener('click', () => {// Ajoute un gestionnaire d'événeme
         .then(function (data) {
             let resultats = data; // Assigne les données JSON à la variable 'resultats'
             resultats.forEach(function (resultat) { // Utilise forEach pour itérer sur chaque élément du tableau
-                console.log(resultat.id_Utilisateur + " " + resultat.uNom + " " + resultat.uPrenom); // Affiche les propriétés de chaque élément
+                console.log(resultat.id_inter + " " + resultat.nomInter + " " + resultat.prenomInter); // Affiche les propriétés de chaque élément
             });
         })
         .catch(function (error) {

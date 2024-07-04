@@ -363,3 +363,4 @@ MigrationBackup/
 FodyWeavers.xsd
 affichageBddLeBox/Environment/Environment.cs
 application_Musicale/Environment/Environment.cs
+ProjetCREADOCS/Api/ApiCreadocs/appsettings.json

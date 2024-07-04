@@ -1,0 +1,241 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>Création de contrat d'assurance</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
+    <link rel="stylesheet" href="style/styleCreadocs.css">
+</head>
+<body>
+    <div id="conteneurAssurance">
+        <header id="headerAssurance">
+            <img id="logo" src="images/LOGO.svg" />
+            <div id="boutonUtilisateur" name="BoutonUtilisateur" class="boutonUtilisateur">
+                <h3 class="texteOngletMenu couleurBlanc">Nom<br />Utilisateur</h3>
+            </div>
+        </header>
+        <main id="mainAssurance" class="mainInscription">
+            <form name="Assurance" method="get" action="https://www.afpa.fr/">
+                <!--Assurance Page1-->
+                <div id="conteneurAssurance1" class="conteneurCentral">
+                    <h2 class="couleurGrisFort">Création de contrat<br />KW/Assurances 1 / 3<span class="couleurBleuFort">.</span></h2>
+                    <h4 class="niveauH4 couleurBleuMedium">Veuillez renseigner les informations client :</h4>
+                    <div class="lignesFormulaires">
+                        <label for="champNom" class="titresChampsFormulaires couleurGrisMedium">Nom :</label>
+                        <input id="champNom" type="text" name="champNom" value="" class="champsFormulaires" maxlength="25" />
+                    </div>
+                    <div class="lignesFormulaires">
+                        <label for="champPrenom" class="titresChampsFormulaires couleurGrisMedium">Prénom :</label>
+                        <input id="champPrenom" type="text" name="champPrenom" value="" class="champsFormulaires" maxlength="25" />
+                    </div>
+                    <div class="lignesFormulaires">
+                        <label for="champDateNaiss" class="titresChampsFormulaires couleurGrisMedium">Date de naissance :</label>
+                        <input id="champDateNaiss" type="date" name="champDateNaiss" value="" class="champsFormulaires" />
+                    </div>
+                    <div class="lignesFormulaires">
+                        <label for="champDepNaiss" class="titresChampsFormulaires couleurGrisMedium">Département de naissance :</label>
+                        <input id="champDepNaiss" type="text" name="champDepNaiss" value="" class="champsFormulaires" maxlength="10" />
+                    </div>
+                    <div class="lignesFormulaires">
+                        <label for="champAdr1" class="titresChampsFormulaires couleurGrisMedium">Adresse (ligne 1) :</label>
+                        <input id="champAdr1" type="text" name="champAdr1" value="" class="champsFormulaires" maxlength="50" />
+                    </div>
+                    <div class="lignesFormulaires">
+                        <label for="champAdr2" class="titresChampsFormulaires couleurGrisMedium">Adresse (ligne 2) :</label>
+                        <input id="champAdr2" type="text" name="champAdr2" value="" class="champsFormulaires" maxlength="50" />
+                    </div>
+                    <div class="lignesFormulaires">
+                        <label for="champAdr3" class="titresChampsFormulaires couleurGrisMedium">Adresse (ligne 3) :</label>
+                        <input id="champAdr3" type="text" name="champAdr3" value="" class="champsFormulaires" maxlength="50" />
+                    </div>
+
+                    <div class="lignesFormulaires">
+                        <label for="champPays" class="titresChampsFormulaires couleurGrisMedium">Pays :</label>
+                        <select id="champPays" name="champPays" class="champsFormulaires">
+                            <option value="">Sélectionnez un pays</option>
+                            <!-- Les options seront ajoutées dynamiquement ici -->
+                        </select>
+                    </div>
+                    <div class="lignesFormulaires">
+                        <label for="champVilles" class="titresChampsFormulaires couleurGrisMedium">Villes :</label>
+                        <select id="champVilles" name="champVilles" class="champsFormulaires">
+                            <option value="">Sélectionnez une ville</option>
+                            <!-- Les options seront ajoutées dynamiquement ici -->
+                        </select>
+                    </div>
+                    <div class="lignesFormulaires">
+                        <label for="champCodPostal" class="titresChampsFormulaires couleurGrisMedium">Code Postal :</label>
+                        <select id="champCodPostal" name="champCodPostal" class="champsFormulaires">
+                            <option value="">Sélectionnez un code postal</option>
+                            <!-- Les options seront ajoutées dynamiquement ici -->
+                        </select>
+                    </div>
+                    <input id="boutonSuivantAssur1" type="button" onclick="" value="suivant" class="boutonSuivant boutonSuivantAssur" />
+                </div>
+                <!--Assurance Page2-->
+                <div id="conteneurAssurance2" class="conteneurCentral">
+                    <h2 class="niveauH2 couleurGrisFort"><span id="flecheRetour1" class="couleurBleuFort textePlus cliquable">< </span>Création de contrat<br />KW/Assurances 2 / 3<span class="couleurBleuFort">.</span></h2>
+                    <h4 class="niveauH4 couleurBleuMedium">Veuillez renseigner le type<br />de contrat d'assurance :</h4>
+                    <div class="lignesFormulaires">
+                        <select id="champTypAssu" name="champTypAssu" class="champsFormulaires">
+                            <option value="">Sélectionnez un type de contrat d'assurance</option>
+                            <!-- Les options seront ajoutées dynamiquement ici -->
+                        </select>
+                    </div>
+                    <input id="boutonSuivantAssur2" type="button" value="suivant" class="boutonSuivant boutonSuivantAssur" />
+                </div>
+                <!--Assurance Page3-->
+                <div id="conteneurAssurance3" class="conteneurCentral">
+                    <h2 class="niveauH2 couleurGrisFort"><span id="flecheRetour2" class="couleurBleuFort textePlus cliquable">< </span>Création de contrat<br />KW/Assurances 3 / 3<span class="couleurBleuFort">.</span></h2>
+                    <h4 class="niveauH4 couleurBleuFort">Récapitulatif des informations.</h4>
+                    <!--L'INTERLOCUTEUR-->
+                    <h4 class="niveauH4 couleurBleuMedium">L'interlocuteur :</h4>
+                    <div class="lignesFormulaires">
+                        <h5 class="titresChampsFormulaires couleurGrisMedium">Nom :</h5>
+                        <h5 id="nomInter" class="couleurBleuFort">--Valeur pour la ligne--</h5>
+                    </div>
+                    <div class="lignesFormulaires">
+                        <h5 class="titresChampsFormulaires couleurGrisMedium">Prenom :</h5>
+                        <h5 id="prenomInter" class="couleurBleuFort">--Valeur pour la ligne--</h5>
+                    </div>
+                    <div class="lignesFormulaires">
+                        <h5 class="titresChampsFormulaires couleurGrisMedium">Téléphone :</h5>
+                        <h5 id="telInter" class="couleurBleuFort">--Valeur pour la ligne--</h5>
+                    </div>
+                    <div class="lignesFormulaires">
+                        <h5 class="titresChampsFormulaires couleurGrisMedium">Email :</h5>
+                        <h5 id="mailInter" class="couleurBleuFort">--Valeur pour la ligne--</h5>
+                    </div>
+                    <!--LE CLIENT-->
+                    <h4 class="niveauH4 couleurBleuMedium">Le client :</h4>
+                    <div class="lignesFormulaires">
+                        <h5 class="titresChampsFormulaires couleurGrisMedium">Nom :</h5>
+                        <h5 id="nomCli" class="couleurBleuFort">--Valeur pour la ligne--</h5>
+                    </div>
+                    <div class="lignesFormulaires">
+                        <h5 class="titresChampsFormulaires couleurGrisMedium">Prénom :</h5>
+                        <h5 id="prenomCli" class="couleurBleuFort">--Valeur pour la ligne--</h5>
+                    </div>
+                    <div class="lignesFormulaires">
+                        <h5 class="titresChampsFormulaires couleurGrisMedium">Adresse (ligne 1) :</h5>
+                        <h5 id="add1Cli" class="couleurBleuFort">--Valeur pour la ligne--</h5>
+                    </div>
+                    <div class="lignesFormulaires">
+                        <h5 class="titresChampsFormulaires couleurGrisMedium">Adresse (ligne 2) :</h5>
+                        <h5 id="add2Cli" class="couleurBleuFort">--Valeur pour la ligne--</h5>
+                    </div>
+                    <div class="lignesFormulaires">
+                        <h5 class="titresChampsFormulaires couleurGrisMedium">Adresse (ligne 3) :</h5>
+                        <h5 id="add3Cli" class="couleurBleuFort">--Valeur pour la ligne--</h5>
+                    </div>
+                    <div class="lignesFormulaires">
+                        <h5 class="titresChampsFormulaires couleurGrisMedium">Code Postal :</h5>
+                        <h5 id="codePostVille" class="couleurBleuFort">--Valeur pour la ligne--</h5>
+                    </div>
+                    <div class="lignesFormulaires">
+                        <h5 class="titresChampsFormulaires couleurGrisMedium">Ville :</h5>
+                        <h5 id="nomVille" class="couleurBleuFort">--Valeur pour la ligne--</h5>
+                    </div>
+                    <div class="lignesFormulaires">
+                        <h5 class="titresChampsFormulaires couleurGrisMedium">Pays :</h5>
+                        <h5 id="nomPays" class="couleurBleuFort">--Valeur pour la ligne--</h5>
+                    </div>
+                    <!--LE CONTRAT-->
+                    <h4 class="niveauH4 couleurBleuMedium">Le contrat :</h4>
+                    <div class="lignesFormulaires">
+                        <h5 class="titresChampsFormulaires couleurGrisMedium">Numéro de contrat :</h5>
+                        <h5 id="id_Contr" class="couleurBleuFort">--Valeur pour la ligne--</h5>
+                    </div>
+                    <div class="lignesFormulaires">
+                        <h5 class="titresChampsFormulaires couleurGrisMedium">Type de contrat :</h5>
+                        <h5 id="id_typContr" class="couleurBleuFort">1</h5>
+                    </div>
+                    <div class="lignesFormulaires">
+                        <h5 class="titresChampsFormulaires couleurGrisMedium">Date de contrat :</h5>
+                        <h5 id="dateContr" class="couleurBleuFort">--Valeur pour la ligne--</h5>
+                    </div>
+                    <div class="lignesFormulaires">
+                        <h5 class="titresChampsFormulaires couleurGrisMedium">Date de début de contrat :</h5>
+                        <h5 id="dateDebutContr" class="couleurBleuFort">--Valeur pour la ligne--</h5>
+                    </div>
+                    <div class="lignesFormulaires">
+                        <h5 class="titresChampsFormulaires couleurGrisMedium">Échéance 1 :</h5>
+                        <h5 id="eche1" class="couleurBleuFort">--Date--</h5>
+                        <h5 class="titresChampsFormulaires couleurGrisMedium">prix :</h5>
+                        <h5 id="valeurAssu" class="couleurBleuFort">--Valeur--</h5>
+                    </div>
+                    <div class="lignesFormulaires">
+                        <h5 class="titresChampsFormulaires couleurGrisMedium">Échéance 2 :</h5>
+                        <h5 id="eche2" class="couleurBleuFort">--Date--</h5>
+                        <h5 class="titresChampsFormulaires couleurGrisMedium">prix :</h5>
+                        <h5 id="valeurAssu" class="couleurBleuFort">--Valeur--</h5>
+                    </div>
+                    <div class="lignesFormulaires">
+                        <h5 class="titresChampsFormulaires couleurGrisMedium">Échéance 3 :</h5>
+                        <h5 id="eche3" class="couleurBleuFort">--Date--</h5>
+                        <h5 class="titresChampsFormulaires couleurGrisMedium">prix :</h5>
+                        <h5 id="valeurAssu" class="couleurBleuFort">--Valeur--</h5>
+                    </div>
+                    <div class="lignesFormulaires">
+                        <h5 class="titresChampsFormulaires couleurGrisMedium">Échéance 4 :</h5>
+                        <h5 id="eche4" class="couleurBleuFort">--Date--</h5>
+                        <h5 class="titresChampsFormulaires couleurGrisMedium">prix :</h5>
+                        <h5 id="valeurAssu" class="couleurBleuFort">--Valeur--</h5>
+                    </div>
+                    <div class="lignesFormulaires">
+                        <h5 class="titresChampsFormulaires couleurGrisMedium">Échéance 5 :</h5>
+                        <h5 id="eche5" class="couleurBleuFort">--Date--</h5>
+                        <h5 class="titresChampsFormulaires couleurGrisMedium">prix :</h5>
+                        <h5 id="valeurAssu" class="couleurBleuFort">--Valeur--</h5>
+                    </div>
+                    <div class="lignesFormulaires">
+                        <h5 class="titresChampsFormulaires couleurGrisMedium">Échéance 6 :</h5>
+                        <h5 id="eche6" class="couleurBleuFort">--Date--</h5>
+                        <h5 class="titresChampsFormulaires couleurGrisMedium">prix :</h5>
+                        <h5 id="valeurAssu" class="couleurBleuFort">--Valeur--</h5>
+                    </div>
+                    <div class="lignesFormulaires">
+                        <h5 class="titresChampsFormulaires couleurGrisMedium">Échéance 7 :</h5>
+                        <h5 id="eche7" class="couleurBleuFort">--Date--</h5>
+                        <h5 class="titresChampsFormulaires couleurGrisMedium">prix :</h5>
+                        <h5 id="valeurAssu" class="couleurBleuFort">--Valeur--</h5>
+                    </div>
+                    <div class="lignesFormulaires">
+                        <h5 class="titresChampsFormulaires couleurGrisMedium">Échéance 8 :</h5>
+                        <h5 id="eche8" class="couleurBleuFort">--Date--</h5>
+                        <h5 class="titresChampsFormulaires couleurGrisMedium">prix :</h5>
+                        <h5 id="valeurAssu" class="couleurBleuFort">--Valeur--</h5>
+                    </div>
+                    <div class="lignesFormulaires">
+                        <h5 class="titresChampsFormulaires couleurGrisMedium">Échéance 9 :</h5>
+                        <h5 id="eche9" class="couleurBleuFort">--Date--</h5>
+                        <h5 class="titresChampsFormulaires couleurGrisMedium">prix :</h5>
+                        <h5 id="valeurAssu" class="couleurBleuFort">--Valeur--</h5>
+                    </div>
+                    <div class="lignesFormulaires">
+                        <h5 class="titresChampsFormulaires couleurGrisMedium">Échéance 10 :</h5>
+                        <h5 id="eche10" class="couleurBleuFort">--Date--</h5>
+                        <h5 class="titresChampsFormulaires couleurGrisMedium">prix :</h5>
+                        <h5 id="valeurAssu" class="couleurBleuFort">--Valeur--</h5>
+                    </div>
+                    <div class="lignesFormulaires">
+                        <h5 class="titresChampsFormulaires couleurGrisMedium">Échéance 11 :</h5>
+                        <h5 id="eche11" class="couleurBleuFort">--Date--</h5>
+                        <h5 class="titresChampsFormulaires couleurGrisMedium">prix :</h5>
+                        <h5 id="valeurAssu" class="couleurBleuFort">--Valeur--</h5>
+                    </div>
+                    <div class="lignesFormulaires">
+                        <h5 class="titresChampsFormulaires couleurGrisMedium">Échéance 12 :</h5>
+                        <h5 id="eche12" class="couleurBleuFort">--Date--</h5>
+                        <h5 class="titresChampsFormulaires couleurGrisMedium">prix :</h5>
+                        <h5 id="valeurAssu" class="couleurBleuFort">--Valeur--</h5>
+                    </div>
+                    <input id="boutonSubmit" type="submit" onclick="" value="Envoyer" class="boutonSuivant boutonSuivantAssur margeFinDePage" />
+                </div>
+            </form>
+        </main>
+    </div>
+    <script src="script/assurance.js"></script>
+</body>
+</html>

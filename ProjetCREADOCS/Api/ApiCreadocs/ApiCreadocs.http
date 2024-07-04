@@ -1,0 +1,48 @@
+﻿@ApiCreadocs_HostAddress = https://localhost:44338
+
+GET {{ApiCreadocs_HostAddress}}/api/utilisateur
+
+###
+
+GET {{ApiCreadocs_HostAddress}}/api/interlocuteur
+
+###
+
+POST {{ApiCreadocs_HostAddress}}/api/interlocuteur
+Content-Type: application/json
+
+{
+    "id_titre": 1,
+    "id_agence": 1,
+    "loginInter": "fransouLalane",
+    "mdpInter": "password123456",
+    "loginKwInter": "loulouLalane",
+    "mdpKwInter": "Kw_Fransou",
+    "nomInter": "Lalane",
+    "prenomInter": "Francis",
+    "telInter": "0123456789",
+    "mailInter": "f.lalane@unemail.com"
+}
+
+###
+
+GET {{ApiCreadocs_HostAddress}}/api/interlocuteur/7
+
+###
+
+DELETE {{ApiCreadocs_HostAddress}}/api/interlocuteur/7
+
+###
+
+POST {{ApiCreadocs_HostAddress}}/api/interlocuteur
+Content-Type: application/json
+
+{
+    "mailInter": "m.soleri@unemail.com",
+    "mdpInter": "unpassword",
+    "nomInter": "SOLERI",
+    "prenomInter": "Mathieu",
+    "loginInter": "mSoleri"   
+}
+
+###
