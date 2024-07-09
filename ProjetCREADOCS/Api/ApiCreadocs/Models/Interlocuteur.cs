@@ -17,5 +17,13 @@ namespace ApiCreadocs.Models
         public string? telInter { get; set; }
         public string mailInter { get; set; }
 
+        //test d'ajout de champs pour le renvoi de toutes les informations de l'interlocuteur. *
+
+        public string? nomAgence { get;set;}
+        public string? nomDirAgence { get;set; }
+        public string? prenomDirAgence { get;set; }
+        public string? nomTitre { get;set; }
+        
+
     }
 }

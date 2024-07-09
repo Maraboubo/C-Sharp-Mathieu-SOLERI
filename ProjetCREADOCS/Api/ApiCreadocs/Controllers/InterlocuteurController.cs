@@ -30,11 +30,23 @@ namespace ApiCreadocs.Controllers
             return Ok(interlocuteur);
         }
 
+        //[HttpPost]
+        //public ActionResult Post([FromBody] Interlocuteur interlocuteur)
+        //{
+        //    _interfaceInterlocuteurService.CreateInterlocuteur(interlocuteur);
+        //    return CreatedAtAction(nameof(Get), new { id = interlocuteur.id_inter }, interlocuteur);
+        //}
+
+        //tentative de modification de la méthode post pour qu'elle retourne l'interlocuteur nouvellement créé.
         [HttpPost]
-        public ActionResult Post([FromBody] Interlocuteur interlocuteur)
+        public ActionResult<Interlocuteur> Post([FromBody] Interlocuteur interlocuteur)
         {
-            _interfaceInterlocuteurService.CreateInterlocuteur(interlocuteur);
-            return CreatedAtAction(nameof(Get), new { id = interlocuteur.id_inter }, interlocuteur);
+            var createdInterlocuteur = _interfaceInterlocuteurService.CreateInterlocuteur(interlocuteur);
+            if (createdInterlocuteur == null)
+            {
+                return BadRequest("Error creating the Interlocuteur.");
+            }
+            return CreatedAtAction(nameof(Get), new { id = createdInterlocuteur.id_inter }, createdInterlocuteur);
         }
 
         [HttpPut("{id}")]
@@ -54,5 +66,20 @@ namespace ApiCreadocs.Controllers
             _interfaceInterlocuteurService.DeleteInterlocuteur(id);
             return NoContent();
         }
+
+        //Implémentation de connexion
+        [HttpPost("login")]
+        public ActionResult Login([FromBody] UserLoginModel userLoginModel)
+        {
+            var user = _interfaceInterlocuteurService.GetUserByEmailAndPassword(userLoginModel.Email, userLoginModel.Password);
+
+            if (user == null)
+            {
+                return Unauthorized();
+            }
+
+            return Ok(user);
+        }
+
     }
 }

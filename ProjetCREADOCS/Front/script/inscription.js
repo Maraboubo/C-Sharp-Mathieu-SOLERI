@@ -2,7 +2,9 @@
 Déclaration des variables.
 */
 //Variables de stockage des Url de l'API Créadocs.
-const url = 'https://localhost:44338/api/interlocuteur'; // URL de l'API
+const url = 'https://localhost:44338/api/interlocuteur'; // URL pour les utilisateurs
+const urlagence = 'https://localhost:44338/api/agence'; // URL pour les agences
+const urltitre = 'https://localhost:44338/api/titre'; // URL pour les fonctions
 
 //Variables de sélection des éléments du formulaire.
 pageUn = document.getElementById("conteneurInscription1");
@@ -152,11 +154,85 @@ function checkFormulaire() {
     }
     else {
         envoiJsonInterFormulaire();
+        /*recuperationUser();*/
     }
 }
 
-function envoiJsonInterFormulaire()
-{
+// Fonction pour remplir la liste déroulante des agences
+async function populateAgenceDropdown() {
+    try {
+        const response = await fetch(urlagence);
+        const agences = await response.json();
+
+        const agenceDropdown = document.getElementById('id_agence');
+
+        agences.forEach(agence => {
+            const option = document.createElement('option');
+            option.value = agence.id_agence; // Utilisez l'id de l'agence comme valeur
+            option.text = agence.nomAgence; // Utilisez le nom de l'agence comme texte
+            agenceDropdown.appendChild(option);
+        });
+
+    } catch (error) {
+        console.error('Erreur lors du chargement des agences:', error);
+    }
+}
+
+// Fonction pour remplir la liste déroulante des fonctions des employés
+async function populateTitreDropdown() {
+    try {
+        const response = await fetch(urltitre);
+        const titres = await response.json();
+
+        const titreDropdown = document.getElementById('id_titre');
+
+        titres.forEach(titre => {
+            const option = document.createElement('option');
+            option.value = titre.id_titre; // Utilisez l'id de la fonction des employés comme valeur
+            option.text = titre.nomTitre; // Utilisez le nom de la fonction des employés comme texte
+            titreDropdown.appendChild(option);
+        });
+
+    } catch (error) {
+        console.error('Erreur lors du chargement des titres:', error);
+    }
+}
+
+//function envoiJsonInterFormulaire()
+//{
+//    var form = document.getElementById('inscription'); // Transfère les données du formulaire dans la variable 'form'.
+//    var donneesFormulaire = new FormData(form); // Récupère les données du formulaire
+//    // Convertit les données en objet JSON
+//    var interlocuteur = {};
+
+//    donneesFormulaire.forEach((value, key) => {
+//        interlocuteur[key] = value;
+//    });
+
+//    fetch(url, {
+//        method: 'POST',
+//        headers: {
+//            'Content-Type': 'application/json'
+//        },
+//        body: JSON.stringify(interlocuteur)
+//    })
+//        .then((resp) => {
+//            if (!resp.ok) {
+//                throw new Error('Erreur de réseau :' + resp.statusText);
+//            }
+//            return resp.json();
+//        })
+//        .then(function (data) {
+//            console.log("Nouvel Interlocuteur:", data);
+//            localStorage.setItem('user', JSON.stringify(data)); // Stocker les informations de l'utilisateur
+//            window.location.href = 'AccueilCreadocs.html'; // Rediriger vers la page d'accueil
+//        })
+//        .catch(function (error) {
+//            console.error('Il y a eu un problème avec votre opération fetch :', error);
+//        });
+//}
+
+function envoiJsonInterFormulaire() {
     var form = document.getElementById('inscription'); // Transfère les données du formulaire dans la variable 'form'.
     var donneesFormulaire = new FormData(form); // Récupère les données du formulaire
     // Convertit les données en objet JSON
@@ -181,8 +257,19 @@ function envoiJsonInterFormulaire()
         })
         .then(function (data) {
             console.log("Nouvel Interlocuteur:", data);
+            localStorage.setItem('user', JSON.stringify(data)); // Stocker les informations de l'utilisateur
+            window.location.href = 'AccueilCreadocs.html'; // Rediriger vers la page d'accueil
         })
         .catch(function (error) {
             console.error('Il y a eu un problème avec votre opération fetch :', error);
         });
 }
+
+
+
+//APPEL DES FONCTIONS POUR LE REMPLISSAGE DES CHOIX DEROULANTS.
+
+// Appeler la fonction pour remplir la liste déroulante au chargement de la page
+document.addEventListener('DOMContentLoaded', populateAgenceDropdown);
+// Appeler la fonction pour remplir la liste déroulante au chargement de la page
+document.addEventListener('DOMContentLoaded', populateTitreDropdown);

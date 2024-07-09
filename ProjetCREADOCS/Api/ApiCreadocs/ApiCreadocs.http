@@ -1,9 +1,5 @@
 ﻿@ApiCreadocs_HostAddress = https://localhost:44338
 
-GET {{ApiCreadocs_HostAddress}}/api/utilisateur
-
-###
-
 GET {{ApiCreadocs_HostAddress}}/api/interlocuteur
 
 ###
@@ -13,20 +9,20 @@ Content-Type: application/json
 
 {
     "id_titre": 1,
-    "id_agence": 1,
-    "loginInter": "fransouLalane",
-    "mdpInter": "password123456",
-    "loginKwInter": "loulouLalane",
-    "mdpKwInter": "Kw_Fransou",
-    "nomInter": "Lalane",
-    "prenomInter": "Francis",
+    "id_agence": 3,
+    "loginInter": "unnouveaulogin",
+    "mdpInter": "lepasswordneuf",
+    "loginKwInter": "l",
+    "mdpKwInter": "l",
+    "nomInter": "util4",
+    "prenomInter": "deux",
     "telInter": "0123456789",
-    "mailInter": "f.lalane@unemail.com"
+    "mailInter": "util@neuf.com"
 }
 
 ###
 
-GET {{ApiCreadocs_HostAddress}}/api/interlocuteur/7
+GET {{ApiCreadocs_HostAddress}}/api/interlocuteur/2
 
 ###
 
@@ -43,6 +39,59 @@ Content-Type: application/json
     "nomInter": "SOLERI",
     "prenomInter": "Mathieu",
     "loginInter": "mSoleri"   
+}
+
+###
+
+GET {{ApiCreadocs_HostAddress}}/api/agence
+
+###
+
+//Test de Login avec login et MDP valide
+POST {{ApiCreadocs_HostAddress}}/api/interlocuteur/login
+Content-Type: application/json
+
+{
+    "Email": "p.martin@agencecentrale.com",
+    "Password": "password123" 
+}
+
+###
+
+POST {{ApiCreadocs_HostAddress}}/api/interlocuteur/login
+Content-Type: application/json
+
+{
+    "Email": "s.durand@agencenord.com",
+    "Password": "password123" 
+}
+
+###
+//Test de Login avec login et MDP erroné
+POST {{ApiCreadocs_HostAddress}}/api/interlocuteur/login
+Content-Type: application/json
+
+{
+    "Email": "s.drand@agrd.com",
+    "Password": "pass23" 
+}
+
+###
+
+POST {{ApiCreadocs_HostAddress}}/api/interlocuteur
+Content-Type: application/json
+
+{
+    "id_titre": 1,
+    "id_agence": 1,
+    "loginInter": "UnePersonne",
+    "mdpInter": "leMotDePasse",
+    "loginKwInter": "l",
+    "mdpKwInter": "K",
+    "nomInter": "Mister",
+    "prenomInter": "Mathieu",
+    "telInter": "0123456789",
+    "mailInter": "misterMat@uneadresse.com"
 }
 
 ###

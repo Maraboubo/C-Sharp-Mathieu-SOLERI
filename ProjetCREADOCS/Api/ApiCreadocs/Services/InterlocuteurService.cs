@@ -19,9 +19,13 @@ namespace ApiCreadocs.Services
             return _interfaceInterlocuteurRepository.GetById(id);
         }
 
-        public void CreateInterlocuteur(Interlocuteur interlocuteur)
+        //public void CreateInterlocuteur(Interlocuteur interlocuteur)
+        //{
+        //    _interfaceInterlocuteurRepository.Add(interlocuteur);
+        //}
+        public Interlocuteur CreateInterlocuteur(Interlocuteur interlocuteur)
         {
-            _interfaceInterlocuteurRepository.Add(interlocuteur);
+            return _interfaceInterlocuteurRepository.Add(interlocuteur);
         }
 
         public void UpdateInterlocuteur(Interlocuteur interlocuteur)
@@ -33,5 +37,12 @@ namespace ApiCreadocs.Services
         {
             _interfaceInterlocuteurRepository.Delete(id);
         }
+
+        //Implémentation de fonctionnalité connexion
+        public Interlocuteur GetUserByEmailAndPassword(string email, string password)
+        {
+            return _interfaceInterlocuteurRepository.GetPass(email, password);
+        }
+
     }
 }

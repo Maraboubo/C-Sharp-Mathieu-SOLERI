@@ -22,15 +22,47 @@ namespace ApiCreadocs.Repository
             string requete = "SELECT * FROM INTERLOCUTEUR WHERE id_inter = @id_inter";
             return connection.QueryFirstOrDefault<Interlocuteur>(requete, new { id_inter = id });
         }
-        public void Add(Interlocuteur interlocuteur)
+        //public void Add(Interlocuteur interlocuteur)
+        //{
+        //    using var connection = _interfaceConnection.CreateConnexion();
+        //    VerificationChampsExistants(interlocuteur);
+        //    string requete = "INSERT INTO INTERLOCUTEUR(id_titre, id_agence, loginInter, mdpInter, loginKwInter, mdpKwInter, nomInter, prenomInter, telInter, mailInter)" +
+        //        "VALUES (@id_titre, @id_agence, @loginInter, @mdpInter, @loginKwInter, @mdpKwInter, @nomInter, @prenomInter, @telInter, @mailInter)";
+        //    connection.Execute
+        //        (requete, interlocuteur);
+        //}
+
+        //Incrémentation de la fonctionalité s'inscription afin qu'elle retourne un utilisateur.
+        //public Interlocuteur Add(Interlocuteur interlocuteur)
+        //{
+        //    using var connection = _interfaceConnection.CreateConnexion();
+        //    VerificationChampsExistants(interlocuteur);
+        //    string requete = "INSERT INTO INTERLOCUTEUR(id_titre, id_agence, loginInter, mdpInter, loginKwInter, mdpKwInter, nomInter, prenomInter, telInter, mailInter) " +
+        //        "VALUES (@id_titre, @id_agence, @loginInter, @mdpInter, @loginKwInter, @mdpKwInter, @nomInter, @prenomInter, @telInter, @mailInter) " +
+        //        "SELECT * FROM INTERLOCUTEUR " +
+        //        "WHERE mdpInter = @mdpInter AND mailInter = mailInter ";
+        //    return connection.QueryFirstOrDefault<Interlocuteur>(requete, interlocuteur);
+        //}
+
+        //Incrémentation de la fonctionalité s'inscription afin qu'elle retourne toutes les informations d'INTERLOCUTEUR ainsi que TITRE et AGENCE.
+        public Interlocuteur Add(Interlocuteur interlocuteur)
         {
             using var connection = _interfaceConnection.CreateConnexion();
             VerificationChampsExistants(interlocuteur);
-            string requete = "INSERT INTO INTERLOCUTEUR(id_titre, id_agence, loginInter, mdpInter, loginKwInter, mdpKwInter, nomInter, prenomInter, telInter, mailInter)" +
-                "VALUES (@id_titre, @id_agence, @loginInter, @mdpInter, @loginKwInter, @mdpKwInter, @nomInter, @prenomInter, @telInter, @mailInter)";
-            connection.Execute
-                (requete, interlocuteur);
+            string requete = @"
+        INSERT INTO INTERLOCUTEUR(id_titre, id_agence, loginInter, mdpInter, loginKwInter, mdpKwInter, nomInter, prenomInter, telInter, mailInter) 
+        VALUES (@id_titre, @id_agence, @loginInter, @mdpInter, @loginKwInter, @mdpKwInter, @nomInter, @prenomInter, @telInter, @mailInter); 
+        
+        SELECT i.id_Inter, i.prenomInter, i.nomInter, i.telInter, i.mailInter, 
+               a.nomAgence, a.nomDirAgence, a.prenomDirAgence, 
+               t.nomTitre 
+        FROM INTERLOCUTEUR i
+        INNER JOIN AGENCE a ON i.id_agence = a.id_agence
+        INNER JOIN TITRE t ON i.id_titre = t.id_titre
+        WHERE i.mdpInter = @mdpInter AND i.mailInter = @mailInter;";
+            return connection.QueryFirstOrDefault<Interlocuteur>(requete, interlocuteur);
         }
+
         public void Update(Interlocuteur interlocuteur)
         {
             VerificationDeChamps(interlocuteur);
@@ -46,6 +78,25 @@ namespace ApiCreadocs.Repository
             using var connection = _interfaceConnection.CreateConnexion();
             string requete = "DELETE FROM INTERLOCUTEUR WHERE id_inter = @id_inter";
             connection.Execute(requete, new { id_inter = id });
+        }
+
+        //Implentation connexion
+        //public Interlocuteur GetPass(string email, string password)
+        //{
+        //    using var connection = _interfaceConnection.CreateConnexion();
+        //    var query = "SELECT id_Inter, prenomInter, nomInter, telInter, id_titre, id_agence, mailInter FROM INTERLOCUTEUR WHERE mailInter = @mailInter AND mdpInter = @mdpInter";
+        //    return connection.QueryFirstOrDefault<Interlocuteur>(query, new { mailInter = email, mdpInter = password });
+        //}
+
+        //Test de modification de la fonctionnalité de connexion
+
+        public Interlocuteur GetPass(string email, string password)
+        {
+            using var connection = _interfaceConnection.CreateConnexion();
+            var query = "SELECT id_Inter, prenomInter, nomInter, telInter, INTERLOCUTEUR.id_titre, INTERLOCUTEUR.id_agence, mailInter, nomAgence, nomDirAgence, prenomDirAgence, nomTitre FROM INTERLOCUTEUR" +
+                " INNER JOIN AGENCE ON INTERLOCUTEUR.id_agence = AGENCE.id_agence " +
+                "INNER JOIN TITRE ON INTERLOCUTEUR.id_titre = TITRE.id_titre WHERE mailInter = @mailInter AND mdpInter = @mdpInter";
+            return connection.QueryFirstOrDefault<Interlocuteur>(query, new { mailInter = email, mdpInter = password });
         }
 
         public void VerificationDeChamps(Interlocuteur unInterlocuteur)

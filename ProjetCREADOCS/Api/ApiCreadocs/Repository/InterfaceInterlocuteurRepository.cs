@@ -6,8 +6,11 @@ namespace ApiCreadocs.Repository
     {
         IEnumerable<Interlocuteur> GetAll();
         Interlocuteur GetById(int id);
-        void Add(Interlocuteur interlocuteur);
+        //void Add(Interlocuteur interlocuteur);
+        Interlocuteur Add(Interlocuteur interlocuteur);
         void Update(Interlocuteur interlocuteur);
         void Delete(int id);
+        //ImplentationConnexion
+        Interlocuteur GetPass(string email, string password);
     }
 }

@@ -14,22 +14,25 @@
         </header>
         <main id="mainInscription" class="mainConnexion">
             <div id="conteneurCentral" class="conteneurCentralConnexion">
-                <form id="formulaireUn">
+                <form id="connexion" name="connexion" method="post">
                     <h2 class="niveauH2 centreTexte paddingTop couleurGrisFort">Connexion<span class="couleurRouge">.</span></h2>
                     <h4 class="niveauH4 centreTexte couleurGrisFort">Adresse mail ou identifiant :</h4>
-                    <input id="champIdentifiant" type="text" name="identifiant" class="champTexteConnection" />
+                    <input id="Email" type="text" name="Email" class="champTexteConnection" />
                     <h4 class="niveauH4 centreTexte couleurGrisFort">Mot de passe :</h4>
-                    <input id="champMotDePasse" type="text" name="motDePasse" class="champTexteConnection" />
+                    <input id="Password" type="text" name="Password" class="champTexteConnection" />
 
                     <input id="boutonSuivant " type="submit" value="Se connecter" class="boutonSuivantConnection" />
+
                     <fieldset class="fieldset">
                         <legend class="legend couleurGrisFort">Ou alors !</legend>
                         <p class="paragraphe couleurGrisFort">Vous n'avez pas de compte?</p>
                         <a class="paragrapheWhite" href="InscriptionCreadocs.html">S'inscrire'</a>
                     </fieldset>
+                    <!--<h3 id="texteOngletUtilConnect"></h3>-->
                 </form>
             </div>
         </main>
     </div>
+    <script src="script/connexion.js"></script>
 </body>
 </html>

@@ -15,11 +15,15 @@ namespace ApiCreadocs
             // Configuration des services pour les couches
             builder.Services.AddSingleton<InterfaceConnexion>(sp =>
                 new GenerateurConnexion(builder.Configuration.GetConnectionString("DefaultConnection")));
-            //builder.Services.AddScoped<InterfaceUtilisateurRepository, UtilisateurRepository>();
-            //builder.Services.AddScoped<InterfaceUtilisateurService, UtilisateurService>();
 
             builder.Services.AddScoped<InterfaceInterlocuteurRepository, InterlocuteurRepository>();
             builder.Services.AddScoped<InterfaceInterlocuteurService, InterlocuteurService>();
+
+            builder.Services.AddScoped<InterfaceAgenceRepository, AgenceRepository>();
+            builder.Services.AddScoped<InterfaceAgenceService, AgenceService>();
+
+            builder.Services.AddScoped<InterfaceTitreRepository, TitreRepository>();
+            builder.Services.AddScoped<InterfaceTitreService, TitreService>();
 
             builder.Services.AddCors(options =>
             {
