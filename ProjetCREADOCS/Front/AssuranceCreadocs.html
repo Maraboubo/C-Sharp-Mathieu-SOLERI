@@ -12,7 +12,7 @@
         <header id="headerAssurance">
             <img id="logo" src="images/LOGO.svg" />
             <div id="boutonUtilisateur" name="BoutonUtilisateur" class="boutonUtilisateur">
-                <h3 class="texteOngletMenu couleurBlanc">Nom<br />Utilisateur</h3>
+                <h3 id="utilisateur" class="texteOngletMenu couleurBlanc"></h3>
             </div>
         </header>
         <main id="mainAssurance" class="mainInscription">
@@ -22,55 +22,75 @@
                     <h2 class="couleurGrisFort">Création de contrat<br />KW/Assurances 1 / 3<span class="couleurBleuFort">.</span></h2>
                     <h4 class="niveauH4 couleurBleuMedium">Veuillez renseigner les informations client :</h4>
                     <div class="lignesFormulaires">
-                        <label for="champNom" class="titresChampsFormulaires couleurGrisMedium">Nom :</label>
-                        <input id="champNom" type="text" name="champNom" value="" class="champsFormulaires" maxlength="25" />
+                        <label for="idCli" class="titresChampsFormulaires couleurGrisMedium">Numéro de piece d'identité :</label>
+                        <input id="idCli" type="text" name="idCli" value="" class="champsFormulaires" maxlength="50" />
                     </div>
                     <div class="lignesFormulaires">
-                        <label for="champPrenom" class="titresChampsFormulaires couleurGrisMedium">Prénom :</label>
-                        <input id="champPrenom" type="text" name="champPrenom" value="" class="champsFormulaires" maxlength="25" />
+                        <label for="nomCli" class="titresChampsFormulaires couleurGrisMedium">Nom :</label>
+                        <input id="nomCli" type="text" name="nomCli" value="" class="champsFormulaires" maxlength="25" />
                     </div>
                     <div class="lignesFormulaires">
-                        <label for="champDateNaiss" class="titresChampsFormulaires couleurGrisMedium">Date de naissance :</label>
-                        <input id="champDateNaiss" type="date" name="champDateNaiss" value="" class="champsFormulaires" />
+                        <label for="prenomCli" class="titresChampsFormulaires couleurGrisMedium">Prénom :</label>
+                        <input id="prenomCli" type="text" name="prenomCli" value="" class="champsFormulaires" maxlength="25" />
                     </div>
                     <div class="lignesFormulaires">
-                        <label for="champDepNaiss" class="titresChampsFormulaires couleurGrisMedium">Département de naissance :</label>
-                        <input id="champDepNaiss" type="text" name="champDepNaiss" value="" class="champsFormulaires" maxlength="10" />
+                        <label for="sexeCli" class="titresChampsFormulaires couleurGrisMedium">Sexe client :</label>
+                        <select id="sexeCli" type="text" name="sexeCli" value="" class="champsFormulaires" maxlength="25">
+                            <option value="">selectionnez un sexe</option>
+                            <!-- Les options seront ajoutées dynamiquement ici -->
+                        </select>
                     </div>
                     <div class="lignesFormulaires">
-                        <label for="champAdr1" class="titresChampsFormulaires couleurGrisMedium">Adresse (ligne 1) :</label>
-                        <input id="champAdr1" type="text" name="champAdr1" value="" class="champsFormulaires" maxlength="50" />
+                        <label for="datNaissCli" class="titresChampsFormulaires couleurGrisMedium">Date de naissance :</label>
+                        <input id="datNaissCli" type="date" name="datNaissCli" value="" class="champsFormulaires" />
                     </div>
                     <div class="lignesFormulaires">
-                        <label for="champAdr2" class="titresChampsFormulaires couleurGrisMedium">Adresse (ligne 2) :</label>
-                        <input id="champAdr2" type="text" name="champAdr2" value="" class="champsFormulaires" maxlength="50" />
+                        <label for="depNaissCli" class="titresChampsFormulaires couleurGrisMedium">Département de naissance :</label>
+                        <input id="depNaissCli" type="text" name="depNaissCli" value="" class="champsFormulaires" maxlength="10" />
                     </div>
                     <div class="lignesFormulaires">
-                        <label for="champAdr3" class="titresChampsFormulaires couleurGrisMedium">Adresse (ligne 3) :</label>
-                        <input id="champAdr3" type="text" name="champAdr3" value="" class="champsFormulaires" maxlength="50" />
+                        <label for="id_regimeSecu" class="titresChampsFormulaires couleurGrisMedium">Sécurité sociale :</label>
+                        <select id="id_regimeSecu" type="text" name="id_regimeSecu" value="" class="champsFormulaires" maxlength="50">
+                            <option value="">selectionnez un régime de sécurité sociale</option>
+                            <!-- Les options seront ajoutées dynamiquement ici -->
+                        </select>
+                    </div>
+                    <div class="lignesFormulaires">
+                        <label for="add1Cli" class="titresChampsFormulaires couleurGrisMedium">Adresse (ligne 1) :</label>
+                        <input id="add1Cli" type="text" name="add1Cli" value="" class="champsFormulaires" maxlength="50" />
+                    </div>
+                    <div class="lignesFormulaires">
+                        <label for="add2Cli" class="titresChampsFormulaires couleurGrisMedium">Adresse (ligne 2) :</label>
+                        <input id="add2Cli" type="text" name="add2Cli" value="" class="champsFormulaires" maxlength="50" />
+                    </div>
+                    <div class="lignesFormulaires">
+                        <label for="add3Cli" class="titresChampsFormulaires couleurGrisMedium">Adresse (ligne 3) :</label>
+                        <input id="add3Cli" type="text" name="add3Cli" value="" class="champsFormulaires" maxlength="50" />
                     </div>
 
                     <div class="lignesFormulaires">
-                        <label for="champPays" class="titresChampsFormulaires couleurGrisMedium">Pays :</label>
-                        <select id="champPays" name="champPays" class="champsFormulaires">
-                            <option value="">Sélectionnez un pays</option>
+                        <label for="countryName" class="titresChampsFormulaires couleurGrisMedium">Pays :</label>
+                        <select id="countryName" name="id_countryName" class="champsFormulaires">
+                            <option value=""></option>
                             <!-- Les options seront ajoutées dynamiquement ici -->
                         </select>
                     </div>
                     <div class="lignesFormulaires">
-                        <label for="champVilles" class="titresChampsFormulaires couleurGrisMedium">Villes :</label>
-                        <select id="champVilles" name="champVilles" class="champsFormulaires">
-                            <option value="">Sélectionnez une ville</option>
-                            <!-- Les options seront ajoutées dynamiquement ici -->
-                        </select>
+                        <label for="countryCode" class="titresChampsFormulaires couleurGrisMedium">Identifiant Pays :</label>
+                        <input id="countryCode" type="text" name="countryCode" value="" class="champsFormulaires" maxlength="10" />
                     </div>
                     <div class="lignesFormulaires">
-                        <label for="champCodPostal" class="titresChampsFormulaires couleurGrisMedium">Code Postal :</label>
-                        <select id="champCodPostal" name="champCodPostal" class="champsFormulaires">
-                            <option value="">Sélectionnez un code postal</option>
+                        <label for="postalCode" class="titresChampsFormulaires couleurGrisMedium">Code postal :</label>
+                        <input id="postalCode" type="text" name="postalCode" value="" class="champsFormulaires" maxlength="10" />
+                    </div>
+                    <div class="lignesFormulaires">
+                        <label for="placeName" class="titresChampsFormulaires couleurGrisMedium">Villes :</label>
+                        <select id="placeName" name="placeName" class="champsFormulaires">
+                            <option value=""></option>
                             <!-- Les options seront ajoutées dynamiquement ici -->
                         </select>
                     </div>
+
                     <input id="boutonSuivantAssur1" type="button" onclick="" value="suivant" class="boutonSuivant boutonSuivantAssur" />
                 </div>
                 <!--Assurance Page2-->

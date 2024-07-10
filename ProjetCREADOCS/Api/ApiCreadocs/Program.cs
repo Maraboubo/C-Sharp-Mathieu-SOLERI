@@ -25,6 +25,18 @@ namespace ApiCreadocs
             builder.Services.AddScoped<InterfaceTitreRepository, TitreRepository>();
             builder.Services.AddScoped<InterfaceTitreService, TitreService>();
 
+            builder.Services.AddScoped<InterfaceSexeRepository, SexeRepository>();
+            builder.Services.AddScoped<InterfaceSexeService, SexeService>();
+
+            builder.Services.AddScoped<InterfaceSecuRepository, SecuRepository>();
+            builder.Services.AddScoped<InterfaceSecuService, SecuService>();
+
+            builder.Services.AddScoped<InterfacePaysRepository, PaysRepository>();
+            builder.Services.AddScoped<InterfaceVilleRepository, VilleRepository>();
+
+            builder.Services.AddScoped<InterfaceClientRepository, ClientRepository>();
+            builder.Services.AddScoped<InterfaceClientService, ClientService>();
+
             builder.Services.AddCors(options =>
             {
                 options.AddPolicy("AllowAllOrigins",

@@ -95,3 +95,40 @@ Content-Type: application/json
 }
 
 ###
+
+GET {{ApiCreadocs_HostAddress}}/api/sexe
+
+###
+
+GET {{ApiCreadocs_HostAddress}}/api/secu
+
+###
+
+POST {{ApiCreadocs_HostAddress}}/api/client
+Content-Type: application/json
+
+{
+    "Client": {
+        "id_sexe": 1,
+        "id_ville": 0,
+        "id_regimeSecu": null,
+        "nomCli": "claude",
+        "prenomCli": "claude",
+        "numIdCli": "01456789568",
+        "telCli": "01456789568",
+        "mailCli": "jn.du@example.com",
+        "depNaIssCli": null,
+        "dateNaissCli": "1980-01-01",
+        "add1Cli": "1 rue  la Paix",
+        "add2Cli": null,
+        "add3Cli": null,
+        "numCompteCli": "FR71234546598765",
+        "numSecuCli": "123456765490123"
+    },
+    "postalCode": "76001",
+    "placeName": "guingamp",
+    "countryCode": "FR",
+    "countryName": "France"
+}
+
+###
