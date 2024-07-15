@@ -22,8 +22,8 @@
                     <h2 class="couleurGrisFort">Création de contrat<br />KW/Assurances 1 / 3<span class="couleurBleuFort">.</span></h2>
                     <h4 class="niveauH4 couleurBleuMedium">Veuillez renseigner les informations client :</h4>
                     <div class="lignesFormulaires">
-                        <label for="idCli" class="titresChampsFormulaires couleurGrisMedium">Numéro de piece d'identité :</label>
-                        <input id="idCli" type="text" name="idCli" value="" class="champsFormulaires" maxlength="50" />
+                        <label for="numIdCli" class="titresChampsFormulaires couleurGrisMedium">Numéro de piece d'identité :</label>
+                        <input id="numIdCli" type="text" name="numIdCli" value="" class="champsFormulaires" maxlength="50" />
                     </div>
                     <div class="lignesFormulaires">
                         <label for="nomCli" class="titresChampsFormulaires couleurGrisMedium">Nom :</label>
@@ -34,15 +34,15 @@
                         <input id="prenomCli" type="text" name="prenomCli" value="" class="champsFormulaires" maxlength="25" />
                     </div>
                     <div class="lignesFormulaires">
-                        <label for="sexeCli" class="titresChampsFormulaires couleurGrisMedium">Sexe client :</label>
-                        <select id="sexeCli" type="text" name="sexeCli" value="" class="champsFormulaires" maxlength="25">
+                        <label for="id_sexe" class="titresChampsFormulaires couleurGrisMedium">Sexe client :</label>
+                        <select id="id_sexe" type="text" name="id_sexe" value="" class="champsFormulaires" maxlength="25">
                             <option value="">selectionnez un sexe</option>
                             <!-- Les options seront ajoutées dynamiquement ici -->
                         </select>
                     </div>
                     <div class="lignesFormulaires">
-                        <label for="datNaissCli" class="titresChampsFormulaires couleurGrisMedium">Date de naissance :</label>
-                        <input id="datNaissCli" type="date" name="datNaissCli" value="" class="champsFormulaires" />
+                        <label for="dateNaissCli" class="titresChampsFormulaires couleurGrisMedium">Date de naissance :</label>
+                        <input id="dateNaissCli" type="date" name="dateNaissCli" value="" class="champsFormulaires" />
                     </div>
                     <div class="lignesFormulaires">
                         <label for="depNaissCli" class="titresChampsFormulaires couleurGrisMedium">Département de naissance :</label>
@@ -75,7 +75,7 @@
                             <!-- Les options seront ajoutées dynamiquement ici -->
                         </select>
                     </div>
-                    <div class="lignesFormulaires">
+                    <div id="codePays" class="lignesFormulaires">
                         <label for="countryCode" class="titresChampsFormulaires couleurGrisMedium">Identifiant Pays :</label>
                         <input id="countryCode" type="text" name="countryCode" value="" class="champsFormulaires" maxlength="10" />
                     </div>

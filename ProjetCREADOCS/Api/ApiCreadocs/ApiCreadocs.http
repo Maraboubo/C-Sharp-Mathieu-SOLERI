@@ -109,8 +109,8 @@ Content-Type: application/json
 
 {
     "Client": {
-        "id_sexe": 1,
-        "id_ville": 0,
+        "id_sexe": "1",
+        "id_ville": "0",
         "id_regimeSecu": null,
         "nomCli": "claude",
         "prenomCli": "claude",
@@ -132,3 +132,32 @@ Content-Type: application/json
 }
 
 ###
+
+POST {{ApiCreadocs_HostAddress}}/api/client
+Content-Type: application/json
+
+{
+  "Client":
+    {
+      "id_sexe":"1",
+      "id_ville":0,
+      "id_regimeSecu":"1",
+      "nomCli":"MEYRAN",
+      "prenomCli":"Jean",
+      "numIdCli":"654987369852dfgsdfg",
+      "dateNaissCli":"1985-02-01",
+      "depNaissCli":"66",
+      "add1Cli":"La",
+      "add2Cli":"Rue",
+      "add3Cli":"LEPIC"
+    },
+  "postalCode":"75220",
+  "placeName":"Paris 16",
+  "countryCode":"FR",
+  "countryName":"France"
+}
+
+###
+
+    
+    

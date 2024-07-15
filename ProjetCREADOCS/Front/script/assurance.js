@@ -7,11 +7,16 @@ Déclaration des variables.
 const urlPays = 'http://api.geonames.org/countryInfoJSON?username=mathieusoleri';
 const urlSexe = 'https://localhost:44338/api/sexe'; // URL pour les sexes
 const urlSecu = 'https://localhost:44338/api/secu'; // URL pour les Régimes de sécurité sociales
+const urlClient = 'https://localhost:44338/api/client'; // URL pour les Clients
 const username = 'mathieusoleri'; // Remplacer par le username de inteligent document system
 
 
 //Eléments de la page
 ongletUtilisateur = document.getElementById("utilisateur");
+champPays = document.getElementById("codePays");
+
+
+
 //Encapsultion de l'utilisateur dans une variable
 const user = JSON.parse(localStorage.getItem('user'));
 
@@ -32,11 +37,13 @@ pageDeux.style.display = "none";
 pageTrois.style.display = "none";
 //Affichage du nom et prénom de l'utilisateur présent dans le 'Local storage'
 ongletUtilisateur.innerText = `${user.prenomInter} \n ${user.nomInter}`;
-
+//Dissimulation du champ de texte "Identifiant Pays"
+champPays.style.display = "none";
 
 
 //GESTION DE L'AFFICHAGE DES DIFFERENTES PAGES
-boutonPageUn.addEventListener("click", affichagePageDeux);
+/*boutonPageUn.addEventListener("click", envoiDataClient);*/
+boutonPageUn.addEventListener("click", checkFormulaire);
 retourPageUn.addEventListener("click", affichagePageUn);
 boutonPageDeux.addEventListener("click", affichagePageTrois);
 retourPageDeux.addEventListener("click", affichagePageDeux);
@@ -63,24 +70,55 @@ function affichagePageTrois() {
 
 
 /*
-Check du formulaire page3.
+Check du formulaire page1.
 */
 function checkFormulaire() {
+    //Elements de la page 'Client'
+    const sexe = document.getElementById("id_sexe");
+    const regSecu = document.getElementById("id_regimeSecu");
+    const nom = document.getElementById("nomCli");
+    const prenom = document.getElementById("prenomCli");
+    const identite = document.getElementById("numIdCli");
+    const naissance = document.getElementById("dateNaissCli");
+    const adresse1 = document.getElementById("add1Cli");
+    const adresse2 = document.getElementById("add2Cli");
+    const adresse3 = document.getElementById("add3Cli");
+    const codePostal = document.getElementById("postalCode");
+    const ville = document.getElementById("placeName");
+    const countryCode = document.getElementById("countryCode");
+    const Pays = document.getElementById("countryName");
+
+    //check champ numéro identité client 
+    if ((identite.value).length == 0) {
+        alert("Le Champ 'Nom' est vide");
+    }
     //check champ nom
-    if ((nom.value).length == 0) {
+    else if ((nom.value).length == 0) {
         alert("Le Champ 'Nom' est vide");
     }
     //check champ prénom
     else if ((prenom.value).length == 0) {
         alert("Le Champ 'Prénom' est vide");
     }
+    //check champ sexe
+    else if ((sexe.value) < 1 || (sexe.value) > 3) {
+        alert("Veuillez renseigner le champ 'Sexe' ");
+    }
+    //check champ date de naissance
+    else if ((naissance.value).length == 0 ) {
+        alert("Veuillez renseigner le champ 'Date de naissance' ");
+    }
+    //check champ sécurité sociale
+    else if ((regSecu.value) < 1 || (regSecu.value) > 4) {
+        alert("Veuillez renseigner le champ 'Régime de sécurité sociale' ");
+    }
     //check champ adresse ligne 1
     else if ((adresse1.value).length == 0) {
         alert("Le Champ 'Adresse1' est vide");
     }
-    //check champ adresse ligne 2
-    else if ((adresse2.value).length == 0) {
-        alert("Le Champ 'Adresse2' est vide");
+    //check champ Pays
+    else if ((Pays.value).length == 0) {
+        alert("Le Champ 'Pays' est vide");
     }
     //check champ code postal
     else if ((codePostal.value).length == 0) {
@@ -90,9 +128,10 @@ function checkFormulaire() {
     else if ((ville.value).length == 0) {
         alert("Le Champ 'Ville' est vide");
     }
-    //else {
-    //    affichagePageQuatre();
-    //}
+    else {
+        envoiDataClient();
+        affichagePageDeux();
+    }
 }
 
 /*
@@ -119,6 +158,7 @@ async function populateCountryDropdown() {
     }
 }
 
+
 // Fonction pour remplir la liste déroulante des villes
 async function populateCityDropdown(countryCode, postalCode) {
     try {
@@ -139,6 +179,7 @@ async function populateCityDropdown(countryCode, postalCode) {
             option.text = city.placeName; // Utilisez le nom de la ville comme texte
             cityDropdown.appendChild(option);
         });
+
     } catch (error) {
         console.error('Erreur lors du chargement des villes:', error);
     }
@@ -157,6 +198,9 @@ function clearCityDropdown() {
 // Ajouter un gestionnaire d'événements pour détecter le changement de sélection du pays
 document.getElementById('countryName').addEventListener('change', () => {
     const selectedCountry = document.getElementById('countryName').value;
+    document.getElementById('countryCode').value = selectedCountry; // Mettre à jour le champ countryCode
+    document.getElementById('countryCode').text = selectedCountry; // Mettre à jour le champ countryCode
+
     if (selectedCountry) {
         document.getElementById('postalCode').addEventListener('input', () => {
             const postalCode = document.getElementById('postalCode').value;
@@ -171,6 +215,23 @@ document.getElementById('countryName').addEventListener('change', () => {
     }
 });
 
+//// Ajouter un gestionnaire d'événements pour détecter le changement de sélection du pays
+//document.getElementById('countryName').addEventListener('change', () => {
+//    const selectedCountry = document.getElementById('countryName').value;
+//    if (selectedCountry) {
+//        document.getElementById('postalCode').addEventListener('input', () => {
+//            const postalCode = document.getElementById('postalCode').value;
+//            if (postalCode) {
+//                populateCityDropdown(selectedCountry, postalCode);
+//            } else {
+//                clearCityDropdown();
+//            }
+//        });
+//    } else {
+//        clearCityDropdown();
+//    }
+//});
+
 /*
      Peuplement du choix déroulant sexe.
 */
@@ -181,12 +242,12 @@ async function populateSexeDropdown() {
         const response = await fetch(urlSexe);
         const sexes = await response.json();
 
-        const sexeDropdown = document.getElementById('sexeCli');
+        const sexeDropdown = document.getElementById('id_sexe');
 
         sexes.forEach(sexe => {
             const option = document.createElement('option');
-            option.value = sexe.id_sexe; // Utilisez l'id de l'agence comme valeur
-            option.text = sexe.nomSexe; // Utilisez le nom de l'agence comme texte
+            option.value = sexe.id_sexe; // On utilise l'id du sexe comme valeur
+            option.text = sexe.nomSexe; // On Utilise nom du sexe comme texte
             sexeDropdown.appendChild(option);
         });
 
@@ -205,13 +266,64 @@ async function populateSecuDropdown() {
 
         secus.forEach(secu => {
             const option = document.createElement('option');
-            option.value = secu.id_regimeSecu; // Utilisez l'id de l'agence comme valeur
-            option.text = secu.nomRegimeSecu; // Utilisez le nom de l'agence comme texte
+            option.value = secu.id_regimeSecu; // On utilise l'id de l'agence comme valeur
+            option.text = secu.nomRegimeSecu; // On utilise le nom de l'agence comme texte
             secuDropdown.appendChild(option);
         });
 
     } catch (error) {
         console.error('Erreur lors du chargement des sexes:', error);
+    }
+}
+
+async function envoiDataClient() {
+    //Elements de la page 'Client'
+    const sexe = document.getElementById("id_sexe").value;
+    const regSecu = document.getElementById("id_regimeSecu").value;
+    const nom = document.getElementById("nomCli").value;
+    const prenom = document.getElementById("prenomCli").value;
+    const identite = document.getElementById("numIdCli").value;
+    const naissance = document.getElementById("dateNaissCli").value;
+    const depardement = document.getElementById("depNaissCli").value;
+    const adresse1 = document.getElementById("add1Cli").value;
+    const adresse2 = document.getElementById("add2Cli").value;
+    const adresse3 = document.getElementById("add3Cli").value;
+    const postalCode = document.getElementById("postalCode").value;
+    const placeName = document.getElementById("placeName").value;
+    const countryCode = document.getElementById("countryCode").value;
+    const countryDropdown = document.getElementById("countryName");
+    const countryName = countryDropdown.options[countryDropdown.selectedIndex].text;
+
+    const clientData = {
+        id_sexe: sexe,
+        id_ville: 0,
+        id_regimeSecu: regSecu,
+        nomCli: nom,
+        prenomCli: prenom,
+        numIdCli: identite,
+        dateNaissCli: naissance,
+        depNaissCli: depardement,
+        add1Cli: adresse1,
+        add2Cli: adresse2,
+        add3Cli: adresse3,
+    };
+
+    const objetClient = JSON.stringify({ Client: clientData, postalCode, placeName, countryCode, countryName });
+
+    const response = await fetch(urlClient, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: objetClient
+    });
+    console.log(objetClient);
+    if (response.ok) {
+        const client = await response.json();
+        localStorage.setItem('client', JSON.stringify(client));
+        // Passer à la prochaine partie du formulaire
+        alert('Client enregistré avec succès');
+    } else {
+        console.error('Erreur lors de l\'enregistrement du client');
+        alert('Erreur lors de l\'enregistrement du client');
     }
 }
 
