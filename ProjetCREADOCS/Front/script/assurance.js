@@ -8,6 +8,7 @@ const urlPays = 'http://api.geonames.org/countryInfoJSON?username=mathieusoleri'
 const urlSexe = 'https://localhost:44338/api/sexe'; // URL pour les sexes
 const urlSecu = 'https://localhost:44338/api/secu'; // URL pour les Régimes de sécurité sociales
 const urlClient = 'https://localhost:44338/api/client'; // URL pour les Clients
+const urlAssurance = 'https://localhost:44338/api/assurance'; // URL pour les Clients
 const username = 'mathieusoleri'; // Remplacer par le username de inteligent document system
 
 
@@ -32,8 +33,8 @@ retourPageDeux = document.getElementById("flecheRetour2");
 
 
 //Utiliser ce display pour l'affichage de base.
-pageUn.style.display = "block";
-pageDeux.style.display = "none";
+pageUn.style.display = "none";
+pageDeux.style.display = "block";
 pageTrois.style.display = "none";
 //Affichage du nom et prénom de l'utilisateur présent dans le 'Local storage'
 ongletUtilisateur.innerText = `${user.prenomInter} \n ${user.nomInter}`;
@@ -327,11 +328,32 @@ async function envoiDataClient() {
     }
 }
 
+async function populateAssuranceDropdown() {
+    try {
+        const response = await fetch(urlAssurance);
+        const assurances = await response.json();
+
+        const assuranceDropdown = document.getElementById('id_assu');
+
+        assurances.forEach(assurance => {
+            const option = document.createElement('option');
+            option.value = assurance.id_assurance; // On utilise l'id du sexe comme valeur
+            option.text = assurance.nomAssu; // On Utilise nom du sexe comme texte
+            assuranceDropdown.appendChild(option);
+        });
+
+    } catch (error) {
+        console.error('Erreur lors du chargement des assurances:', error);
+    }
+}
+
 
 
 // Appeler la fonction pour remplir la liste déroulante des pays au chargement de la page
 document.addEventListener('DOMContentLoaded', populateCountryDropdown);
 // Appeler la fonction pour remplir la liste déroulante des sexes au chargement de la page
 document.addEventListener('DOMContentLoaded', populateSexeDropdown);
-// Appeler la fonction pour remplir la liste déroulante des sexes au chargement de la page
+// Appeler la fonction pour remplir la liste déroulante des régimes de sécurité sociale au chargement de la page
 document.addEventListener('DOMContentLoaded', populateSecuDropdown);
+// Appeler la fonction pour remplir la liste déroulante des contrats d'assurance au chargement de la page
+document.addEventListener('DOMContentLoaded', populateAssuranceDropdown);

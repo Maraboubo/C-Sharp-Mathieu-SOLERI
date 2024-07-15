@@ -3,6 +3,7 @@
     public class ClientRetour
     {
         //ajout de id_ville pour la fonction update
+        public int? id_Cli {  get; set; }
         public int? id_ville { get; set; }
         public string? numIdCli { get; set; }
         public string? nomCli { get; set; }

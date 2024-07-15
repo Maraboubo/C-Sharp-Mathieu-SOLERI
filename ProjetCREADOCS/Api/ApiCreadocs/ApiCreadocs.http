@@ -161,3 +161,30 @@ Content-Type: application/json
 
     
     
+
+GET {{ApiCreadocs_HostAddress}}/api/assurance
+
+###
+
+POST {{ApiCreadocs_HostAddress}}/api/contrat
+Content-Type: application/json
+
+{
+  "id_typContr" : "2",
+  "id_inter" : "6",
+  "id_Cli" : 1,
+  "id_Assu" : 1,
+  "dateContr" : "2024-07-15",
+  "dateDebutContr" : "2024-08-15",
+  "dateFinContr" : "2025-08-15"
+}
+
+###
+
+GET {{ApiCreadocs_HostAddress}}/api/contrat
+
+###
+
+GET {{ApiCreadocs_HostAddress}}/api/contrat/1
+
+###

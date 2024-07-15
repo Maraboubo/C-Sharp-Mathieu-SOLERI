@@ -37,6 +37,12 @@ namespace ApiCreadocs
             builder.Services.AddScoped<InterfaceClientRepository, ClientRepository>();
             builder.Services.AddScoped<InterfaceClientService, ClientService>();
 
+            builder.Services.AddScoped<InterfaceAssuranceRepository, AssuranceRepository>();
+            builder.Services.AddScoped<InterfaceAssuranceService, AssuranceService>();
+
+            builder.Services.AddScoped<InterfaceContratRepository, ContratRepository>();
+            builder.Services.AddScoped<InterfaceContratService, ContratService>();
+
             builder.Services.AddCors(options =>
             {
                 options.AddPolicy("AllowAllOrigins",

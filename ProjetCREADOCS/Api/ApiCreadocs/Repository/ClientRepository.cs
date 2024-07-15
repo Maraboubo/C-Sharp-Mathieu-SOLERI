@@ -29,7 +29,7 @@ namespace ApiCreadocs.Repository
         {
             using var connection = _interfaceConnection.CreateConnexion();
 
-            string query = "SELECT numIdCli, nomCli, prenomCli, nomSexe, telCli, mailCli, depNaIssCli, dateNaissCli, add1Cli, add2Cli, add3Cli, CLIENTS.id_ville, VILLES.countryCode, postalCode, placeName, countryName, numCompteCli, numSecuCli, nomRegimeSecu FROM CLIENTS " +
+            string query = "SELECT id_Cli, numIdCli, nomCli, prenomCli, nomSexe, telCli, mailCli, depNaIssCli, dateNaissCli, add1Cli, add2Cli, add3Cli, CLIENTS.id_ville, VILLES.countryCode, postalCode, placeName, countryName, numCompteCli, numSecuCli, nomRegimeSecu FROM CLIENTS " +
                 "INNER JOIN VILLES ON CLIENTS.id_ville = VILLES.id_ville " +
                 "INNER JOIN PAYS ON VILLES.countryCode = PAYS.countryCode  " +
                 "INNER JOIN SEXE ON CLIENTS.id_sexe = SEXE.id_sexe " +
