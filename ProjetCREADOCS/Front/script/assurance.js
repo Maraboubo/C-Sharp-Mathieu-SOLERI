@@ -9,6 +9,7 @@ const urlSexe = 'https://localhost:44338/api/sexe'; // URL pour les sexes
 const urlSecu = 'https://localhost:44338/api/secu'; // URL pour les Régimes de sécurité sociales
 const urlClient = 'https://localhost:44338/api/client'; // URL pour les Clients
 const urlAssurance = 'https://localhost:44338/api/assurance'; // URL pour les Clients
+const urlContrat = 'https://localhost:44338/api/contrat'; // URL pour les Contrats
 const username = 'mathieusoleri'; // Remplacer par le username de inteligent document system
 
 
@@ -46,7 +47,8 @@ champPays.style.display = "none";
 /*boutonPageUn.addEventListener("click", envoiDataClient);*/
 boutonPageUn.addEventListener("click", checkFormulaire);
 retourPageUn.addEventListener("click", affichagePageUn);
-boutonPageDeux.addEventListener("click", affichagePageTrois);
+/*boutonPageDeux.addEventListener("click", affichagePageTrois);*/
+boutonPageDeux.addEventListener("click", checkFormulaireDeux);
 retourPageDeux.addEventListener("click", affichagePageDeux);
 
 
@@ -132,6 +134,21 @@ function checkFormulaire() {
     else {
         envoiDataClient();
         affichagePageDeux();
+    }
+}
+
+function checkFormulaireDeux()
+{
+    //Elements de la page 'Contrat'
+    const assurance = document.getElementById("id_assu");
+
+    //check champ numéro identité client 
+    if ((assurance.value) < 1 || (assurance.value) > 5) {
+        alert("Veuillez renseigner Le contrat d'assurance");
+    }
+    else {
+        envoiDataContrat();
+        affichagePageTrois();
     }
 }
 
@@ -328,6 +345,50 @@ async function envoiDataClient() {
     }
 }
 
+async function envoiDataContrat() {
+    //récupération des objets stockés dans le 'localstorage'
+    const user = JSON.parse(localStorage.getItem('user'));
+    const client = JSON.parse(localStorage.getItem('client'));
+
+    //Elements de la page 'Client'
+    const interlocuteur = user.id_inter;
+    const idClient = client.id_Cli;
+    const assurance = document.getElementById("id_assu").value;
+    const dateContrat = new Date();
+    const debutContrat = new Date();
+    debutContrat.setMonth(debutContrat.getMonth() + 1);
+    const finContrat = new Date(debutContrat);
+    finContrat.setFullYear(finContrat.getFullYear() + 1);
+
+    const contratData = {
+        id_typContr: 1,
+        id_inter: interlocuteur,
+        id_Cli: idClient,
+        id_Assu: assurance,
+        dateContr: dateContrat,
+        dateDebutContr: debutContrat,
+        dateFinContr: finContrat
+    };
+
+    const objetContrat = JSON.stringify(contratData);
+
+    const response = await fetch(urlContrat, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: objetContrat
+    });
+    console.log(objetContrat);
+    if (response.ok) {
+        const contrat = await response.json();
+        localStorage.setItem('contrat', JSON.stringify(contrat));
+        // Passer à la prochaine partie du formulaire
+        alert('Contrat enregistré avec succès');
+    } else {
+        console.error('Erreur lors de l\'enregistrement du contrat');
+        alert('Erreur lors de l\'enregistrement du contrat');
+    }
+}
+
 async function populateAssuranceDropdown() {
     try {
         const response = await fetch(urlAssurance);
@@ -337,8 +398,8 @@ async function populateAssuranceDropdown() {
 
         assurances.forEach(assurance => {
             const option = document.createElement('option');
-            option.value = assurance.id_assurance; // On utilise l'id du sexe comme valeur
-            option.text = assurance.nomAssu; // On Utilise nom du sexe comme texte
+            option.value = assurance.id_assu; // On utilise l'id du contrat d'assurance comme valeur
+            option.text = assurance.nomAssu; // On Utilise nom du contrat d'assurance comme texte
             assuranceDropdown.appendChild(option);
         });
 
