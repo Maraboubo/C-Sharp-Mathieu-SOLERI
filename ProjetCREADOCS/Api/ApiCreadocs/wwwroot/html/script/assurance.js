@@ -484,85 +484,38 @@ async function envoiDataKwSoft() {
     //    dateEcheance12: eche12
     //};
 
+    const objetxml = '<?xml version=\"1.1\" encoding=\"UTF-8\"?><K6><DES><DES_ID>DE</DES_ID><DES_TOP_CA>0</DES_TOP_CA><DES_TOP_CO>0</DES_TOP_CO><DES_TOP_EXO>0</DES_TOP_EXO><DES_PERIODE>Z</DES_PERIODE><DES_NUM_COMPTE>0824446</DES_NUM_COMPTE></DES> <MES><MES_ID>ME</MES_ID><MES_MESSAGE_14></MES_MESSAGE_14><MES_MESSAGE_15></MES_MESSAGE_15></MES></K6>';
 
+    const urlKwSoft = 'https://contenthub-fr.test.omscloud.eu/mtext-integration-adapter/template//RELEVE_K6/Templates/RELEVE_K6.template/export?document-name=RELEVE1234567&mime-type=application%2Fpdf&user=user_ADV&passwordplain=demo';
 
+    /*const objetKw = JSON.stringify({ Interlocuteur: interlocuteurData, Client: clientData, Contrat: contratData, Echeances: echeancesData });*/
 
-    //CODE FETCH AU PROXY DE MON API FAISANT APPEL A L'API KWSOFT. IL RETOURNE BIEN UN OBJET PDF EN CONSOLE IL AFFICHE LE DOCUMENT DANS UNE IFRAME 'EN COMMENTAIRE EN BAS DE PAGE HTML'
+    const formdata = new FormData();
 
-        const objetxml = '<?xml version="1.1" encoding="UTF-8"?><K6><DES><DES_ID>DE</DES_ID><DES_TOP_CA>0</DES_TOP_CA><DES_TOP_CO>0</DES_TOP_CO><DES_TOP_EXO>0</DES_TOP_EXO><DES_PERIODE>Z</DES_PERIODE><DES_NUM_COMPTE>0824446</DES_NUM_COMPTE></DES> <MES><MES_ID>ME</MES_ID><MES_MESSAGE_14></MES_MESSAGE_14><MES_MESSAGE_15></MES_MESSAGE_15></MES></K6>';
+    formdata.append("xml:DATA", objetxml);
 
-        const requestOptions = {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(objetxml),
-            redirect: "follow"
-        };
+    const requestOptions = {
 
-        fetch('https://localhost:44338/api/Proxy/proxy', requestOptions)
-            .then(res => res.blob())
-            .then(blob => {
-                console.log(blob);
+        method: "POST",
 
-                const url = URL.createObjectURL(blob);
-                window.open(url, '_blank');
+        headers: { "Content-Type": "multipart/form.data; boundary=<calculated when request is sent>", "Accept": "*/*", "Host": "https://contenthub-fr.test.omscloud.eu/", "Accept-Encoding": "gzip, deflate, br", "Access-Control-Allow-Origin": "https://localhost:44338" },
 
-                // Optionally, revoke the object URL after some time to release memory
-                setTimeout(() => URL.revokeObjectURL(url), 10000);
-            })
-        .catch(error => console.log('error', error));
+        body: formdata,
 
+        redirect: "follow"
+        
+    };
 
+    fetch(urlKwSoft, requestOptions)
 
-    //CODE FETCH AU PROXY DE MON API FAISANT APPEL A L'API KWSOFT. IL RETOURNE BIEN UN OBJET PDF EN CONSOLE IL AFFICHE LE DOCUMENT DANS UNE IFRAME 'EN COMMENTAIRE EN BAS DE PAGE HTML'
+        .then(res => res.blob())
+        .then(blob => {
+            console.log(blob);
 
-    //const objetxml = '<?xml version="1.1" encoding="UTF-8"?><K6><DES><DES_ID>DE</DES_ID><DES_TOP_CA>0</DES_TOP_CA><DES_TOP_CO>0</DES_TOP_CO><DES_TOP_EXO>0</DES_TOP_EXO><DES_PERIODE>Z</DES_PERIODE><DES_NUM_COMPTE>0824446</DES_NUM_COMPTE></DES> <MES><MES_ID>ME</MES_ID><MES_MESSAGE_14></MES_MESSAGE_14><MES_MESSAGE_15></MES_MESSAGE_15></MES></K6>';
+            const file = new File([blob], 'pdf Retour', { type: blob.type });
 
-    //const requestOptions = {
-    //    method: "POST",
-    //    headers: { "Content-Type": "application/json" },
-    //    body: JSON.stringify(objetxml),
-    //    redirect: "follow"
-    //};
-
-    //fetch('https://localhost:44338/api/Proxy/proxy', requestOptions)
-    //    .then(res => res.blob())
-    //    .then(blob => {
-    //        console.log(blob);
-
-    //        const url = URL.createObjectURL(blob);
-    //        const iframe = document.getElementById('pdfFrame');
-    //        iframe.src = url;
-
-    //        // Optionally, revoke the object URL after some time to release memory
-    //        setTimeout(() => URL.revokeObjectURL(url), 10000);
-    //    })
-    //    .catch(error => console.log('error', error));
-
-
-
-
-    //CODE FETCH AU PROXY DE MON API FAISANT APPEL A L'API KWSOFT. IL RETOURNE BIEN UN OBJET PDF EN CONSOLE
-
-    //const objetxml = '<?xml version="1.1" encoding="UTF-8"?><K6><DES><DES_ID>DE</DES_ID><DES_TOP_CA>0</DES_TOP_CA><DES_TOP_CO>0</DES_TOP_CO><DES_TOP_EXO>0</DES_TOP_EXO><DES_PERIODE>Z</DES_PERIODE><DES_NUM_COMPTE>0824446</DES_NUM_COMPTE></DES> <MES><MES_ID>ME</MES_ID><MES_MESSAGE_14></MES_MESSAGE_14><MES_MESSAGE_15></MES_MESSAGE_15></MES></K6>';
-
-    //const requestOptions = {
-    //    method: "POST",
-    //    headers: { "Content-Type": "application/json" },
-    //    body: JSON.stringify(objetxml),
-    //    redirect: "follow"
-    //};
-
-    //fetch('https://localhost:44338/api/Proxy/proxy', requestOptions)
-    //    .then(res => res.blob())
-    //    .then(blob => {
-    //        console.log(blob);
-
-    //        const file = new File([blob], 'pdf Retour', { type: blob.type });
-
-    //        console.log(file);
-    //    })
-    //    .catch(error => console.log('error', error));
-
+            console.log(file);
+        })
 }
 
 async function populateAssuranceDropdown() {
@@ -843,43 +796,3 @@ document.addEventListener('DOMContentLoaded', populateAssuranceDropdown);
 ////.then((result) => console.log(result))
 
 ////.catch((error) => console.error(error));
-
-
-
-
-
-///SAUVEGARDE DU CODE QUI NE MARCHAIT PAS MERCREDI 17/07/2024
-
-
-//const objetxml = '<?xml version=\"1.1\" encoding=\"UTF-8\"?><K6><DES><DES_ID>DE</DES_ID><DES_TOP_CA>0</DES_TOP_CA><DES_TOP_CO>0</DES_TOP_CO><DES_TOP_EXO>0</DES_TOP_EXO><DES_PERIODE>Z</DES_PERIODE><DES_NUM_COMPTE>0824446</DES_NUM_COMPTE></DES> <MES><MES_ID>ME</MES_ID><MES_MESSAGE_14></MES_MESSAGE_14><MES_MESSAGE_15></MES_MESSAGE_15></MES></K6>';
-
-//const urlKwSoft = 'https://contenthub-fr.test.omscloud.eu/mtext-integration-adapter/template//RELEVE_K6/Templates/RELEVE_K6.template/export?document-name=RELEVE1234567&mime-type=application%2Fpdf&user=user_ADV&passwordplain=demo';
-
-///*const objetKw = JSON.stringify({ Interlocuteur: interlocuteurData, Client: clientData, Contrat: contratData, Echeances: echeancesData });*/
-
-//const formdata = new FormData();
-
-//formdata.append("xml:DATA", objetxml);
-
-//const requestOptions = {
-
-//    method: "POST",
-
-//    headers: { "Content-Type": "multipart/form.data; boundary=<calculated when request is sent>", "Accept": "*/*", "Host": "https://contenthub-fr.test.omscloud.eu/", "Accept-Encoding": "gzip, deflate, br", "Access-Control-Allow-Origin": "https://localhost:44338" },
-
-//    body: formdata,
-
-//    redirect: "follow"
-
-//};
-
-//fetch(urlKwSoft, requestOptions)
-
-//    .then(res => res.blob())
-//    .then(blob => {
-//        console.log(blob);
-
-//        const file = new File([blob], 'pdf Retour', { type: blob.type });
-
-//        console.log(file);
-//    })
