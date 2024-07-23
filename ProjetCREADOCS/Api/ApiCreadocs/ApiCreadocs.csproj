@@ -15,6 +15,12 @@
 
   <ItemGroup>
     <Compile Remove="Controllers\UtilisateurController.cs" />
+    <Compile Remove="Models\AssuranceKw.cs" />
+    <Compile Remove="Models\ClientKwAssurance.cs" />
+    <Compile Remove="Models\ContratKwAssurance.cs" />
+    <Compile Remove="Models\EcheancesKwAssurance.cs" />
+    <Compile Remove="Models\InterlocuteurKwAssurance.cs" />
+    <Compile Remove="Models\RequeteProxy.cs" />
     <Compile Remove="Models\Utilisateur.cs" />
     <Compile Remove="Repository\InterfaceUtilisateurRepository.cs" />
     <Compile Remove="Repository\UtilisateurRepository.cs" />
