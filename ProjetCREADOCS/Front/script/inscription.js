@@ -198,40 +198,6 @@ async function populateTitreDropdown() {
     }
 }
 
-//function envoiJsonInterFormulaire()
-//{
-//    var form = document.getElementById('inscription'); // Transfère les données du formulaire dans la variable 'form'.
-//    var donneesFormulaire = new FormData(form); // Récupère les données du formulaire
-//    // Convertit les données en objet JSON
-//    var interlocuteur = {};
-
-//    donneesFormulaire.forEach((value, key) => {
-//        interlocuteur[key] = value;
-//    });
-
-//    fetch(url, {
-//        method: 'POST',
-//        headers: {
-//            'Content-Type': 'application/json'
-//        },
-//        body: JSON.stringify(interlocuteur)
-//    })
-//        .then((resp) => {
-//            if (!resp.ok) {
-//                throw new Error('Erreur de réseau :' + resp.statusText);
-//            }
-//            return resp.json();
-//        })
-//        .then(function (data) {
-//            console.log("Nouvel Interlocuteur:", data);
-//            localStorage.setItem('user', JSON.stringify(data)); // Stocker les informations de l'utilisateur
-//            window.location.href = 'AccueilCreadocs.html'; // Rediriger vers la page d'accueil
-//        })
-//        .catch(function (error) {
-//            console.error('Il y a eu un problème avec votre opération fetch :', error);
-//        });
-//}
-
 function envoiJsonInterFormulaire() {
     var form = document.getElementById('inscription'); // Transfère les données du formulaire dans la variable 'form'.
     var donneesFormulaire = new FormData(form); // Récupère les données du formulaire
@@ -264,7 +230,6 @@ function envoiJsonInterFormulaire() {
             console.error('Il y a eu un problème avec votre opération fetch :', error);
         });
 }
-
 
 
 //APPEL DES FONCTIONS POUR LE REMPLISSAGE DES CHOIX DEROULANTS.

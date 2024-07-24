@@ -82,3 +82,6 @@ INSERT INTO TYPE_SIM (nomTypeSim, valeurTypeSim, nomRemiseTypeSim, valeurRemiseT
 ('Forfait Data', 30, 'Remise 15%', 4.50),
 ('Forfait International', 70, 'Remise 25%', 17.50),
 ('Forfait Jeunes', 15, 'Remise 5%', 0.75);
+
+INSERT INTO IDENTIFICATION VALUES
+(1, 'mathieusoleri');

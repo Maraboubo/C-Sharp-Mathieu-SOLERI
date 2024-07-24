@@ -321,3 +321,7 @@ Content-Type: application/json
 }
 
 ###
+
+GET {{ApiCreadocs_HostAddress}}/api/identification
+
+###

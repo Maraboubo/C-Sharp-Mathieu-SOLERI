@@ -4,19 +4,18 @@ Déclaration des variables.
 */
 
 //Eléments de la fonctionalité GéoNames
-const urlPays = 'http://api.geonames.org/countryInfoJSON?username=mathieusoleri';
+/*const urlPays = 'http://api.geonames.org/countryInfoJSON?username=mathieusoleri';*/
 const urlSexe = 'https://localhost:44338/api/sexe'; // URL pour les sexes
 const urlSecu = 'https://localhost:44338/api/secu'; // URL pour les Régimes de sécurité sociales
 const urlClient = 'https://localhost:44338/api/client'; // URL pour les Clients
 const urlAssurance = 'https://localhost:44338/api/assurance'; // URL pour les Clients
 const urlContrat = 'https://localhost:44338/api/contrat'; // URL pour les Contrats
-const username = 'mathieusoleri'; // Remplacer par le username de inteligent document system
+//const username = 'mathieusoleri'; // Remplacer par le username de inteligent document system
 
 
 //Eléments de la page
 ongletUtilisateur = document.getElementById("utilisateur");
 champPays = document.getElementById("codePays");
-
 
 
 //Encapsultion de l'utilisateur dans une variable
@@ -33,6 +32,12 @@ retourPageDeux = document.getElementById("flecheRetour2");
 boutonPageTrois = document.getElementById("boutonEnvoyerAssur");
 
 
+//Regles d'exclusion pour la vérification des champs.
+var regex = /^[A-Za-z0-9_.@]+$/;
+//regexChiffres selectionne les nombres.
+var regexChiffres = /\d/;
+var regexLettres = /[a-zA-Z]/;
+
 
 //Utiliser ce display pour l'affichage de base.
 pageUn.style.display = "block";
@@ -47,12 +52,9 @@ champPays.style.display = "none";
 /*populatePageTrois();*/
 
 
-
 //GESTION DE L'AFFICHAGE DES DIFFERENTES PAGES
-/*boutonPageUn.addEventListener("click", envoiDataClient);*/
 boutonPageUn.addEventListener("click", checkFormulaire);
 retourPageUn.addEventListener("click", affichagePageUn);
-/*boutonPageDeux.addEventListener("click", affichagePageTrois);*/
 boutonPageDeux.addEventListener("click", checkFormulaireDeux);
 retourPageDeux.addEventListener("click", affichagePageDeux);
 boutonPageTrois.addEventListener("click", envoiDataKwSoft);
@@ -62,19 +64,16 @@ function affichagePageUn() {
     pageUn.style.display = "block";
     pageDeux.style.display = "none";
     pageTrois.style.display = "none";
-    /*pageQuatre.style.display = "none";*/
 }
 function affichagePageDeux() {
     pageUn.style.display = "none";
     pageDeux.style.display = "block";
     pageTrois.style.display = "none";
-    /*pageQuatre.style.display = "none";*/
 }
 function affichagePageTrois() {
     pageUn.style.display = "none";
     pageDeux.style.display = "none";
     pageTrois.style.display = "block";
-    /*pageQuatre.style.display = "none";*/
 }
 
 
@@ -99,44 +98,53 @@ function checkFormulaire() {
 
     //check champ numéro identité client 
     if ((identite.value).length == 0) {
+        alert("Le Champ 'Numéro d'identité' est vide");
+    }
+    else if (((identite.value).length) < 1 || ((identite.value).length) > 50) {
+        alert("Le 'Numéro d'identité' ne peux pas compter plus de 50 caractères");
+    }
+    //check champ nom
+    else if ((nom.value).length == 0) {
         alert("Le Champ 'Nom' est vide");
     }
-    ////check champ nom
-    //else if ((nom.value).length == 0) {
-    //    alert("Le Champ 'Nom' est vide");
-    //}
-    ////check champ prénom
-    //else if ((prenom.value).length == 0) {
-    //    alert("Le Champ 'Prénom' est vide");
-    //}
-    ////check champ sexe
-    //else if ((sexe.value) < 1 || (sexe.value) > 3) {
-    //    alert("Veuillez renseigner le champ 'Sexe' ");
-    //}
-    ////check champ date de naissance
-    //else if ((naissance.value).length == 0 ) {
-    //    alert("Veuillez renseigner le champ 'Date de naissance' ");
-    //}
-    ////check champ sécurité sociale
-    //else if ((regSecu.value) < 1 || (regSecu.value) > 4) {
-    //    alert("Veuillez renseigner le champ 'Régime de sécurité sociale' ");
-    //}
-    ////check champ adresse ligne 1
-    //else if ((adresse1.value).length == 0) {
-    //    alert("Le Champ 'Adresse1' est vide");
-    //}
-    ////check champ Pays
-    //else if ((Pays.value).length == 0) {
-    //    alert("Le Champ 'Pays' est vide");
-    //}
-    ////check champ code postal
-    //else if ((codePostal.value).length == 0) {
-    //    alert("Le Champ 'Code postal' est vide");
-    //}
-    ////check champ ville
-    //else if ((ville.value).length == 0) {
-    //    alert("Le Champ 'Ville' est vide");
-    //}
+    else if (((nom.value).length) < 1 || ((nom.value).length) > 25) {
+        alert("Le 'Nom' ne peux pas compter plus de 25 caractères");
+    }
+    //check champ prénom
+    else if ((prenom.value).length == 0) {
+        alert("Le Champ 'Prénom' est vide");
+    }
+    else if (((prenom.value).length) < 1 || ((prenom.value).length) > 25) {
+        alert("Le 'Prénom' ne peux pas compter plus de 25 caractères");
+    }
+    //check champ sexe
+    else if ((sexe.value) < 1 || (sexe.value) > 3) {
+        alert("Veuillez renseigner le champ 'Sexe' ");
+    }
+    //check champ date de naissance
+    else if ((naissance.value).length == 0 ) {
+        alert("Veuillez renseigner le champ 'Date de naissance' ");
+    }
+    //check champ sécurité sociale
+    else if ((regSecu.value) < 1 || (regSecu.value) > 4) {
+        alert("Veuillez renseigner le champ 'Régime de sécurité sociale' ");
+    }
+    //check champ adresse ligne 1
+    else if ((adresse1.value).length == 0) {
+        alert("Le Champ 'Adresse1' est vide");
+    }
+    //check champ Pays
+    else if ((Pays.value).length == 0) {
+        alert("Le Champ 'Pays' est vide");
+    }
+    //check champ code postal
+    else if ((codePostal.value).length == 0) {
+        alert("Le Champ 'Code postal' est vide");
+    }
+    //check champ ville
+    else if ((ville.value).length == 0) {
+        alert("Le Champ 'Ville' est vide");
+    }
     else {
         envoiDataClient();
         affichagePageDeux();
@@ -157,7 +165,6 @@ function checkFormulaireDeux()
         affichagePageTrois();
         ////exécution du peuplement de la page3
         populatePageTrois();
-
     }
 }
 
@@ -165,10 +172,21 @@ function checkFormulaireDeux()
     Peuplement des choix déroulants grâce à l'Api GéoNames.
 */
 
+// Fonction pour charger le login Géonames dans la base de données
+async function getGeoNamesUsername() {
+    const response = await fetch('https://localhost:44338/api/identification');
+    if (!response.ok) {
+        throw new Error('Failed to fetch GeoNames username');
+    }
+    const data = await response.json();
+    return data.geoNamesUserName;
+}
+
 // Fonction pour remplir la liste déroulante des pays
 async function populateCountryDropdown() {
     try {
-        const response = await fetch(urlPays);
+        const username = await getGeoNamesUsername();
+        const response = await fetch(`http://api.geonames.org/countryInfoJSON?username=${username}`);
         const countries = await response.json();
         const pays = countries.geonames;
 
@@ -189,6 +207,7 @@ async function populateCountryDropdown() {
 // Fonction pour remplir la liste déroulante des villes
 async function populateCityDropdown(countryCode, postalCode) {
     try {
+        const username = await getGeoNamesUsername();
         const response = await fetch(`http://api.geonames.org/postalCodeSearchJSON?postalcode=${postalCode}&country=${countryCode}&maxRows=500&username=${username}`);
         const cities = await response.json();
         const villes = cities.postalCodes;
