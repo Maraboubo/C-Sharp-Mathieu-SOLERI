@@ -1,4 +1,5 @@
-﻿using ApiCreadocs.Models;
+﻿using ApiCreadocs.DataTransferObject;
+using ApiCreadocs.Models;
 using ApiCreadocs.Services;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics.Contracts;
@@ -44,6 +45,8 @@ namespace ApiCreadocs.Controllers
             return Ok(createdContrat);
         }
 
+        //SAUVEGARDE CONTRAT
+
         [HttpPut("{id}")]
         public ActionResult Put(int id, [FromBody] Contrat contrat)
         {
@@ -51,9 +54,25 @@ namespace ApiCreadocs.Controllers
             {
                 return BadRequest();
             }
-            _interfaceContratService.UpdateContrat(contrat);
+            var updatedContrat = _interfaceContratService.UpdateContrat(id, contrat);
+            if (!updatedContrat)
+            {
+                return NotFound();
+            }
             return NoContent();
         }
+
+
+        //[HttpPut("{id}")]
+        //public ActionResult Put(int id, [FromBody] Contrat contrat)
+        //{
+        //    if (id != contrat.id_Contr)
+        //    {
+        //        return BadRequest();
+        //    }
+        //    _interfaceContratService.UpdateContrat(contrat);
+        //    return NoContent();
+        //}
 
         [HttpDelete("{id}")]
         public ActionResult Delete(int id)

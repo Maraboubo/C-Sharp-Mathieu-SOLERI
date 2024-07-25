@@ -23,14 +23,28 @@ namespace ApiCreadocs.Services
             return _interfaceContratRepository.Add(contrat);
         }
 
-        public void UpdateContrat(Contrat contrat)
+        //SAUVEGARDE CONTRAT
+
+        public bool UpdateContrat(int id, Contrat updatedContrat)
         {
-            _interfaceContratRepository.Update(contrat);
+            var existingContrat = _interfaceContratRepository.GetById(id);
+            if (existingContrat == null)
+            {
+                return false;
+            }
+            updatedContrat.id_Contr = id;
+            return _interfaceContratRepository.Update(updatedContrat);
         }
+
+        //public void UpdateContrat(Contrat contrat)
+        //{
+        //    _interfaceContratRepository.Update(contrat);
+        //}
 
         public void DeleteContrat(int id)
         {
             _interfaceContratRepository.Delete(id);
         }
+
     }
 }

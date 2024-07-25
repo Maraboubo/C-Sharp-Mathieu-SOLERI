@@ -7,7 +7,7 @@ namespace ApiCreadocs.Repository
         IEnumerable<Contrat> GetAll();
         ContratAssur GetById(int id);
         int Add(Contrat contrat);
-        void Update(Contrat contrat);
+        bool Update(Contrat contrat);
         void Delete(int id);
     }
 }

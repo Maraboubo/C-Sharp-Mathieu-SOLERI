@@ -31,19 +31,33 @@ namespace ApiCreadocs.Repository
         {
             using var connection = _interfaceConnection.CreateConnexion();
             string requete = @"
-        INSERT INTO CONTRAT(id_typContr, numCarte, id_inter, id_Cli, id_Assu, id_mutu, numSim, dateContr, dateDebutContr, dateFinContr, fichierContr) 
-        VALUES (@id_typContr, @numCarte, @id_inter, @id_Cli, @id_Assu, @id_mutu, @numSim, @dateContr, @dateDebutContr, @dateFinContr, @fichierContr);
+        INSERT INTO CONTRAT(id_typContr, numCarte, id_inter, id_Cli, id_Assu, id_mutu, numSim, dateContr, dateDebutContr, dateFinContr) 
+        VALUES (@id_typContr, @numCarte, @id_inter, @id_Cli, @id_Assu, @id_mutu, @numSim, @dateContr, @dateDebutContr, @dateFinContr);
         SELECT CAST(SCOPE_IDENTITY() as int)";
             return connection.QueryFirstOrDefault<int>(requete, contrat);
         }
 
-        public void Update(Contrat contrat)
-        {
+        //SAUVEGARDE CONTRAT
 
+        public bool Update(Contrat updatedContrat)
+        {
             using var connection = _interfaceConnection.CreateConnexion();
-            string requete = "UPDATE CONTRAT SET id_typContr = @id_typContr, numCarte = @numCarte, id_inter = @id_inter, id_Cli = @id_Cli, id_Assu = @id_Assu, id_mutu = @id_mutu, numSim = @numSim, dateContr = @dateContr, dateDebutContr = @dateDebutContr, dateFinContr = @dateFinContr, fichierContr = @fichierContr";
-            connection.Execute(requete, contrat);
+            {
+                connection.Open();
+                var query = "UPDATE CONTRAT SET fichierContr = @fichierContr WHERE id_Contr = @id_Contr";
+                var result = connection.Execute(query, updatedContrat);
+                return result > 0;
+            }
         }
+
+
+        //public void Update(Contrat contrat)
+        //{
+
+        //    using var connection = _interfaceConnection.CreateConnexion();
+        //    string requete = "UPDATE CONTRAT SET id_typContr = @id_typContr, numCarte = @numCarte, id_inter = @id_inter, id_Cli = @id_Cli, id_Assu = @id_Assu, id_mutu = @id_mutu, numSim = @numSim, dateContr = @dateContr, dateDebutContr = @dateDebutContr, dateFinContr = @dateFinContr, fichierContr = @fichierContr";
+        //    connection.Execute(requete, contrat);
+        //}
 
         public void Delete(int id)
         {

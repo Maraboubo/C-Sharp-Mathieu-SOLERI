@@ -16,6 +16,6 @@ namespace ApiCreadocs.Models
         public DateTime dateContr { get; set; }
         public DateTime? dateDebutContr { get; set; }
         public DateTime? dateFinContr { get; set; }
-        public byte? fichierContr { get; set; }
+        public string? fichierContr { get; set; }
     }
 }

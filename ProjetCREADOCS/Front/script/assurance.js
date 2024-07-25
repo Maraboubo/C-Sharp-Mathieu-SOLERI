@@ -162,9 +162,9 @@ function checkFormulaireDeux()
     }
     else {
         envoiDataContrat();
-        affichagePageTrois();
-        ////exécution du peuplement de la page3
-        populatePageTrois();
+        /*affichagePageTrois();*/
+        //////exécution du peuplement de la page3
+        //populatePageTrois();
     }
 }
 
@@ -354,6 +354,7 @@ async function envoiDataClient() {
         console.error('Erreur lors de l\'enregistrement du client');
         alert('Erreur lors de l\'enregistrement du client');
     }
+    
 }
 
 async function envoiDataContrat() {
@@ -398,6 +399,8 @@ async function envoiDataContrat() {
         console.error('Erreur lors de l\'enregistrement du contrat');
         alert('Erreur lors de l\'enregistrement du contrat');
     }
+    //peuplement de la page Trois
+    populatePageTrois();
 }
 
 async function envoiDataKwSoft() {
@@ -503,8 +506,6 @@ async function envoiDataKwSoft() {
         dateEcheance12: eche12
     };
 
-
-
     //CODE FETCH AU PROXY DE MON API FAISANT APPEL A L'API KWSOFT. IL RETOURNE BIEN UN OBJET PDF EN CONSOLE IL AFFICHE LE DOCUMENT DANS UNE IFRAME 'EN COMMENTAIRE EN BAS DE PAGE HTML'
 
     /* const objetKw = { Assurance: { Interlocuteur: interlocuteurData, Client: clientData, Contrat: contratData, Echeances: echeancesData } };*/
@@ -527,22 +528,44 @@ async function envoiDataKwSoft() {
         redirect: "follow"
     };
 
-
-
     fetch('https://localhost:44338/api/Proxy/proxy', requestOptions)
         .then(res => res.blob())
         .then(blob => {
             console.log(blob);
 
-            const url = URL.createObjectURL(blob);
-            window.open(url, '_blank');
 
-            // Optionally, revoke the object URL after some time to release memory
-            setTimeout(() => URL.revokeObjectURL(url), 10000);
+            const reader = new FileReader();
+            reader.onloadend = async function () {
+                const base64data = reader.result.split(',')[1];
+                
+                // Enregistrement des données en base de données via l'API
+                const updateRequestOptions = {
+                    method: "PUT",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ id_Contr: numCo, fichierContr: base64data })
+                };
+                console.log(updateRequestOptions);
+
+                try {
+                    const response = await fetch(`https://localhost:44338/api/contrat/${numCo}`, updateRequestOptions);
+                    if (!response.ok) {
+                        throw new Error('Erreur lors de la mise à jour du contrat.');
+                    }
+
+                    // Affichage du PDF dans une nouvelle fenêtre
+                    const url = URL.createObjectURL(blob);
+                    window.open(url, '_blank');
+
+                    // Optionally, revoke the object URL after some time to release memory
+                    setTimeout(() => URL.revokeObjectURL(url), 10000);
+                } catch (error) {
+                    console.error('Erreur lors de la mise à jour du contrat:', error);
+                }
+            };
+            reader.readAsDataURL(blob);
         })
         .catch(error => console.log('error', error));
 }
-
 async function populateAssuranceDropdown() {
     try {
         const response = await fetch(urlAssurance);
@@ -628,9 +651,7 @@ function populatePageTrois() {
     document.getElementById('valeurAssu11').innerHTML = contrat.valeurAssu;
     document.getElementById('valeurAssu12').innerHTML = contrat.valeurAssu;
 
-    testAffichageValeur = document.getElementById('nomInter').innerHTML;
-
-    console.log(testAffichageValeur);
+    affichagePageTrois();
    
 }
 
@@ -652,212 +673,144 @@ document.addEventListener('DOMContentLoaded', populateAssuranceDropdown);
     Enciennes versions du code.
 */
 
-//// Ajouter un gestionnaire d'événements pour détecter le changement de sélection du pays
-//document.getElementById('countryName').addEventListener('change', () => {
-//    const selectedCountry = document.getElementById('countryName').value;
-//    if (selectedCountry) {
-//        document.getElementById('postalCode').addEventListener('input', () => {
-//            const postalCode = document.getElementById('postalCode').value;
-//            if (postalCode) {
-//                populateCityDropdown(selectedCountry, postalCode);
-//            } else {
-//                clearCityDropdown();
-//            }
-//        });
-//    } else {
-//        clearCityDropdown();
-//    }
-//});
 
+///SAUVEGARDE DU CODE DE COMPOSITION DE DOCUMENT AVANT AJOUT D4ENREGISTREMENT DU CONTRAT
 
+//async function envoiDataKwSoft() {
+//    //récupération des objets stockés dans le 'localstorage'
+//    const user = JSON.parse(localStorage.getItem('user'));
+//    const client = JSON.parse(localStorage.getItem('client'));
+//    const contrat = JSON.parse(localStorage.getItem('contrat'));
 
-///Peuplement de la page 3
+//    //Elements de la page 'Client'
+//    var nomI = document.getElementById('nomInter').innerHTML;
+//    var prenomI = document.getElementById('prenomInter').innerHTML;
+//    var telI = document.getElementById('telInter').innerHTML;
+//    var mailI = document.getElementById('mailInter').innerHTML;
+//    //client
+//    var nomC = document.getElementById('nomClient').innerHTML;
+//    var prenomC = document.getElementById('prenomClient').innerHTML;
+//    var add1C = document.getElementById('add1Client').innerHTML;
+//    var add2C = document.getElementById('add2Client').innerHTML;
+//    var add3C = document.getElementById('add3Client').innerHTML;
+//    var codPostC = document.getElementById('codePostVille').innerHTML;
+//    var villeC = document.getElementById('nomVille').innerHTML;
+//    var paysC = document.getElementById('nomPays').innerHTML;
+//    //contrat
+//    var numCo = document.getElementById('id_Contr').innerHTML;
+//    var typCo = document.getElementById('typContr').innerHTML;
+//    var datCo = document.getElementById('dateContr').innerHTML;
+//    var debCo = document.getElementById('dateDebutContr').innerHTML;
+//    //échéances
+//    //Peuplées grace à la fonction
+//    //valeurs
+//    var val1 = document.getElementById('valeurAssu1').innerHTML;
+//    var val2 = document.getElementById('valeurAssu2').innerHTML;
+//    var val3 = document.getElementById('valeurAssu3').innerHTML;
+//    var val4 = document.getElementById('valeurAssu4').innerHTML;
+//    var val5 = document.getElementById('valeurAssu5').innerHTML;
+//    var val6 = document.getElementById('valeurAssu6').innerHTML;
+//    var val7 = document.getElementById('valeurAssu7').innerHTML;
+//    var val8 = document.getElementById('valeurAssu8').innerHTML;
+//    var val9 = document.getElementById('valeurAssu9').innerHTML;
+//    var val10 = document.getElementById('valeurAssu10').innerHTML;
+//    var val11 = document.getElementById('valeurAssu11').innerHTML;
+//    var val12 = document.getElementById('valeurAssu12').innerHTML;
+//    //échéances
+//    var eche1 = document.getElementById('eche1').innerHTML;
+//    var eche2 = document.getElementById('eche2').innerHTML;
+//    var eche3 = document.getElementById('eche3').innerHTML;
+//    var eche4 = document.getElementById('eche4').innerHTML;
+//    var eche5 = document.getElementById('eche5').innerHTML;
+//    var eche6 = document.getElementById('eche6').innerHTML;
+//    var eche7 = document.getElementById('eche7').innerHTML;
+//    var eche8 = document.getElementById('eche8').innerHTML;
+//    var eche9 = document.getElementById('eche9').innerHTML;
+//    var eche10 = document.getElementById('eche10').innerHTML;
+//    var eche11 = document.getElementById('eche11').innerHTML;
+//    var eche12 = document.getElementById('eche12').innerHTML;
 
-////récupération des éléments du DOM.
-////interlocuteur
-//var nomInt = document.getElementById('nomInter');
-//var prenomInt = document.getElementById('prenomInter');
-//var telInt = document.getElementById('telInter');
-//var mailInt = document.getElementById('mailInter');
-////client
-//var nomCli = document.getElementById('nomCli');
-//var prenomCli = document.getElementById('prenomCli');
-//var add1Cli = document.getElementById('add1Cli');
-//var add2Cli = document.getElementById('add2Cli');
-//var add3Cli = document.getElementById('add3Cli');
-//var codePostVille = document.getElementById('codePostVille');
-//var nomVille = document.getElementById('nomVille');
-//var nomPays = document.getElementById('nomPays');
-////contrat
-//var id_Contr = document.getElementById('id_Contr');
-//var typContr = document.getElementById('typContr');
-//var dateContr = document.getElementById('dateContr');
-//var dateDebutContr = document.getElementById('dateDebutContr');
-////échéances
-//var eche1 = document.getElementById('eche1');
-//var eche2 = document.getElementById('eche2');
-//var eche3 = document.getElementById('eche3');
-//var eche4 = document.getElementById('eche4');
-//var eche5 = document.getElementById('eche5');
-//var eche6 = document.getElementById('eche6');
-//var eche7 = document.getElementById('eche7');
-//var eche8 = document.getElementById('eche8');
-//var eche9 = document.getElementById('eche9');
-//var eche10 = document.getElementById('eche10');
-//var eche11 = document.getElementById('eche11');
-//var eche12 = document.getElementById('eche12');
-////valeurs
-//var valeurAssu1 = document.getElementById('valeurAssu1');
-//var valeurAssu2 = document.getElementById('valeurAssu2');
-//var valeurAssu3 = document.getElementById('valeurAssu3');
-//var valeurAssu4 = document.getElementById('valeurAssu4');
-//var valeurAssu5 = document.getElementById('valeurAssu5');
-//var valeurAssu6 = document.getElementById('valeurAssu6');
-//var valeurAssu7 = document.getElementById('valeurAssu7');
-//var valeurAssu8 = document.getElementById('valeurAssu8');
-//var valeurAssu9 = document.getElementById('valeurAssu9');
-//var valeurAssu10 = document.getElementById('valeurAssu10');
-//var valeurAssu11 = document.getElementById('valeurAssu11');
-//var valeurAssu12 = document.getElementById('valeurAssu12');
-////Attribution des valeurs des objets du local storage aux espaces de la page 3
-////Interlocuteur
-//nomInt.innerHTML = user.nomInter;
-//prenomInt.innerHTML = user.prenomInter;
-//telInt.innerHTML = user.telInter;
-//mailInt.innerHTML = user.mailInter;
-////Client
-//nomCli.innerHTML = user.nomInter;
-//prenomCli.innerHTML = user.prenomInter;
-//telInt.innerHTML = user.telInter;
-//mailInt.innerHTML = user.mailInter;
-//nomCli.innerHTML = user.nomInter;
-//prenomCli.innerHTML = user.prenomInter;
-//telInt.innerHTML = user.telInter;
-//mailInt.innerHTML = user.mailInter;
+//    const interlocuteurData = {
+//        nomInter: nomI,
+//        prenomInter: prenomI,
+//        telInter: telI,
+//        mailInter: mailI
+//    };
+//    const clientData = {
+//        nomCli: nomC,
+//        prenomCli: prenomC,
+//        add1Cli: add1C,
+//        add2Cli: add2C,
+//        add3Cli: add3C,
+//        postalCode: codPostC,
+//        placeName: villeC,
+//        countryName: paysC
+//    };
+//    const contratData = {
+//        id_Contr: numCo,
+//        nomAssu: typCo,
+//        dateContr: datCo,
+//        dateDebutContr: debCo
+//    };
+//    const echeancesData = {
+//        valeurMois1: val1,
+//        dateEcheance1: eche1,
+//        valeurMois2: val2,
+//        dateEcheance2: eche2,
+//        valeurMois3: val3,
+//        dateEcheance3: eche3,
+//        valeurMois4: val4,
+//        dateEcheance4: eche4,
+//        valeurMois5: val5,
+//        dateEcheance5: eche5,
+//        valeurMois6: val6,
+//        dateEcheance6: eche6,
+//        valeurMois7: val7,
+//        dateEcheance7: eche7,
+//        valeurMois8: val8,
+//        dateEcheance8: eche8,
+//        valeurMois9: val9,
+//        dateEcheance9: eche9,
+//        valeurMois10: val10,
+//        dateEcheance10: eche10,
+//        valeurMois11: val11,
+//        dateEcheance11: eche11,
+//        valeurMois12: val12,
+//        dateEcheance12: eche12
+//    };
 
+//    //CODE FETCH AU PROXY DE MON API FAISANT APPEL A L'API KWSOFT. IL RETOURNE BIEN UN OBJET PDF EN CONSOLE IL AFFICHE LE DOCUMENT DANS UNE IFRAME 'EN COMMENTAIRE EN BAS DE PAGE HTML'
 
+//    /* const objetKw = { Assurance: { Interlocuteur: interlocuteurData, Client: clientData, Contrat: contratData, Echeances: echeancesData } };*/
 
-//tentative initiale de fetch l'url KwSoft
+//    const objetKw = {
+//        Assurance: {
+//            Interlocuteur: interlocuteurData,
+//            Client: clientData,
+//            Contrat: contratData,
+//            Echeances: echeancesData
+//        }
+//    };
 
-//const response = await fetch(urlKwSoft, {
-//    method: 'POST',
-//    headers: { 'Content-Type': 'multipart/form.data; boundary=<calculated when request is sent>', "accept": '*/*'  },
-//    body: objetKw,
-//    //modification de l'en-tête
-//    mode: 'no-cors'
-//});
-//console.log(objetKw);
-//if (response.ok) {
-//    /*const contrat = await response.json();*/
-//    /*localStorage.setItem('contrat', JSON.stringify(contrat));*/
-//    // Passer à la prochaine partie du formulaire
-//    alert('Données transmises avec succès');
-//} else {
-//    console.error('Erreur lors de l\'enregistrement du contrat');
-//    alert('Erreur lors de l\'enregistrement du contrat');
+//    console.log(JSON.stringify(objetKw));
+
+//    const requestOptions = {
+//        method: "POST",
+//        headers: { "Content-Type": "application/json" },
+//        body: JSON.stringify(objetKw),
+//        redirect: "follow"
+//    };
+
+//    fetch('https://localhost:44338/api/Proxy/proxy', requestOptions)
+//        .then(res => res.blob())
+//        .then(blob => {
+//            console.log(blob);
+
+//            const url = URL.createObjectURL(blob);
+//            window.open(url, '_blank');
+
+//            // Optionally, revoke the object URL after some time to release memory
+//            setTimeout(() => URL.revokeObjectURL(url), 10000);
+//        })
+//        .catch(error => console.log('error', error));
 //}
-
-
-
-
-
-
-///SAUVEGARDE DE LA REQUETE KW QUI FONCTIONNE ATTENTION AUX PARTIES EN COMMENTAIRE ET 'NO CORS' EST EN COMMENTAIRE AUSSI
-
-//const objetxml = '<?xml version=\"1.1\" encoding=\"UTF-8\"?><K6><DES><DES_ID>DE</DES_ID><DES_TOP_CA>0</DES_TOP_CA><DES_TOP_CO>0</DES_TOP_CO><DES_TOP_EXO>0</DES_TOP_EXO><DES_PERIODE>Z</DES_PERIODE><DES_NUM_COMPTE>0824446</DES_NUM_COMPTE></DES> <MES><MES_ID>ME</MES_ID><MES_MESSAGE_14></MES_MESSAGE_14><MES_MESSAGE_15></MES_MESSAGE_15></MES></K6>';
-
-//const urlKwSoft = 'https://contenthub-fr.test.omscloud.eu/mtext-integration-adapter/template//RELEVE_K6/Templates/RELEVE_K6.template/export?document-name=RELEVE1234567&mime-type=application%2Fpdf&user=user_ADV&passwordplain=demo';
-
-///*const objetKw = JSON.stringify({ Interlocuteur: interlocuteurData, Client: clientData, Contrat: contratData, Echeances: echeancesData });*/
-
-//const formdata = new FormData();
-
-//formdata.append("xml:DATA", objetxml);
-
-//const requestOptions = {
-
-//    method: "POST",
-
-//    body: formdata,
-
-//    redirect: "follow",
-
-//    /*        mode: 'no-cors',*/
-
-//    //ajouts à partir du mail.
-
-//    headers: { 'Content-Type': 'multipart/form.data; boundary=<calculated when request is sent>', 'Accept': '*/*', 'Host': 'https://contenthub-fr.test.omscloud.eu/', 'Accept-Encoding': 'gzip, deflate, br' }
-//};
-
-////const response = await fetch(urlKwSoft, requestOptions);
-/////*console.log(objetKw);*/
-////if (response.ok) {
-////    /*const contrat = await response.json();*/
-////    /*localStorage.setItem('contrat', JSON.stringify(contrat));*/
-////    // Passer à la prochaine partie du formulaire
-////    alert('Données transmises avec succès');
-////} else {
-////    console.error('Erreur lors de l\'enregistrement du contrat');
-////    alert('Erreur lors de l\'enregistrement du contrat');
-////}
-
-//fetch(urlKwSoft, requestOptions)
-
-//    .then(res => res.blob())
-//    .then(blob => {
-//        console.log(blob);
-
-//        const file = new File([blob], 'pdf Retour', { type: blob.type });
-
-//        console.log(file);
-//    })
-
-////.catch((err) => {
-////    console.log("Erreur de BLOB !!!");
-////});
-
-////.then((response) => response.text())
-
-////.then((result) => console.log(result))
-
-////.catch((error) => console.error(error));
-
-
-
-
-
-///SAUVEGARDE DU CODE QUI NE MARCHAIT PAS MERCREDI 17/07/2024
-
-
-//const objetxml = '<?xml version=\"1.1\" encoding=\"UTF-8\"?><K6><DES><DES_ID>DE</DES_ID><DES_TOP_CA>0</DES_TOP_CA><DES_TOP_CO>0</DES_TOP_CO><DES_TOP_EXO>0</DES_TOP_EXO><DES_PERIODE>Z</DES_PERIODE><DES_NUM_COMPTE>0824446</DES_NUM_COMPTE></DES> <MES><MES_ID>ME</MES_ID><MES_MESSAGE_14></MES_MESSAGE_14><MES_MESSAGE_15></MES_MESSAGE_15></MES></K6>';
-
-//const urlKwSoft = 'https://contenthub-fr.test.omscloud.eu/mtext-integration-adapter/template//RELEVE_K6/Templates/RELEVE_K6.template/export?document-name=RELEVE1234567&mime-type=application%2Fpdf&user=user_ADV&passwordplain=demo';
-
-///*const objetKw = JSON.stringify({ Interlocuteur: interlocuteurData, Client: clientData, Contrat: contratData, Echeances: echeancesData });*/
-
-//const formdata = new FormData();
-
-//formdata.append("xml:DATA", objetxml);
-
-//const requestOptions = {
-
-//    method: "POST",
-
-//    headers: { "Content-Type": "multipart/form.data; boundary=<calculated when request is sent>", "Accept": "*/*", "Host": "https://contenthub-fr.test.omscloud.eu/", "Accept-Encoding": "gzip, deflate, br", "Access-Control-Allow-Origin": "https://localhost:44338" },
-
-//    body: formdata,
-
-//    redirect: "follow"
-
-//};
-
-//fetch(urlKwSoft, requestOptions)
-
-//    .then(res => res.blob())
-//    .then(blob => {
-//        console.log(blob);
-
-//        const file = new File([blob], 'pdf Retour', { type: blob.type });
-
-//        console.log(file);
-//    })
