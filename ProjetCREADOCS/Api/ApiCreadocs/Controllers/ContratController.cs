@@ -22,16 +22,24 @@ namespace ApiCreadocs.Controllers
             return Ok(contrats);
         }
 
-        [HttpGet("{id}")]
-        public ActionResult<ContratAssur> Get(int id)
+        //Implémentation contrats par interlocuteur
+        [HttpGet]
+        public ActionResult<IEnumerable<ContratRetourInter>> Get(int id)
         {
-            var contrat = _interfaceContratService.GetContratById(id);
-            if (contrat == null)
-            {
-                return NotFound();
-            }
-            return Ok(contrat);
+            var contrats = _interfaceContratService.GetAllContratsInterlocuteur(id);
+            return Ok(contrats);
         }
+
+        //[HttpGet("{id}")]
+        //public ActionResult<ContratAssur> Get(int id)
+        //{
+        //    var contrat = _interfaceContratService.GetContratById(id);
+        //    if (contrat == null)
+        //    {
+        //        return NotFound();
+        //    }
+        //    return Ok(contrat);
+        //}
 
         [HttpPost]
         public ActionResult<ContratAssur> Post([FromBody] Contrat contrat)

@@ -539,3 +539,112 @@ header {
 .couleurRouge {
     color: #E10018;
 }
+
+
+/*
+    Style Page Interlocuteurs
+*/
+
+#intercalaire {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80%;
+    height: 80%;
+    background: rgba(255, 255, 255, 0.95);
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+    #intercalaire::before {
+        content: '';
+        position: absolute;
+        top: -30px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 120px;
+        height: 60px;
+        background: rgba(255, 255, 255, 0.9);
+        border-radius: 10px 10px 0 0;
+    }
+
+.intercalaire-contenu {
+    padding: 0px;
+}
+
+#fermer-intercalaire {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.intercalaire-cache {
+    display: none;
+}
+
+.mainEspacePerso {
+    position: absolute;
+    height: 75%;
+    width: 98%;
+    overflow-y: scroll;
+    border: solid, 4px, #A7A7A7;
+    border-radius: 0 15px 15px 20px;
+}
+
+.menuEspacePerso {
+    width: 100%;
+    height: 10%;
+    padding: 0;
+}
+
+.rubriquesMenuEspacePerso {
+    display: inline-block;
+    padding: 0 20px;
+    background-color: #A7A7A7;
+    border-radius: 20px 20px 0 0;
+    height: 100%;
+}
+
+.identiteInterlocuteur {
+    margin: 0 0 10px;
+    height: 10%;
+    width: 40%;
+    background-color: #023A5B;
+    text-align: left;
+    border-radius: 20px;
+}
+
+.interlocuteurEspace {
+    margin: 20px 0 0 20px;
+    position: absolute;
+}
+
+/*
+    Test Scrollbar
+*/
+
+::-webkit-scrollbar {
+    width: 20px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px grey;
+    border-radius: 10px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #E10018;
+    border-radius: 10px;
+}
+
+    /* Handle on hover */
+    ::-webkit-scrollbar-thumb:hover {
+        background: #b30000;
+    }

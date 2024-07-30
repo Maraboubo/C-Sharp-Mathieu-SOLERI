@@ -1,0 +1,53 @@
+﻿/* styles.css */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background: #f0f0f0;
+}
+
+.page-principale {
+    padding: 20px;
+}
+
+#intercalaire {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 300px;
+    height: 200px;
+    background: rgba(255, 255, 255, 0.9);
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+    #intercalaire::before {
+        content: '';
+        position: absolute;
+        top: -30px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 120px;
+        height: 60px;
+        background: rgba(255, 255, 255, 0.9);
+        border-radius: 10px 10px 0 0;
+    }
+
+.intercalaire-contenu {
+    padding: 20px;
+}
+
+#fermer-intercalaire {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.intercalaire-cache {
+    display: none;
+}

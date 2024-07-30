@@ -25,6 +25,16 @@ namespace ApiCreadocs.Repository
                 " WHERE id_Contr = @id_Contr;";
             return connection.QueryFirstOrDefault<ContratAssur>(requete, new { id_Contr = id });
         }
+        ////Retour des contrats de l'utilisateur connecté
+        public IEnumerable<ContratRetourInter> GetAllById(int id)
+        {
+            using var connection = _interfaceConnection.CreateConnexion();
+            string requete = "SELECT id_Contr, nomCli, prenomCli, typContr, dateContr, fichierContr  FROM CONTRAT " +
+                "INNER JOIN CLIENTS ON CLIENTS.id_Cli = CONTRAT.id_Cli " +
+                "INNER JOIN TYPE_CONTRAT ON CONTRAT.id_typContr = TYPE_CONTRAT.id_typContr " +
+                "WHERE id_inter = @id_inter AND fichierContr is not null;";
+            return connection.Query<ContratRetourInter>(requete, new { id_inter = id });
+        }
 
         //Incrémentation de la fonctionalité d'ajout de contrat afin qu'elle retourne toutes les informations de CONTRAT ainsi que ASSURANCE.
         public int Add(Contrat contrat)

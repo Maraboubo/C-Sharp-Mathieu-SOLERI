@@ -18,6 +18,13 @@ namespace ApiCreadocs.Services
         {
             return _interfaceContratRepository.GetById(id);
         }
+
+        //Retour des Contrats des interlocuteurs connectés.
+        public IEnumerable<ContratRetourInter> GetAllContratsInterlocuteur(int id)
+        {
+            return _interfaceContratRepository.GetAllById(id);
+        }
+
         public int CreateContrat(Contrat contrat)
         {
             return _interfaceContratRepository.Add(contrat);

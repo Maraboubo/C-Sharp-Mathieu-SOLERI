@@ -325,3 +325,11 @@ Content-Type: application/json
 GET {{ApiCreadocs_HostAddress}}/api/identification
 
 ###
+
+GET {{ApiCreadocs_HostAddress}}/api/contrat/1009
+
+###
+
+GET {{ApiCreadocs_HostAddress}}/api/contrat?id=0
+
+###

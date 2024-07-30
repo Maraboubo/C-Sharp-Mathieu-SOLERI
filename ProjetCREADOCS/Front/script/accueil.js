@@ -9,7 +9,41 @@ BoutonAssurance = document.getElementById('interfaceUn');
 BoutonSim = document.getElementById('interfaceDeux');
 BoutonCarteBancaire = document.getElementById('interfaceTrois');
 BoutonMutuelle = document.getElementById('interfaceQuatre');
+//Page Interlocuteurs.
+PageInterlocuteurs = document.getElementById('intercalaire');
+CroixInterlocuteurs = document.getElementById('fermer-intercalaire');
+IdentifiantsInterlocuteur = document.getElementById('interlocuteurEspace');
+PageInfos = document.getElementById('pageInfoPerso');
+PageContrats = document.getElementById('pageContrat');
+PageStatistiques = document.getElementById('pageStatistiques');
 
+DivUtilisateur.addEventListener('click', affichagePageInterlocuteur);
+CroixInterlocuteurs.addEventListener('click', fermerPageInterlocuteur);
+
+function affichagePageInterlocuteur() {
+    const Interlocuteur = JSON.parse(localStorage.getItem('user'));
+    PageInterlocuteurs.style.display = 'block';
+    affichageContrats();
+    IdentifiantsInterlocuteur.innerText = `${Interlocuteur.prenomInter} ${Interlocuteur.nomInter}`;
+}
+function affichageInfoPerso() {
+    PageInfos.style.display = 'block';
+    PageContrats.style.display = 'none';
+    PageStatistiques.style.display = 'none';
+}
+function affichageContrats() {
+    PageInfos.style.display = 'none';
+    PageContrats.style.display = 'block';
+    PageStatistiques.style.display = 'none';
+}
+function affichageStatistiques() {
+    PageInfos.style.display = 'none';
+    PageContrats.style.display = 'none';
+    PageStatistiques.style.display = 'block';
+}
+function fermerPageInterlocuteur() {
+    PageInterlocuteurs.style.display = 'none';
+}
 
 document.addEventListener('DOMContentLoaded', ChargementUtilisateur);
 function ChargementUtilisateur()

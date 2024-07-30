@@ -57,3 +57,11 @@ ON CLIENTS.id_sexe = SEXE.id_sexe
 INNER JOIN SECURITE_SOCIALE
 ON CLIENTS.id_regimeSecu = SECURITE_SOCIALE.id_regimeSecu
 WHERE numIdCli = 'azertyuiop'
+
+--renvoi des des contrats de l'utilisateur connecté
+SELECT id_Contr, nomCli, prenomCli, typContr, dateContr, fichierContr  FROM CONTRAT
+INNER JOIN CLIENTS
+ON CLIENTS.id_Cli = CONTRAT.id_Cli
+INNER JOIN TYPE_CONTRAT
+ON CONTRAT.id_typContr = TYPE_CONTRAT.id_typContr
+WHERE id_inter = 1009 and fichierContr is not null;
