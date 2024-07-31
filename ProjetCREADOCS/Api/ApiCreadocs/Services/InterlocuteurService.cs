@@ -33,6 +33,11 @@ namespace ApiCreadocs.Services
             _interfaceInterlocuteurRepository.Update(interlocuteur);
         }
 
+        //public void UpdateInterlocuteur(Interlocuteur interlocuteur)
+        //{
+        //    _interfaceInterlocuteurRepository.Update(interlocuteur);
+        //}
+
         public void DeleteInterlocuteur(int id)
         {
             _interfaceInterlocuteurRepository.Delete(id);

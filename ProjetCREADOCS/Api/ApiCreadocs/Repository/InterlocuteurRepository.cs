@@ -22,27 +22,6 @@ namespace ApiCreadocs.Repository
             string requete = "SELECT * FROM INTERLOCUTEUR WHERE id_inter = @id_inter";
             return connection.QueryFirstOrDefault<Interlocuteur>(requete, new { id_inter = id });
         }
-        //public void Add(Interlocuteur interlocuteur)
-        //{
-        //    using var connection = _interfaceConnection.CreateConnexion();
-        //    VerificationChampsExistants(interlocuteur);
-        //    string requete = "INSERT INTO INTERLOCUTEUR(id_titre, id_agence, loginInter, mdpInter, loginKwInter, mdpKwInter, nomInter, prenomInter, telInter, mailInter)" +
-        //        "VALUES (@id_titre, @id_agence, @loginInter, @mdpInter, @loginKwInter, @mdpKwInter, @nomInter, @prenomInter, @telInter, @mailInter)";
-        //    connection.Execute
-        //        (requete, interlocuteur);
-        //}
-
-        //Incrémentation de la fonctionalité s'inscription afin qu'elle retourne un utilisateur.
-        //public Interlocuteur Add(Interlocuteur interlocuteur)
-        //{
-        //    using var connection = _interfaceConnection.CreateConnexion();
-        //    VerificationChampsExistants(interlocuteur);
-        //    string requete = "INSERT INTO INTERLOCUTEUR(id_titre, id_agence, loginInter, mdpInter, loginKwInter, mdpKwInter, nomInter, prenomInter, telInter, mailInter) " +
-        //        "VALUES (@id_titre, @id_agence, @loginInter, @mdpInter, @loginKwInter, @mdpKwInter, @nomInter, @prenomInter, @telInter, @mailInter) " +
-        //        "SELECT * FROM INTERLOCUTEUR " +
-        //        "WHERE mdpInter = @mdpInter AND mailInter = mailInter ";
-        //    return connection.QueryFirstOrDefault<Interlocuteur>(requete, interlocuteur);
-        //}
 
         //Incrémentation de la fonctionalité s'inscription afin qu'elle retourne toutes les informations d'INTERLOCUTEUR ainsi que TITRE et AGENCE.
         public Interlocuteur Add(Interlocuteur interlocuteur)
@@ -65,13 +44,24 @@ namespace ApiCreadocs.Repository
 
         public void Update(Interlocuteur interlocuteur)
         {
-            VerificationDeChamps(interlocuteur);
+            //VerificationDeChamps(interlocuteur);
 
             using var connection = _interfaceConnection.CreateConnexion();
             string requete = "UPDATE INTERLOCUTEUR SET id_titre = @id_titre, id_agence = @id_agence, loginInter = @loginInter, mdpInter = @mdpInter, loginKwInter = @loginKwInter," +
                 "mdpKwInter = @mdpKwInter, nomInter = @nomInter, prenomInter = @prenomInter, telInter = @telInter, mailInter = @mailInter WHERE id_inter = @id_inter";
             connection.Execute(requete, interlocuteur);
         }
+
+
+        //public void Update(Interlocuteur interlocuteur)
+        //{
+        //    VerificationDeChamps(interlocuteur);
+
+        //    using var connection = _interfaceConnection.CreateConnexion();
+        //    string requete = "UPDATE INTERLOCUTEUR SET id_titre = @id_titre, id_agence = @id_agence, loginInter = @loginInter, mdpInter = @mdpInter, loginKwInter = @loginKwInter," +
+        //        "mdpKwInter = @mdpKwInter, nomInter = @nomInter, prenomInter = @prenomInter, telInter = @telInter, mailInter = @mailInter WHERE id_inter = @id_inter";
+        //    connection.Execute(requete, interlocuteur);
+        //}
 
         public void Delete(int id)
         {

@@ -30,13 +30,6 @@ namespace ApiCreadocs.Controllers
             return Ok(interlocuteur);
         }
 
-        //[HttpPost]
-        //public ActionResult Post([FromBody] Interlocuteur interlocuteur)
-        //{
-        //    _interfaceInterlocuteurService.CreateInterlocuteur(interlocuteur);
-        //    return CreatedAtAction(nameof(Get), new { id = interlocuteur.id_inter }, interlocuteur);
-        //}
-
         //tentative de modification de la méthode post pour qu'elle retourne l'interlocuteur nouvellement créé.
         [HttpPost]
         public ActionResult<Interlocuteur> Post([FromBody] Interlocuteur interlocuteur)
@@ -49,16 +42,30 @@ namespace ApiCreadocs.Controllers
             return CreatedAtAction(nameof(Get), new { id = createdInterlocuteur.id_inter }, createdInterlocuteur);
         }
 
+        //MISE À JOUR DE L'INTERLOCUTEUR AVEC RETOUR DE L'INTERLOCUTEUR MODIFIÉ
         [HttpPut("{id}")]
-        public ActionResult Put(int id, [FromBody] Interlocuteur interlocuteur)
+        public ActionResult<Interlocuteur> Put(int id, [FromBody] Interlocuteur interlocuteur)
         {
             if (id != interlocuteur.id_inter)
             {
                 return BadRequest();
             }
             _interfaceInterlocuteurService.UpdateInterlocuteur(interlocuteur);
-            return NoContent();
+            var interlocuteurModif = _interfaceInterlocuteurService.GetInterlocuteurById(id);
+            return Ok(interlocuteurModif);
         }
+
+
+        //[HttpPut("{id}")]
+        //public ActionResult Put(int id, [FromBody] Interlocuteur interlocuteur)
+        //{
+        //    if (id != interlocuteur.id_inter)
+        //    {
+        //        return BadRequest();
+        //    }
+        //    _interfaceInterlocuteurService.UpdateInterlocuteur(interlocuteur);
+        //    return NoContent();
+        //}
 
         [HttpDelete("{id}")]
         public ActionResult Delete(int id)

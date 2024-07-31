@@ -602,13 +602,25 @@ header {
     padding: 0;
 }
 
+.titresMenuEspacePerso {
+    margin: 2% 0 2% 0;
+}
+
 .rubriquesMenuEspacePerso {
     display: inline-block;
     padding: 0 20px;
     background-color: #A7A7A7;
     border-radius: 20px 20px 0 0;
-    height: 100%;
+    height: 50%;
+    position: sticky;
+    top: 50%;
+    transition: height 0.2s, top 0.2s, background-color 0.2s;
 }
+    .rubriquesMenuEspacePerso:hover {
+        height: 75%;
+        top: 25%;
+        background-color: #E10018;
+    }
 
 .identiteInterlocuteur {
     margin: 0 0 10px;
@@ -625,9 +637,56 @@ header {
 }
 
 /*
-    Test Scrollbar
+    Style de l'iframe
 */
 
+.iframe-container {
+    position: relative;
+    width: 100%;
+    height: 300px;
+}
+
+iframe {
+    width: 68%;
+    height: 100%;
+    border: none;
+}
+
+.overlay {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    cursor: pointer;
+}
+.contract-row {
+    margin: 0 0 20px 30px;
+    background-color: rgba(167, 167, 167, 0.7);
+    width: 90%;
+    padding: 10px 0 10px 10px;
+    border-radius: 10px;
+}
+.ligneInfoDocument {
+    margin: 0 0 5px 10px;
+    font-size: medium;
+    font-family: 'Roboto';
+    color: white;
+    font-weight: 500;
+}
+.boutonDocument {
+    margin: 0 0 0 200px;
+    background-color: #E10018;
+    width: 150px;
+    height: 25px;
+    border: none;
+    border-radius: 20px;
+    color: white;
+    font-size: medium;
+    cursor: pointer;
+}
+/*
+    Test Scrollbar
+*/
 ::-webkit-scrollbar {
     width: 20px;
 }

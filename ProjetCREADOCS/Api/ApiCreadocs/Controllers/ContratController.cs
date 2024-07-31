@@ -23,7 +23,7 @@ namespace ApiCreadocs.Controllers
         }
 
         //Implémentation contrats par interlocuteur
-        [HttpGet]
+        [HttpGet("{id}")]
         public ActionResult<IEnumerable<ContratRetourInter>> Get(int id)
         {
             var contrats = _interfaceContratService.GetAllContratsInterlocuteur(id);

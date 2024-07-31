@@ -9,6 +9,7 @@ namespace ApiCreadocs.Services
         //void CreateInterlocuteur(Interlocuteur interlocuteur);
         Interlocuteur CreateInterlocuteur(Interlocuteur interlocuteur);
         void UpdateInterlocuteur(Interlocuteur interlocuteur);
+        //void UpdateInterlocuteur(Interlocuteur interlocuteur);
         void DeleteInterlocuteur(int id);
         Interlocuteur GetUserByEmailAndPassword(string email,string password);
     }
