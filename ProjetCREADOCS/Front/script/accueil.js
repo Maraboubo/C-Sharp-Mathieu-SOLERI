@@ -15,6 +15,9 @@ IdentifiantsInterlocuteur = document.getElementById('interlocuteurEspace');
 PageInfos = document.getElementById('pageInfoPerso');
 PageContrats = document.getElementById('pageContrat');
 PageStatistiques = document.getElementById('pageStatistiques');
+//URL Des éléments de chargement.
+const urlagence = 'https://localhost:44338/api/agence'; // URL pour les agences
+const urltitre = 'https://localhost:44338/api/titre'; // URL pour les fonctions
 
 DivUtilisateur.addEventListener('click', affichagePageInterlocuteur);
 CroixInterlocuteurs.addEventListener('click', fermerPageInterlocuteur);
@@ -31,7 +34,7 @@ function affichageInfoPerso() {
     PageStatistiques.style.display = 'none';
 }
 function affichageContrats() {
-    PageInfos.style.display = 'none';
+    PageInfos.style.display = 'block';
     PageContrats.style.display = 'block';
     PageStatistiques.style.display = 'none';
 }
@@ -162,4 +165,72 @@ function PeuplementContrats()
     }
 };
 
+function peuplementInfoInterlocuteur() {
+    //chargement des éléments du dom
+    const interlocuteur = JSON.parse(localStorage.getItem('user'));
+    const nomInterlo = document.getElementById('nomInter');
+    const prenomInterlo = document.getElementById('prenomInter');
+    const mailInterlo = document.getElementById('mailInter');
+    const telInterlo = document.getElementById('telInter');
+
+    nomInterlo.value = interlocuteur.nomInter;
+    prenomInterlo.value = interlocuteur.prenomInter;
+    mailInterlo.value = interlocuteur.mailInter;
+    telInterlo.value = interlocuteur.telInter;
+    populateAgenceDropdown();
+    populateTitreDropdown();
+
+
+}
+async function populateTitreDropdown() {
+    try {
+        const interlocuteur = JSON.parse(localStorage.getItem('user'));
+        const response = await fetch(urltitre);
+        const titres = await response.json();
+
+        const titreDropdown = document.getElementById('id_titre');
+
+        const defaultOption = document.createElement('option');
+        defaultOption.value = '';
+        defaultOption.text = interlocuteur.nomTitre;
+        titreDropdown.appendChild(defaultOption);
+
+        titres.forEach(titre => {
+            const option = document.createElement('option');
+            option.value = titre.id_titre; // Utilisez l'id de la fonction des employés comme valeur
+            option.text = titre.nomTitre; // Utilisez le nom de la fonction des employés comme texte
+            titreDropdown.appendChild(option);
+        });
+
+    } catch (error) {
+        console.error('Erreur lors du chargement des titres:', error);
+    }
+}
+
+async function populateAgenceDropdown() {
+    try {
+        const interlocuteur = JSON.parse(localStorage.getItem('user'));
+        const response = await fetch(urlagence);
+        const agences = await response.json();
+
+        const agenceDropdown = document.getElementById('id_agence');
+
+        const defaultOption = document.createElement('option');
+        defaultOption.value = '';
+        defaultOption.text = interlocuteur.nomAgence;
+        agenceDropdown.appendChild(defaultOption);
+
+        agences.forEach(agence => {
+            const option = document.createElement('option');
+            option.value = agence.id_agence; // Utilisez l'id de l'agence comme valeur
+            option.text = agence.nomAgence; // Utilisez le nom de l'agence comme texte
+            agenceDropdown.appendChild(option);
+        });
+
+    } catch (error) {
+        console.error('Erreur lors du chargement des agences:', error);
+    }
+}
+
+document.addEventListener('DOMContentLoaded', peuplementInfoInterlocuteur);
 document.addEventListener('DOMContentLoaded', PeuplementContrats);

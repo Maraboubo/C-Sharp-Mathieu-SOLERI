@@ -19,7 +19,10 @@ namespace ApiCreadocs.Repository
         public Interlocuteur GetById(int id)
         {
             using var connection = _interfaceConnection.CreateConnexion();
-            string requete = "SELECT * FROM INTERLOCUTEUR WHERE id_inter = @id_inter";
+            string requete = "SELECT id_inter, mailInter, nomInter, prenomInter, telInter, mailInter, INTERLOCUTEUR.id_agence, nomAgence, nomDirAgence, prenomDirAgence, INTERLOCUTEUR.id_titre, nomTitre FROM INTERLOCUTEUR " +
+                "INNER JOIN AGENCE ON AGENCE.id_agence = INTERLOCUTEUR.id_agence " +
+                "INNER JOIN TITRE ON TITRE.id_titre = INTERLOCUTEUR.id_titre " +
+                "WHERE id_inter = @id_inter";
             return connection.QueryFirstOrDefault<Interlocuteur>(requete, new { id_inter = id });
         }
 
@@ -32,7 +35,7 @@ namespace ApiCreadocs.Repository
         INSERT INTO INTERLOCUTEUR(id_titre, id_agence, loginInter, mdpInter, loginKwInter, mdpKwInter, nomInter, prenomInter, telInter, mailInter) 
         VALUES (@id_titre, @id_agence, @loginInter, @mdpInter, @loginKwInter, @mdpKwInter, @nomInter, @prenomInter, @telInter, @mailInter); 
         
-        SELECT i.id_Inter, i.prenomInter, i.nomInter, i.telInter, i.mailInter, 
+        SELECT i.id_Inter, i.prenomInter, i.nomInter, i.telInter, i.mailInter, i.id_titre, i.id_agence,
                a.nomAgence, a.nomDirAgence, a.prenomDirAgence, 
                t.nomTitre 
         FROM INTERLOCUTEUR i
@@ -47,8 +50,8 @@ namespace ApiCreadocs.Repository
             //VerificationDeChamps(interlocuteur);
 
             using var connection = _interfaceConnection.CreateConnexion();
-            string requete = "UPDATE INTERLOCUTEUR SET id_titre = @id_titre, id_agence = @id_agence, loginInter = @loginInter, mdpInter = @mdpInter, loginKwInter = @loginKwInter," +
-                "mdpKwInter = @mdpKwInter, nomInter = @nomInter, prenomInter = @prenomInter, telInter = @telInter, mailInter = @mailInter WHERE id_inter = @id_inter";
+            string requete = "UPDATE INTERLOCUTEUR SET id_titre = @id_titre, id_agence = @id_agence, " +
+                "nomInter = @nomInter, prenomInter = @prenomInter, telInter = @telInter, mailInter = @mailInter WHERE id_inter = @id_inter";
             connection.Execute(requete, interlocuteur);
         }
 

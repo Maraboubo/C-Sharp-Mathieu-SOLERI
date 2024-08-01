@@ -334,19 +334,15 @@ GET {{ApiCreadocs_HostAddress}}/api/contrat?id=0
 
 ###
 
-PUT {{ApiCreadocs_HostAddress}}/api/interlocuteur/4
+PUT {{ApiCreadocs_HostAddress}}/api/interlocuteur/1013
 Content-Type: application/json
 
 {
-	  "id_inter": 4,
-    "id_titre": 2,
+	  "id_inter": 1013,
+    "id_titre": 5,
     "id_agence": 3,
-    "loginInter": "LoginModif",
-    "mdpInter": "passwordModif",
-    "loginKwInter": "l",
-    "mdpKwInter": "l",
-    "nomInter": "Marie",
-    "prenomInter": "Moreau",
+    "nomInter": "COLUCHE",
+    "prenomInter": "Michou",
     "telInter": "01.02.03.04.05",
     "mailInter": "mail@modif.com"
 }

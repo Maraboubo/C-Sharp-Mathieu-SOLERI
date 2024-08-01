@@ -8,8 +8,8 @@ namespace ApiCreadocs.Models
         public int id_inter {get; set;} 
         public int? id_titre { get; set;}
         public int? id_agence { get; set;}
-        public string loginInter {  get; set;}
-        public string mdpInter { get; set;}
+        public string? loginInter {  get; set;}
+        public string? mdpInter { get; set;}
         public string? loginKwInter { get; set;}
         public string? mdpKwInter { get; set;}
         public string nomInter { get; set; }

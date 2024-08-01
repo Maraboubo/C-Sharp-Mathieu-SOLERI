@@ -65,3 +65,11 @@ ON CLIENTS.id_Cli = CONTRAT.id_Cli
 INNER JOIN TYPE_CONTRAT
 ON CONTRAT.id_typContr = TYPE_CONTRAT.id_typContr
 WHERE id_inter = 1009 and fichierContr is not null;
+
+--Renvoi des données de l'interlocuteur modifié
+SELECT id_inter, mailInter, nomInter, prenomInter, telInter, mailInter, nomAgence, nomDirAgence, prenomDirAgence, nomTitre FROM INTERLOCUTEUR
+INNER JOIN AGENCE
+ON AGENCE.id_agence = INTERLOCUTEUR.id_agence
+INNER JOIN TITRE
+ON TITRE.id_titre = INTERLOCUTEUR.id_titre
+WHERE id_inter = 1009

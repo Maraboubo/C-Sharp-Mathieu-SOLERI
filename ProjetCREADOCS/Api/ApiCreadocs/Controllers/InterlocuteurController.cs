@@ -55,18 +55,6 @@ namespace ApiCreadocs.Controllers
             return Ok(interlocuteurModif);
         }
 
-
-        //[HttpPut("{id}")]
-        //public ActionResult Put(int id, [FromBody] Interlocuteur interlocuteur)
-        //{
-        //    if (id != interlocuteur.id_inter)
-        //    {
-        //        return BadRequest();
-        //    }
-        //    _interfaceInterlocuteurService.UpdateInterlocuteur(interlocuteur);
-        //    return NoContent();
-        //}
-
         [HttpDelete("{id}")]
         public ActionResult Delete(int id)
         {
