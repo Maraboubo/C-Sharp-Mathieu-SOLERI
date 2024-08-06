@@ -13,6 +13,7 @@ PageInterlocuteurs = document.getElementById('intercalaire');
 CroixInterlocuteurs = document.getElementById('fermer-intercalaire');
 IdentifiantsInterlocuteur = document.getElementById('interlocuteurEspace');
 PageInfos = document.getElementById('pageInfoPerso');
+BoutonModifInter = document.getElementById('boutonModifier');
 PageContrats = document.getElementById('pageContrat');
 PageStatistiques = document.getElementById('pageStatistiques');
 //URL Des éléments de chargement.
@@ -21,6 +22,7 @@ const urltitre = 'https://localhost:44338/api/titre'; // URL pour les fonctions
 
 DivUtilisateur.addEventListener('click', affichagePageInterlocuteur);
 CroixInterlocuteurs.addEventListener('click', fermerPageInterlocuteur);
+BoutonModifInter.addEventListener('click', envoiJsonInterModif);
 
 function affichagePageInterlocuteur() {
     const Interlocuteur = JSON.parse(localStorage.getItem('user'));
@@ -229,6 +231,52 @@ async function populateAgenceDropdown() {
 
     } catch (error) {
         console.error('Erreur lors du chargement des agences:', error);
+    }
+}
+
+//ENVOI DES DONNÉES 
+async function envoiJsonInterModif() {
+    const interlocuteurLocalStorage = JSON.parse(localStorage.getItem('user'));
+    const idInterLocalStorage = interlocuteurLocalStorage.id_inter;
+    urlModifInter = `https://localhost:44338/api/interlocuteur/${idInterLocalStorage}`;
+
+    const nomInterlo = document.getElementById('nomInter').value;
+    const prenomInterlo = document.getElementById('prenomInter').value;
+    const titreInterlo = document.getElementById('id_titre').value;
+    const agenceInterlo = document.getElementById('id_agence').value;
+    const mailInterlo = document.getElementById('mailInter').value;
+    const telInterlo = document.getElementById('telInter').value;
+
+    console.log(idInterLocalStorage, nomInterlo, prenomInterlo, titreInterlo, agenceInterlo, mailInterlo, telInterlo);
+
+    // Convertit les données en objet JSON
+    var interlocuteur = {
+        id_inter: idInterLocalStorage,
+        nomInter: nomInterlo,
+        prenomInter: prenomInterlo,
+        id_titre: titreInterlo,
+        id_agence: agenceInterlo,
+        mailInter: mailInterlo,
+        telInter: telInterlo
+    };
+
+    const envoiInter = JSON.stringify(interlocuteur);
+
+    const response = await fetch(urlModifInter, {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: envoiInter
+    });
+
+    console.log(envoiInter);
+    if (response.ok) {
+        const inter = await response.json();
+        localStorage.setItem('user', JSON.stringify(inter));
+        // Passer à la prochaine partie du formulaire
+        alert('La modification de vos informations personelles est reussie !!!');
+    } else {
+        console.error('Erreur lors de la modification de l\'interlocuteur');
+        alert('Erreur lors de la modification de l\'interlocuteur');
     }
 }
 

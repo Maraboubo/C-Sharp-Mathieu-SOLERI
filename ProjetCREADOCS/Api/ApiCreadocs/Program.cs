@@ -46,6 +46,9 @@ namespace ApiCreadocs
             builder.Services.AddScoped<InterfaceIdentificationRepository, IdentificationRepository>();
             builder.Services.AddScoped<InterfaceIdentificationService, IdentificationService>();
 
+            builder.Services.AddScoped<InterfaceStatistiquesRepository, StatistiquesRepository>();
+            builder.Services.AddScoped<InterfaceStatistiquesService, StatistiquesService>();
+
             builder.Services.AddCors(options =>
             {
                 options.AddPolicy("AllowAllOrigins",

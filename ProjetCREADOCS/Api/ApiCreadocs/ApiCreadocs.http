@@ -339,12 +339,37 @@ Content-Type: application/json
 
 {
 	  "id_inter": 1013,
-    "id_titre": 5,
-    "id_agence": 3,
+    "id_titre": "5",
+    "id_agence": "3",
     "nomInter": "COLUCHE",
-    "prenomInter": "Michou",
+    "prenomInter": "Michmich",
     "telInter": "01.02.03.04.05",
     "mailInter": "mail@modif.com"
+}
+
+###
+
+PUT {{ApiCreadocs_HostAddress}}/api/interlocuteur/1013
+Content-Type: application/json
+
+{
+	"id_inter":1013,
+	"nomInter":"COLUCHE",
+	"prenomInter":"Michel",
+	"id_titre":"6",
+	"id_agence":"2",
+	"mailInter":"mailmailmodifie@modif.com",
+	"telInter":"01"
+}
+
+###
+
+POST {{ApiCreadocs_HostAddress}}/api/statistiques
+Content-Type: application/json
+
+{
+    "id_agence": 3,
+		"id_inter": 1009
 }
 
 ###
