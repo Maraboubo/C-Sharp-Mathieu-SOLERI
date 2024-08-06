@@ -625,11 +625,13 @@ header {
     top: 50%;
     transition: height 0.2s, top 0.2s, background-color 0.2s;
 }
-    .rubriquesMenuEspacePerso:hover {
+    .rubriquesMenuEspacePerso:hover,
+    .rubriquesMenuEspacePerso.active {
         height: 75%;
         top: 25%;
         background-color: #E10018;
     }
+
 
 .identiteInterlocuteur {
     margin: 0 0 10px;
@@ -735,6 +737,35 @@ iframe {
     padding: 10px 0 10px 10px;
     border-radius: 10px;
 }
+/*
+    Page Interlocuteur Infos personnelles
+*/
+.statsPersonnelles {
+    display: inline;
+    margin: 0 0 20px 30px;
+}
+
+.statsPersoInter {
+    display: inline;
+    margin: 0 0 20px 300px;
+    left: 380px;
+    position: absolute;
+    border: none;
+    background-color: rgba(255, 255, 255, 0.5);
+    font-size: xx-large;
+    font-weight: 600;
+    border-radius: 5px;
+}
+
+.fondTitresStats {
+    background-color: #023A5B;
+    display: block;
+    width: fit-content;
+    padding: 10px 20px;
+    border-radius: 20px;
+    color: white;
+}
+
 /*
     Test Scrollbar
 */

@@ -16,6 +16,10 @@ PageInfos = document.getElementById('pageInfoPerso');
 BoutonModifInter = document.getElementById('boutonModifier');
 PageContrats = document.getElementById('pageContrat');
 PageStatistiques = document.getElementById('pageStatistiques');
+//Menu page interlocuteurs.
+MenuInfoPerso = document.getElementById('informationsPersonnelles');
+MenuMesContrats = document.getElementById('menuMesContrats');
+MenuStatistiques = document.getElementById('menuStatistiques');
 //URL Des ÈlÈments de chargement.
 const urlagence = 'https://localhost:44338/api/agence'; // URL pour les agences
 const urltitre = 'https://localhost:44338/api/titre'; // URL pour les fonctions
@@ -23,11 +27,34 @@ const urltitre = 'https://localhost:44338/api/titre'; // URL pour les fonctions
 DivUtilisateur.addEventListener('click', affichagePageInterlocuteur);
 CroixInterlocuteurs.addEventListener('click', fermerPageInterlocuteur);
 BoutonModifInter.addEventListener('click', envoiJsonInterModif);
+MenuInfoPerso.addEventListener('click', affichageInfoPerso);
+MenuMesContrats.addEventListener('click', affichageContrats);
+MenuStatistiques.addEventListener('click', affichageStatistiques);
+
+//CONTROLE DES BOUTONS
+document.addEventListener('DOMContentLoaded', (event) => {
+    const boutons = document.querySelectorAll('.rubriquesMenuEspacePerso');
+
+    boutons.forEach(bouton => {
+        bouton.addEventListener('click', () => {
+            // Retirer la classe 'active' de tous les boutons
+            boutons.forEach(bouton => bouton.classList.remove('active'));
+
+            // Ajouter la classe 'active' au bouton cliquÈ
+            bouton.classList.add('active');
+
+            // Votre logique pour afficher la page correspondante peut aller ici
+            // Par exemple, vous pouvez afficher la page correspondante en fonction de l'ID du bouton ou d'une autre caractÈristique
+        });
+    });
+});
+
 
 function affichagePageInterlocuteur() {
     const Interlocuteur = JSON.parse(localStorage.getItem('user'));
     PageInterlocuteurs.style.display = 'block';
-    affichageContrats();
+    affichageInfoPerso();
+    MenuInfoPerso.classList.add('active');
     IdentifiantsInterlocuteur.innerText = `${Interlocuteur.prenomInter} ${Interlocuteur.nomInter}`;
 }
 function affichageInfoPerso() {
@@ -36,8 +63,8 @@ function affichageInfoPerso() {
     PageStatistiques.style.display = 'none';
 }
 function affichageContrats() {
-    PageInfos.style.display = 'block';
-    PageContrats.style.display = 'block';
+    PageInfos.style.display = 'none';
+    PageContrats.style.display = 'Block';
     PageStatistiques.style.display = 'none';
 }
 function affichageStatistiques() {
@@ -234,7 +261,7 @@ async function populateAgenceDropdown() {
     }
 }
 
-//ENVOI DES DONN…ES 
+//ENVOI DES DONN…ES POUR MODIFICATION D'UTILISATEUR
 async function envoiJsonInterModif() {
     const interlocuteurLocalStorage = JSON.parse(localStorage.getItem('user'));
     const idInterLocalStorage = interlocuteurLocalStorage.id_inter;
@@ -280,5 +307,93 @@ async function envoiJsonInterModif() {
     }
 }
 
+//ENVOI DES DONN…ES UTILISATEUR POUR Rê…CUPERATION DES STATISTIQUES
+async function envoiJsonStatistiques() {
+    const interlocuteurLocalStorage = JSON.parse(localStorage.getItem('user'));
+
+    AgenceId = interlocuteurLocalStorage.id_agence;
+    InterId = interlocuteurLocalStorage.id_inter;
+
+    urlStatistiques = `https://localhost:44338/api/statistiques`;
+
+
+    // Convertit les donnÈes en objet JSON
+    var donneesInter = {
+        id_agence: AgenceId,
+        id_inter: InterId
+    };
+
+    const envoiStatInter = JSON.stringify(donneesInter);
+
+    const response = await fetch(urlStatistiques, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: envoiStatInter
+    });
+
+    console.log(envoiStatInter);
+    if (response.ok) {
+        const inter = await response.json();
+        localStorage.setItem('statistiques', JSON.stringify(inter));
+        peuplementStatistiques();
+    } else {
+        console.error('Erreur lors de La rÈcupÈration de vos statistiques personelles');
+        alert('Erreur lors de La rÈcupÈration de vos statistiques personelles');
+    }
+}
+
+//PEUPLEMENT DE LA PAGE DE STATISTIQUES DE L'ESPACE UTILISATEUR
+
+function peuplementStatistiques() {
+    //Chargement des ÈlÈments du DOM.
+
+    //…lements statistiques du local storage:
+    const statistiquesLocalStorage = JSON.parse(localStorage.getItem('statistiques'));
+    const agencePlusContrats = statistiquesLocalStorage.agenceMaxContrat;
+    const nbContratsMeilleureAgence = statistiquesLocalStorage.nbContratAgenceMax;
+    const nbContratsAgence = statistiquesLocalStorage.nbContratAgence;
+    const totalValeurContratsAssu = statistiquesLocalStorage.valeurTotaleContratAssu;
+    const meilleurClientAgence = statistiquesLocalStorage.topClientAgence;
+    const meilleurContratAgence = statistiquesLocalStorage.topContratAgence;
+    const nombreTopContratAgence = statistiquesLocalStorage.nbTopContratAgence;
+    const nombreContratInterlocuteur = statistiquesLocalStorage.nbContratInter;
+    const valeurTotaleContratsInterlocuteur = statistiquesLocalStorage.valTotalContratInter;
+    const meilleurClientInter = statistiquesLocalStorage.topClientInter;
+    const nombreContratMeilleurClientInter = statistiquesLocalStorage.nbContrTopCli;
+
+    //…lÈmÈnts de la page HTML:
+    const agenceMaxContrats = document.getElementById('agenceMaxContrat');
+    const nbContratAgenceMax = document.getElementById('nbContratAgenceMax');
+    const nbContratAgence = document.getElementById('nbContratAgence');
+    const valeurTotaleContratAssu = document.getElementById('valeurTotaleContratAssu');
+    const topClientAgence = document.getElementById('topClientAgence');
+    const topContratAgence = document.getElementById('topContratAgence');
+    const nbTopContratAgence = document.getElementById('nbTopContratAgence');
+    const nbContratInter = document.getElementById('nbContratInter');
+    const valTotalContratInter = document.getElementById('valTotalContratInter');
+    const topClientInter = document.getElementById('topClientInter');
+    const nbContrTopCli = document.getElementById('nbContrTopCli');
+
+    //Attribution des valeurs de l'objet 'statistiques' aux ÈlÈments HTML:
+    //statistiques gÈnÈrales:
+    agenceMaxContrats.innerHTML = agencePlusContrats;
+    nbContratAgenceMax.innerHTML = nbContratsMeilleureAgence;
+    //statistiques agence utilisateur:
+    nbContratAgence.innerHTML = nbContratsAgence;
+    valeurTotaleContratAssu.innerHTML = totalValeurContratsAssu;
+    topClientAgence.innerHTML = meilleurClientAgence;
+    topContratAgence.innerHTML = meilleurContratAgence;
+    nbTopContratAgence.innerHTML = nombreTopContratAgence;
+    //statistiques utilisateur:
+    nbContratInter.innerHTML = nombreContratInterlocuteur;
+    valTotalContratInter.innerHTML = valeurTotaleContratsInterlocuteur;
+    topClientInter.innerHTML = meilleurClientInter;
+    nbContrTopCli.innerHTML = nombreContratMeilleurClientInter;
+
+
+
+}
+
 document.addEventListener('DOMContentLoaded', peuplementInfoInterlocuteur);
 document.addEventListener('DOMContentLoaded', PeuplementContrats);
+document.addEventListener('DOMContentLoaded', envoiJsonStatistiques);

@@ -65,13 +65,13 @@
                     <h2 id="interlocuteurEspace" class="interlocuteurEspace">Nom Prénom</h2>
                 </div>
                 <div id="menuEspacePerso" class="menuEspacePerso">
-                    <div class="rubriquesMenuEspacePerso cliquable">
+                    <div id="informationsPersonnelles" class="rubriquesMenuEspacePerso cliquable">
                         <h2 class="titresMenuEspacePerso">Informations personnelles</h2>
                     </div>
-                    <div class="rubriquesMenuEspacePerso cliquable">
+                    <div id="menuMesContrats" class="rubriquesMenuEspacePerso cliquable">
                         <h2 class="titresMenuEspacePerso">Mes contrats</h2>
                     </div>
-                    <div class="rubriquesMenuEspacePerso cliquable">
+                    <div id="menuStatistiques" class="rubriquesMenuEspacePerso cliquable">
                         <h2 class="titresMenuEspacePerso">Statistiques</h2>
                     </div>  
                 </div>
@@ -123,6 +123,53 @@
                     <!--Rubrique Statistiques-->
                     <div id="pageStatistiques">
                         <h1 class="couleurBleuFort margeSurGauche">Mes Statistiques.</h1>
+                        <h2 class="fondTitresStats margeSurGauche">Statistiques générales.</h2>
+                        <div class="petiteMargeBottom">
+                            <h2 class="couleurBleuFort statsPersonnelles">Agence qui a passé le plus de contrats : </h2>
+                            <h2 id="agenceMaxContrat" class="couleurGrisFort statsPersoInter"></h2>
+                        </div>
+                        <div class="petiteMargeBottom">
+                            <h2 class="couleurBleuFort statsPersonnelles">Nombre de contrats pour cette agence : </h2>
+                            <h2 id="nbContratAgenceMax" class="couleurGrisFort statsPersoInter"></h2>
+                        </div>
+                        <h2 class="fondTitresStats margeSurGauche">Statistiques pour votre agence.</h2>
+                        <div class="petiteMargeBottom">
+                            <h2 class="couleurBleuFort statsPersonnelles">Nombre de contrats pour votre agence : </h2>
+                            <h2 id="nbContratAgence" class="couleurGrisFort statsPersoInter"></h2>
+                        </div>
+                        <div class="petiteMargeBottom">
+                            <h2 class="couleurBleuFort statsPersonnelles">Valeur totale des contrats d'assurance : </h2>
+                            <h2 id="valeurTotaleContratAssu" class="couleurGrisFort statsPersoInter"></h2>
+                        </div>
+                        <div class="petiteMargeBottom">
+                            <h2 class="couleurBleuFort statsPersonnelles">Meilleur client de l'agence : </h2>
+                            <h2 id="topClientAgence" class="couleurGrisFort statsPersoInter"></h2>
+                        </div>
+                        <div class="petiteMargeBottom">
+                            <h2 class="couleurBleuFort statsPersonnelles">Type de contrat le plus vendu : </h2>
+                            <h2 id="topContratAgence" class="couleurGrisFort statsPersoInter"></h2>
+                        </div>
+                        <div class="petiteMargeBottom">
+                            <h2 class="couleurBleuFort statsPersonnelles">Nombre de vente pour ce type de contrat : </h2>
+                            <h2 id="nbTopContratAgence" class="couleurGrisFort statsPersoInter"></h2>
+                        </div>
+                        <h2 class="fondTitresStats margeSurGauche">Statistiques personnelles.</h2>
+                        <div class="petiteMargeBottom">
+                            <h2 class="couleurBleuFort statsPersonnelles">Nombre de contrat vendus : </h2>
+                            <h2 id="nbContratInter" class="couleurGrisFort statsPersoInter"></h2>
+                        </div>
+                        <div class="petiteMargeBottom">
+                            <h2 class="couleurBleuFort statsPersonnelles">Valeur totale des contrat vendus : </h2>
+                            <h2 id="valTotalContratInter" class="couleurGrisFort statsPersoInter"></h2>
+                        </div>
+                        <div class="petiteMargeBottom">
+                            <h2 class="couleurBleuFort statsPersonnelles">Votre meilleur client : </h2>
+                            <h2 id="topClientInter" class="couleurGrisFort statsPersoInter"></h2>
+                        </div>
+                        <div class="petiteMargeBottom">
+                            <h2 class="couleurBleuFort statsPersonnelles">Nombre de contrats pour ce client : </h2>
+                            <h2 id="nbContrTopCli" class="couleurGrisFort statsPersoInter"></h2>
+                        </div>
                     </div>
                 </div>
             </div>
