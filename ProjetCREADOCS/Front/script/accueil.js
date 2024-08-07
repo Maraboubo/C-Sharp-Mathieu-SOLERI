@@ -110,6 +110,9 @@ BoutonSeDeconnecter.addEventListener('click', Deconnexion);
 function Deconnexion()
 {
     localStorage.removeItem('user'); // Effacer le stockage local
+    localStorage.removeItem('contrat'); // Effacer le stockage local
+    localStorage.removeItem('statistiques'); // Effacer le stockage local
+    localStorage.removeItem('client'); // Effacer le stockage local
     window.location.reload(); // Recharger la page pour appliquer les modifications
 }
 

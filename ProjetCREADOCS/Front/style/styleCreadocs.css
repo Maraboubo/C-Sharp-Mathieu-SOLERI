@@ -176,6 +176,27 @@ header {
     transition: height 0.5s, top 0.5s;
 }
 
+.boutonRetourAccueil {
+    position: relative;
+    height: 50%;
+    width: 14%;
+    float: right;
+    background-color: #A7A7A7;
+    top: 50%;
+    right: 7%;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    transition: height 0.5s, background-color 0.5s, top 0.5s;
+    margin-right: 10px;
+}
+
+    .boutonRetourAccueil:hover {
+        height: 75%;
+        float: right;
+        background-color: #E10018;
+        top: 25%;
+    }
+
 #boutonUtilisateur{
     background-color:#36B4EE;
 }
@@ -329,7 +350,7 @@ header {
 }
 
 .champTexte {
-    width: 90%;
+    width: 100%;
 }
 
 .champTexteConnection {
@@ -397,7 +418,7 @@ header {
     border-bottom: none;
     border-left: none;
     border-right: none;
-    width: 85%;
+    width: 100%%;
 }
 
 .legend {
@@ -634,17 +655,17 @@ header {
 
 
 .identiteInterlocuteur {
-    margin: 0 0 10px;
     height: 10%;
-    width: 40%;
-    background-color: #023A5B;
-    text-align: left;
-    border-radius: 20px;
 }
 
 .interlocuteurEspace {
     margin: 20px 0 0 20px;
     position: absolute;
+    height: fit-content;
+    width: fit-content;
+    background-color: #023A5B;
+    padding: 20px;
+    border-radius: 20px;
 }
 
 /*
