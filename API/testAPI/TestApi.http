@@ -1,0 +1,5 @@
+﻿@TestApi_HostAddress = https://localhost:44365
+
+GET {{TestApi_HostAddress}}/test
+
+###
